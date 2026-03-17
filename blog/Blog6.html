@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health in the Digital Age - Gods Life Health Care</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/assets/i18n/translator.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-text': '#2a2a2a',
+                        'secondary-text': '#666666',
+                        'light-bg': '#ffffff',
+                        'light-border': '#e0e0e0',
+                        'accent-blue': '#007bff',
+                        'custom-blue': '#3498db',
+                        'custom-dark-blue': '#2980b9',
+                        'custom-dark': '#2c3e50',
+                        'custom-light-gray': '#f5f7fa',
+                        'custom-gray': '#777777',
+                        'custom-light': '#bdc3c7',
+                        'custom-teal': '#00a1ab',
+                        'custom-dark-teal': '#002c5f'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .logo-text span {
+            color: #3498db;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #3498db;
+        }
+
+        .nav-menu .btn {
+            background: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .nav-menu .btn:hover {
+            background: #2980b9;
+            color: white;
+        }
+
+        .ham-icon {
+            display: none;
+        }
+
+        .ham-img {
+            height: 25px;
+            width: auto;
+        }
+
+        /* Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-left.animated {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-right.animated {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .scale-in.animated {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .stagger-animation>* {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .stagger-animation.animated>* {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-animation.animated>*:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .stagger-animation.animated>*:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .stagger-animation.animated>*:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .stagger-animation.animated>*:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+
+        .stagger-animation.animated>*:nth-child(5) {
+            transition-delay: 0.5s;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-column p {
+            color: #bdc3c7;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: #3498db;
+        }
+
+        /* Footer Animation Styles */
+        .footer-column {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .footer-column.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger animation for footer columns */
+        .footer-column:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .footer-column:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .footer-column:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .footer-column:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+
+        /* Social icons animation */
+        .social-icons a {
+            transform: scale(0);
+            transition: transform 0.5s ease, background 0.3s;
+        }
+
+        .social-icons.animated a {
+            transform: scale(1);
+        }
+
+        .social-icons.animated a:nth-child(1) {
+            transition-delay: 0.5s;
+        }
+
+        .social-icons.animated a:nth-child(2) {
+            transition-delay: 0.6s;
+        }
+
+        .social-icons.animated a:nth-child(3) {
+            transition-delay: 0.7s;
+        }
+
+        .social-icons.animated a:nth-child(4) {
+            transition-delay: 0.8s;
+        }
+
+        /* Copyright animation */
+        .copyright {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .copyright.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #34495e;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: #3498db;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 900px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .ham-icon {
+                display: block;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        /* Blog Post Specific Styles */
+        .article-card-shadow {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Enhanced Card Animation Styles */
+        .card-animate {
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .card-animate::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.1) 0%, rgba(41, 128, 185, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .card-animate:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.12),
+                0 8px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        .card-animate:hover::before {
+            opacity: 1;
+        }
+
+        .card-animate .article-image {
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform-origin: center;
+        }
+
+        .card-animate:hover .article-image {
+            transform: scale(1.08);
+        }
+
+        .card-animate .article-content {
+            position: relative;
+            z-index: 2;
+            transition: transform 0.4s ease;
+        }
+
+        .card-animate:hover .article-content {
+            transform: translateY(-2px);
+        }
+
+        .card-animate .read-more {
+            position: relative;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .card-animate .read-more::after {
+            content: '→';
+            margin-left: 4px;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .card-animate:hover .read-more {
+            color: #2980b9;
+            font-weight: 600;
+        }
+
+        .card-animate:hover .read-more::after {
+            transform: translateX(4px);
+        }
+
+        /* Staggered animation for cards */
+        .article-card {
+            animation: cardSlideIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        @keyframes cardSlideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Apply staggered delays */
+        .article-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .article-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .article-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .article-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        /* Category tag animations */
+        .category-tag {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .card-animate:hover .category-tag {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-animate:hover .category-tag::before {
+            left: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                display: none;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .logo-text {
+                font-size: 1.25rem;
+            }
+
+            /* Adjust card animations for mobile */
+            .card-animate:hover {
+                transform: translateY(-4px) scale(1.01);
+            }
+
+            .card-animate:hover .article-image {
+                transform: scale(1.03);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN1iie8n5MkShNgEeBfpmQfPl2lCBqpYOnQg&s"
+                    alt="Gods Life Health Care" style="border-radius: 30px;">
+                <div class="logo-text">God's Life<span> Health Care</span></div>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/hospitals.html">Hospital</a></li>
+                <li><a href="/department.html">Treatments</a></li>
+                <li><a href="">Blog</a></li>
+                <li><a href="/doctor.html">Doctors</a></li>
+                <li><a href="/about.html">About Us</a></li>
+
+                <a href="/consultation.html" class="nav-consultation-btn" onclick="trackConsultationClick()">
+                    <i class="fas fa-calendar-check"></i> Consultation
+                </a>
+
+
+                <div class="ham-icon" onclick="toggleMobileMenu()">
+                    <img class="ham-img" src="https://placehold.co/25x25/2c3e50/fff?text=☰" alt="Menu">
+                </div>
+        </div>
+    </header>
+
+    <!-- Blog Post Content -->
+    <div class="container py-8">
+        <!-- Breadcrumb -->
+        <nav class="mb-8 text-sm text-gray-600 animate-on-scroll">
+            <a href="#" class="hover:text-blue-600">Home</a> &gt;
+            <a href="#" class="hover:text-blue-600">Resources</a> &gt;
+            <a href="#" class="hover:text-blue-600">Mental Health</a> &gt;
+            <span class="text-gray-900 font-medium">Mental Health in the Digital Age</span>
+        </nav>
+
+        <!-- Article Header -->
+        <div class="bg-white rounded-2xl overflow-hidden mb-12 article-card-shadow animate-on-scroll">
+            <div class="p-8">
+                <span
+                    class="text-xs font-semibold text-purple-600 bg-purple-50 px-3 py-1 rounded-full mb-4 inline-block">Mental
+                    Health</span>
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Mental Health in the Digital Age</h1>
+                <p class="text-xl text-gray-600 mb-6 max-w-3xl">Understanding the impact of technology on mental
+                    wellbeing and strategies for maintaining balance.</p>
+
+                <div
+                    class="flex flex-col sm:flex-row justify-between items-start sm:items-center text-sm text-gray-500 border-t border-b border-gray-200 py-4">
+                    <div class="flex items-center mb-4 sm:mb-0">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
+                            alt="Author Avatar" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <p class="font-medium text-gray-900">Dr. Sophia Williams</p>
+                            <p>Clinical Psychologist & Digital Wellness Specialist</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <span>May 10, 2025</span>
+                        <span class="mx-3">•</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>10 min read</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Image -->
+            <div class="w-full h-96 lg:h-[500px] overflow-hidden">
+                <img src="https://boujeez.com/wp-content/uploads/2022/12/health-dc1.webp"
+                    alt="Mental Health in the Digital Age" class="w-full h-full object-cover">
+            </div>
+        </div>
+
+        <!-- Article Content -->
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 mb-16">
+            <!-- Main Content -->
+            <div class="lg:col-span-3">
+                <div class="bg-white rounded-2xl p-8 article-card-shadow">
+                    <!-- Introduction -->
+                    <div class="mb-10 animate-on-scroll">
+                        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                            In our increasingly connected world, digital technology has transformed how we work,
+                            communicate, and entertain ourselves. While these advancements offer unprecedented
+                            convenience and opportunities, they also present unique challenges to our mental wellbeing.
+                            Understanding this complex relationship is crucial for maintaining psychological health in
+                            the 21st century.
+                        </p>
+                        <p class="text-lg text-gray-700 leading-relaxed">
+                            This comprehensive guide explores the multifaceted impact of digital technology on mental
+                            health and provides evidence-based strategies for creating a healthier relationship with our
+                            digital devices.
+                        </p>
+                    </div>
+
+                    <!-- Key Takeaways Section -->
+                    <section id="key-takeaways" class="mb-10 animate-on-scroll">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Key Takeaways</h2>
+                        <div class="bg-purple-50 rounded-xl p-6">
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>Digital technology can both support and challenge mental health</li>
+                                <li>Social media usage correlates with increased anxiety and depression in some
+                                    populations</li>
+                                <li>Digital mindfulness practices can mitigate negative effects</li>
+                                <li>Setting boundaries with technology is essential for mental wellbeing</li>
+                                <li>Online mental health resources provide unprecedented access to support</li>
+                                <li>Digital detox periods can significantly improve mood and focus</li>
+                                <li>Balancing online and offline activities is key to psychological health</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Digital Impact Section -->
+                    <section id="digital-impact" class="mb-10 animate-on-scroll">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">The Dual Impact of Digital Technology</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            Digital technology presents a paradox for mental health - it can be both a source of stress
+                            and a tool for wellbeing. Understanding this duality is the first step toward developing a
+                            healthier relationship with technology.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                            <div class="bg-red-50 rounded-lg p-6">
+                                <h4 class="font-bold text-lg text-red-800 mb-2">Potential Challenges</h4>
+                                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                    <li>Information overload and cognitive fatigue</li>
+                                    <li>Social comparison and FOMO (Fear Of Missing Out)</li>
+                                    <li>Sleep disruption from blue light exposure</li>
+                                    <li>Reduced face-to-face social interaction</li>
+                                    <li>Cyberbullying and online harassment</li>
+                                    <li>Addictive design patterns in apps and platforms</li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-green-50 rounded-lg p-6">
+                                <h4 class="font-bold text-lg text-green-800 mb-2">Positive Opportunities</h4>
+                                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                    <li>Access to mental health resources and support communities</li>
+                                    <li>Convenient therapy through telehealth platforms</li>
+                                    <li>Mindfulness and meditation apps</li>
+                                    <li>Educational content about mental health</li>
+                                    <li>Maintaining connections with distant loved ones</li>
+                                    <li>Online support groups for specific conditions</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <p class="text-gray-700 leading-relaxed">
+                            The key lies not in rejecting technology altogether, but in developing awareness and
+                            intentionality around how we engage with digital tools. By understanding both the risks and
+                            benefits, we can harness technology to support rather than undermine our mental health.
+                        </p>
+                    </section>
+
+                    <!-- Social Media Section -->
+                    <section id="social-media" class="mb-10 animate-on-scroll">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Social Media and Mental Health</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            Social media platforms have become integral to modern social life, but their impact on
+                            mental health is complex and multifaceted. Research has identified several ways social media
+                            use can affect psychological wellbeing.
+                        </p>
+
+                        <div class="bg-gray-50 rounded-lg p-6 my-6">
+                            <h4 class="font-bold text-lg text-gray-900 mb-2">Research Findings on Social Media Impact
+                            </h4>
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>Heavy social media use correlates with higher rates of anxiety and depression</li>
+                                <li>Passive consumption (scrolling) has more negative effects than active engagement
+                                </li>
+                                <li>Social comparison is a primary mechanism for negative impact</li>
+                                <li>Curated content creates unrealistic expectations and standards</li>
+                                <li>Cyberbullying affects approximately 37% of young people</li>
+                                <li>Sleep disruption from late-night social media use is common</li>
+                            </ul>
+                        </div>
+
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+                                <thead>
+                                    <tr class="bg-gray-50">
+                                        <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Platform
+                                            Type</th>
+                                        <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Common
+                                            Mental Health Impacts</th>
+                                        <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Healthy
+                                            Usage Strategies</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="py-3 px-4 border-b font-medium">Image-Based (Instagram, Pinterest)
+                                        </td>
+                                        <td class="py-3 px-4 border-b">Body image issues, social comparison,
+                                            perfectionism</td>
+                                        <td class="py-3 px-4 border-b">Follow diverse body types, limit time, focus on
+                                            creation over consumption</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="py-3 px-4 border-b font-medium">Text-Based (Twitter, Facebook)</td>
+                                        <td class="py-3 px-4 border-b">Information overload, political stress, argument
+                                            fatigue</td>
+                                        <td class="py-3 px-4 border-b">Curate feed carefully, use mute functions, take
+                                            regular breaks</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="py-3 px-4 border-b font-medium">Video-Based (TikTok, YouTube)</td>
+                                        <td class="py-3 px-4 border-b">Attention fragmentation, time distortion,
+                                            comparison</td>
+                                        <td class="py-3 px-4 border-b">Set time limits, be intentional about content,
+                                            take regular breaks</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="py-3 px-4 border-b font-medium">Professional (LinkedIn)</td>
+                                        <td class="py-3 px-4 border-b">Career anxiety, professional comparison, imposter
+                                            syndrome</td>
+                                        <td class="py-3 px-4 border-b">Focus on learning, set boundaries for work-life
+                                            balance</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- Strategies Section -->
+                    <section id="strategies" class="mb-10 animate-on-scroll">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Strategies for Digital Wellness</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            Developing healthy digital habits requires intentional effort and consistent practice. These
+                            evidence-based strategies can help you maintain mental wellbeing in our hyperconnected
+                            world.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                            <div class="bg-blue-50 rounded-lg p-6">
+                                <h4 class="font-bold text-lg text-blue-800 mb-2">Digital Boundaries</h4>
+                                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                    <li>Establish tech-free zones (bedroom, dining table)</li>
+                                    <li>Set specific times for checking emails and messages</li>
+                                    <li>Use app timers and website blockers</li>
+                                    <li>Implement a digital curfew 1-2 hours before bed</li>
+                                    <li>Schedule regular digital detox periods</li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-yellow-50 rounded-lg p-6">
+                                <h4 class="font-bold text-lg text-yellow-800 mb-2">Mindful Engagement</h4>
+                                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                    <li>Practice intention before opening apps</li>
+                                    <li>Notice emotional responses to digital content</li>
+                                    <li>Curate your feed to support mental health</li>
+                                    <li>Balance consumption with creation</li>
+                                    <li>Take regular breaks using the 20-20-20 rule</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="bg-green-50 rounded-lg p-6 my-6">
+                            <h4 class="font-bold text-lg text-gray-900 mb-4">Sample Digital Wellness Plan</h4>
+                            <div class="space-y-4">
+                                <div>
+                                    <h5 class="font-semibold text-gray-900">Morning (7:00-9:00 AM)</h5>
+                                    <p class="text-gray-700">No phone for first hour, mindful checking of messages,
+                                        intentional social media use</p>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold text-gray-900">Workday (9:00 AM-5:00 PM)</h5>
+                                    <p class="text-gray-700">Focused work blocks, scheduled email checks, regular screen
+                                        breaks, phone-free lunch</p>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold text-gray-900">Evening (5:00-10:00 PM)</h5>
+                                    <p class="text-gray-700">Digital detox after 8:00 PM, device-free dinner, analog
+                                        activities, preparation for sleep</p>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold text-gray-900">Weekly Practice</h5>
+                                    <p class="text-gray-700">One digital-free day per month, social media audit,
+                                        reflection on digital habits</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Digital Tools Section -->
+                    <section id="digital-tools" class="mb-10 animate-on-scroll">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Digital Tools for Mental Health</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            While digital technology can challenge mental health, it also offers powerful tools for
+                            support and improvement. These resources can complement traditional mental health care.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
+                            <div class="bg-purple-50 rounded-lg p-6 text-center">
+                                <div
+                                    class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-headset text-purple-600 text-xl"></i>
+                                </div>
+                                <h4 class="font-bold text-gray-900 mb-2">Therapy Platforms</h4>
+                                <p class="text-sm text-gray-700">Online access to licensed therapists through video,
+                                    chat, and messaging</p>
+                            </div>
+
+                            <div class="bg-blue-50 rounded-lg p-6 text-center">
+                                <div
+                                    class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-brain text-blue-600 text-xl"></i>
+                                </div>
+                                <h4 class="font-bold text-gray-900 mb-2">Mindfulness Apps</h4>
+                                <p class="text-sm text-gray-700">Guided meditation, breathing exercises, and stress
+                                    management tools</p>
+                            </div>
+
+                            <div class="bg-green-50 rounded-lg p-6 text-center">
+                                <div
+                                    class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-users text-green-600 text-xl"></i>
+                                </div>
+                                <h4 class="font-bold text-gray-900 mb-2">Support Communities</h4>
+                                <p class="text-sm text-gray-700">Online groups connecting people with similar mental
+                                    health experiences</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 rounded-lg p-6">
+                            <h4 class="font-bold text-lg text-gray-900 mb-2">Choosing Digital Mental Health Tools</h4>
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>Look for evidence-based approaches with clinical validation</li>
+                                <li>Check privacy policies and data security measures</li>
+                                <li>Consider cost and accessibility</li>
+                                <li>Read reviews and research effectiveness</li>
+                                <li>Consult with mental health professionals when appropriate</li>
+                                <li>Use as complement to, not replacement for, professional care when needed</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Conclusion Section -->
+                    <section id="conclusion" class="animate-on-scroll">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Conclusion</h2>
+                        <div class="bg-green-50 rounded-xl p-6">
+                            <p class="text-gray-700 leading-relaxed mb-4">
+                                Navigating mental health in the digital age requires awareness, intention, and balance.
+                                While technology presents real challenges to psychological wellbeing, it also offers
+                                unprecedented tools for support, connection, and self-care. The goal is not to eliminate
+                                technology from our lives, but to develop a conscious, healthy relationship with it.
+                            </p>
+                            <p class="text-gray-700 leading-relaxed">
+                                By implementing boundaries, practicing digital mindfulness, and leveraging technology's
+                                positive potential, we can harness the benefits of our connected world while protecting
+                                our mental health. Remember that small, consistent changes in digital habits can lead to
+                                significant improvements in overall wellbeing.
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- Share Section -->
+                    <div class="mt-10 pt-6 border-t border-gray-200 animate-on-scroll">
+                        <h4 class="font-bold text-lg text-gray-900 mb-4">Share this article</h4>
+                        <div class="flex space-x-4">
+                            <a href="#"
+                                class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#"
+                                class="w-10 h-10 bg-blue-400 rounded-full flex items-center justify-center text-white">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#"
+                                class="w-10 h-10 bg-blue-700 rounded-full flex items-center justify-center text-white">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#"
+                                class="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center text-white">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="lg:col-span-1">
+                <!-- Author Bio -->
+                <div class="bg-white rounded-2xl p-6 mb-8 article-card-shadow animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80"
+                        alt="Dr. Sophia Williams" class="w-20 h-20 rounded-full mx-auto mb-4">
+                    <h3 class="text-xl font-bold text-gray-900 text-center mb-2">Dr. Sophia Williams</h3>
+                    <p class="text-gray-600 text-center mb-4">Clinical Psychologist & Digital Wellness Specialist</p>
+                    <p class="text-gray-700 text-sm text-center">Dr. Williams specializes in the intersection of
+                        technology and mental health, with over 12 years of experience helping clients develop healthy
+                        digital habits.</p>
+                </div>
+
+                <!-- Table of Contents -->
+                <div class="bg-white rounded-2xl p-6 mb-8 article-card-shadow animate-on-scroll">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Table of Contents</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#key-takeaways" class="text-blue-600 hover:text-blue-800 transition-colors">Key
+                                Takeaways</a></li>
+                        <li><a href="#digital-impact"
+                                class="text-blue-600 hover:text-blue-800 transition-colors">Digital Impact</a></li>
+                        <li><a href="#social-media" class="text-blue-600 hover:text-blue-800 transition-colors">Social
+                                Media</a></li>
+                        <li><a href="#strategies" class="text-blue-600 hover:text-blue-800 transition-colors">Wellness
+                                Strategies</a></li>
+                        <li><a href="#digital-tools" class="text-blue-600 hover:text-blue-800 transition-colors">Digital
+                                Tools</a></li>
+                        <li><a href="#conclusion"
+                                class="text-blue-600 hover:text-blue-800 transition-colors">Conclusion</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="bg-purple-50 rounded-2xl p-6 article-card-shadow animate-on-scroll">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Mental Health Insights</h3>
+                    <p class="text-gray-700 mb-4">Receive monthly mental health tips and digital wellness strategies.
+                    </p>
+                    <form class="space-y-3">
+                        <input type="email" placeholder="Your email address"
+                            class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        <button type="submit"
+                            class="w-full bg-purple-600 text-white py-2 rounded-lg font-medium hover:bg-purple-700 transition-colors">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Articles -->
+        <div class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center animate-on-scroll">Related Articles</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                <!-- Related Article 1 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden article-card-shadow card-animate"
+                    data-title="Stress Management Techniques" data-category="Mental Health">
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Article 1" class="w-full h-48 object-cover article-image">
+                    <div class="p-5 article-content">
+                        <span
+                            class="text-xs font-semibold text-purple-600 bg-purple-50 px-3 py-1 rounded-full mb-3 inline-block category-tag">Mental
+                            Health</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Stress Management Techniques</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            Effective strategies to manage daily stress and prevent its negative impact on physical and
+                            mental health.
+                        </p>
+                        <a href="#" class="text-blue-600 hover:underline text-sm font-medium read-more">Read more</a>
+                    </div>
+                </div>
+
+                <!-- Related Article 2 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden article-card-shadow card-animate"
+                    data-title="Mindfulness and Meditation" data-category="Mental Health">
+                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Article 2" class="w-full h-48 object-cover article-image">
+                    <div class="p-5 article-content">
+                        <span
+                            class="text-xs font-semibold text-purple-600 bg-purple-50 px-3 py-1 rounded-full mb-3 inline-block category-tag">Mental
+                            Health</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Mindfulness and Meditation</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            How regular mindfulness practice can reduce anxiety, improve focus, and enhance overall
+                            wellbeing.
+                        </p>
+                        <a href="#" class="text-blue-600 hover:underline text-sm font-medium read-more">Read more</a>
+                    </div>
+                </div>
+
+                <!-- Related Article 3 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden article-card-shadow card-animate"
+                    data-title="Sleep and Mental Health" data-category="Mental Health">
+                    <img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?q=80&w=2060&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Article 3" class="w-full h-48 object-cover article-image">
+                    <div class="p-5 article-content">
+                        <span
+                            class="text-xs font-semibold text-purple-600 bg-purple-50 px-3 py-1 rounded-full mb-3 inline-block category-tag">Mental
+                            Health</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Sleep and Mental Health</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            The powerful connection between quality sleep and emotional regulation, mood stability, and
+                            cognitive function.
+                        </p>
+                        <a href="#" class="text-blue-600 hover:underline text-sm font-medium read-more">Read more</a>
+                    </div>
+                </div>
+
+                <!-- Related Article 4 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden article-card-shadow card-animate"
+                    data-title="Exercise for Mental Wellbeing" data-category="Mental Health">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Article 4" class="w-full h-48 object-cover article-image">
+                    <div class="p-5 article-content">
+                        <span
+                            class="text-xs font-semibold text-purple-600 bg-purple-50 px-3 py-1 rounded-full mb-3 inline-block category-tag">Mental
+                            Health</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Exercise for Mental Wellbeing</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            How physical activity impacts brain chemistry, reduces stress, and improves overall mental
+                            health.
+                        </p>
+                        <a href="#" class="text-blue-600 hover:underline text-sm font-medium read-more">Read more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content stagger-animation">
+                <div class="footer-column">
+                    <h3>Gods Life Health Care</h3>
+                    <p>Providing world-class medical tourism services with compassion and excellence.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Destinations</a></li>
+                        <li><a href="#">Doctors</a></li>
+                        <li><a href="#">Testimonials</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Medical Services</h3>
+                    <ul>
+                        <li><a href="#">Cardiac Surgery</a></li>
+                        <li><a href="#">Orthopedics</a></li>
+                        <li><a href="#">Cosmetic Surgery</a></li>
+                        <li><a href="#">Dental Care</a></li>
+                        <li><a href="#">Fertility Treatments</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 18 East Azad Nagar near Krishna Nagar Delhi 110051</p>
+                    <p><i class="fas fa-phone"></i> (+91) 85128 45000</p>
+                    <p>
+    <i class="fas fa-envelope"></i> 
+    <a href="mailto:support@godslifehealthcare.com">support@godslifehealthcare.com</a>
+</p>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 Gods Life Health Care. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /**
+         * Toggle mobile menu
+         */
+        function toggleMobileMenu() {
+            const navMenu = document.querySelector('.nav-menu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Scroll Animation Functionality
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8 &&
+                rect.bottom >= 0
+            );
+        }
+
+        function handleScrollAnimation() {
+            const elements = document.querySelectorAll('.animate-on-scroll, .fade-in-left, .fade-in-right, .scale-in, .stagger-animation');
+
+            elements.forEach(element => {
+                if (isElementInViewport(element)) {
+                    element.classList.add('animated');
+                }
+            });
+
+            // Footer-specific animations
+            const footerColumns = document.querySelectorAll('.footer-column');
+            const socialIcons = document.querySelector('.social-icons');
+            const copyright = document.querySelector('.copyright');
+
+            if (isElementInViewport(document.querySelector('footer'))) {
+                footerColumns.forEach(column => {
+                    column.classList.add('animated');
+                });
+
+                if (socialIcons) {
+                    socialIcons.classList.add('animated');
+                }
+
+                if (copyright) {
+                    copyright.classList.add('animated');
+                }
+            }
+        }
+
+        // Initialize scroll animations
+        document.addEventListener('DOMContentLoaded', function () {
+            handleScrollAnimation();
+
+            // Add scroll event listener
+            window.addEventListener('scroll', handleScrollAnimation);
+        });
+    </script>
+    <script defer src="/assets/i18n/translator.js"></script>
+</body>
+
+</html>

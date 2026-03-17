@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancer Prevention Strategies - Gods Life Health Care</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/assets/i18n/translator.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-text': '#2a2a2a',
+                        'secondary-text': '#666666',
+                        'light-bg': '#ffffff',
+                        'light-border': '#e0e0e0',
+                        'accent-blue': '#007bff',
+                        'custom-blue': '#3498db',
+                        'custom-dark-blue': '#2980b9',
+                        'custom-dark': '#2c3e50',
+                        'custom-light-gray': '#f5f7fa',
+                        'custom-gray': '#777777',
+                        'custom-light': '#bdc3c7',
+                        'custom-teal': '#00a1ab',
+                        'custom-dark-teal': '#002c5f'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .logo-text span {
+            color: #3498db;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #3498db;
+        }
+
+        .nav-menu .btn {
+            background: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .nav-menu .btn:hover {
+            background: #2980b9;
+            color: white;
+        }
+
+        .ham-icon {
+            display: none;
+        }
+
+        .ham-img {
+            height: 25px;
+            width: auto;
+        }
+
+        /* Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-left.animated {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-right.animated {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .scale-in.animated {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .stagger-animation>* {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .stagger-animation.animated>* {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-animation.animated>*:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .stagger-animation.animated>*:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .stagger-animation.animated>*:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .stagger-animation.animated>*:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+
+        .stagger-animation.animated>*:nth-child(5) {
+            transition-delay: 0.5s;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-column p {
+            color: #bdc3c7;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: #3498db;
+        }
+
+        /* Footer Animation Styles */
+        .footer-column {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .footer-column.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger animation for footer columns */
+        .footer-column:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .footer-column:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .footer-column:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .footer-column:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+
+        /* Social icons animation */
+        .social-icons a {
+            transform: scale(0);
+            transition: transform 0.5s ease, background 0.3s;
+        }
+
+        .social-icons.animated a {
+            transform: scale(1);
+        }
+
+        .social-icons.animated a:nth-child(1) {
+            transition-delay: 0.5s;
+        }
+
+        .social-icons.animated a:nth-child(2) {
+            transition-delay: 0.6s;
+        }
+
+        .social-icons.animated a:nth-child(3) {
+            transition-delay: 0.7s;
+        }
+
+        .social-icons.animated a:nth-child(4) {
+            transition-delay: 0.8s;
+        }
+
+        /* Copyright animation */
+        .copyright {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .copyright.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #34495e;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: #3498db;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 900px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .ham-icon {
+                display: block;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        /* Blog Post Specific Styles */
+        .article-card-shadow {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Enhanced Card Animation Styles */
+        .card-animate {
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .card-animate::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.1) 0%, rgba(41, 128, 185, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .card-animate:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.12),
+                0 8px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        .card-animate:hover::before {
+            opacity: 1;
+        }
+
+        .card-animate .article-image {
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform-origin: center;
+        }
+
+        .card-animate:hover .article-image {
+            transform: scale(1.08);
+        }
+
+        .card-animate .article-content {
+            position: relative;
+            z-index: 2;
+            transition: transform 0.4s ease;
+        }
+
+        .card-animate:hover .article-content {
+            transform: translateY(-2px);
+        }
+
+        .card-animate .read-more {
+            position: relative;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .card-animate .read-more::after {
+            content: '→';
+            margin-left: 4px;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .card-animate:hover .read-more {
+            color: #2980b9;
+            font-weight: 600;
+        }
+
+        .card-animate:hover .read-more::after {
+            transform: translateX(4px);
+        }
+
+        /* Staggered animation for cards */
+        .article-card {
+            animation: cardSlideIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        @keyframes cardSlideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Apply staggered delays */
+        .article-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .article-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .article-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .article-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        /* Category tag animations */
+        .category-tag {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .card-animate:hover .category-tag {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-animate:hover .category-tag::before {
+            left: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                display: none;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .logo-text {
+                font-size: 1.25rem;
+            }
+
+            /* Adjust card animations for mobile */
+            .card-animate:hover {
+                transform: translateY(-4px) scale(1.01);
+            }
+
+            .card-animate:hover .article-image {
+                transform: scale(1.03);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN1iie8n5MkShNgEeBfpmQfPl2lCBqpYOnQg&s"
+                    alt="Gods Life Health Care" style="border-radius: 30px;">
+                <div class="logo-text">God's Life<span> Health Care</span></div>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/hospitals.html">Hospital</a></li>
+                <li><a href="/department.html">Treatments</a></li>
+                <li><a href="">Blog</a></li>
+                <li><a href="/doctor.html">Doctors</a></li>
+                <li><a href="/about.html">About Us</a></li>
+
+                <a href="/consultation.html" class="nav-consultation-btn" onclick="trackConsultationClick()">
+                    <i class="fas fa-calendar-check"></i> Consultation
+                </a>
+
+
+                <div class="ham-icon" onclick="toggleMobileMenu()">
+                    <img class="ham-img" src="https://placehold.co/25x25/2c3e50/fff?text=☰" alt="Menu">
+                </div>
+        </div>
+    </header>
+
+    <!-- Blog Post Content -->
+    <div class="container py-8">
+        <!-- Breadcrumb -->
+        <nav class="mb-8 text-sm text-gray-600 animate-on-scroll">
+            <a href="#" class="hover:text-blue-600">Home</a> &gt;
+            <a href="#" class="hover:text-blue-600">Resources</a> &gt;
+            <a href="#" class="hover:text-blue-600">Prevention</a> &gt;
+            <span class="text-gray-900 font-medium">Cancer Prevention Strategies</span>
+        </nav>
+
+        <!-- Article Header -->
+        <div class="bg-white rounded-2xl overflow-hidden mb-12 article-card-shadow animate-on-scroll">
+            <div class="p-8">
+                <span
+                    class="text-xs font-semibold text-purple-600 bg-purple-50 px-3 py-1 rounded-full mb-4 inline-block">Prevention</span>
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Cancer Prevention: Evidence-Based
+                    Strategies to Reduce Your Risk</h1>
+                <p class="text-xl text-gray-600 mb-6 max-w-3xl">Discover science-backed approaches to lower your cancer
+                    risk through lifestyle changes, screening, and early detection.</p>
+
+                <div
+                    class="flex flex-col sm:flex-row justify-between items-start sm:items-center text-sm text-gray-500 border-t border-b border-gray-200 py-4">
+                    <div class="flex items-center mb-4 sm:mb-0">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
+                            alt="Author Avatar" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <p class="font-medium text-gray-900">Dr. Michael Reynolds</p>
+                            <p>Oncologist & Cancer Prevention Specialist</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <span>Apr 10, 2025</span>
+                        <span class="mx-3">•</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>10 min read</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Image -->
+            <div class="w-full h-96 lg:h-[500px] overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="Cancer Prevention" class="w-full h-full object-cover">
+            </div>
+        </div>
+
+        <!-- Article Content -->
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 mb-16">
+            <!-- Main Content -->
+            <div class="lg:col-span-3">
+                <div class="bg-white rounded-2xl p-8 article-card-shadow">
+                    <!-- Introduction -->
+                    <div class="mb-10 animate-on-scroll">
+                        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                            Cancer prevention represents one of the most promising approaches to reducing the global
+                            burden of this disease. While not all cancers are preventable, research shows that up to 50%
+                            of cancer cases and deaths could potentially be avoided through evidence-based prevention
+                            strategies. This comprehensive guide explores the most effective ways to reduce your cancer
+                            risk.
+                        </p>
+                    </div>
+
+                    <!-- Key Takeaways Section -->
+                    <section id="key-takeaways" class="mb-10 animate-on-scroll">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Key Takeaways</h2>
+                        <div class="bg-purple-50 rounded-xl p-6">
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>Maintain a healthy weight through balanced nutrition and regular exercise</li>
+                                <li>Avoid tobacco in all forms and limit alcohol consumption</li>
+                                <li>Protect your skin from UV radiation and avoid tanning beds</li>
+                                <li>Get vaccinated against HPV and Hepatitis B</li>
+                                <li>Follow recommended cancer screening guidelines based on your age and risk factors
+                                </li>
+                                <li>Limit processed and red meats in your diet</li>
+                                <li>Know your family history and discuss personalized screening with your doctor</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Lifestyle Factors Section -->
+                    <section id="lifestyle-factors" class="mb-10 animate-on-scroll">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Lifestyle Factors in Cancer Prevention</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            Your daily habits and lifestyle choices significantly impact your cancer risk. Research has
+                            identified several modifiable factors that can substantially reduce your likelihood of
+                            developing cancer.
+                        </p>
+
+                        <div class="bg-gray-50 rounded-lg p-6 my-6">
+                            <h4 class="font-bold text-lg text-gray-900 mb-2">Tobacco and Cancer Risk</h4>
+                            <p class="text-gray-700 mb-4">
+                                Tobacco use is the single largest preventable cause of cancer worldwide, responsible for
+                                approximately 22% of cancer deaths. Smoking is linked to at least 15 different types of
+                                cancer, including lung, throat, mouth, and bladder cancers.
+                            </p>
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>Quitting smoking at any age can significantly reduce cancer risk</li>
+                                <li>Avoid secondhand smoke exposure</li>
+                                <li>Consider nicotine replacement therapies or medications to help quit</li>
+                                <li>Seek support from smoking cessation programs</li>
+                            </ul>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                            <div class="bg-blue-50 rounded-lg p-6">
+                                <h4 class="font-bold text-lg text-gray-900 mb-2">Nutrition and Diet</h4>
+                                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                    <li>Eat plenty of fruits and vegetables (aim for 5+ servings daily)</li>
+                                    <li>Choose whole grains over refined grains</li>
+                                    <li>Limit processed meats and red meat</li>
+                                    <li>Reduce salt consumption</li>
+                                    <li>Avoid sugary drinks and high-calorie foods</li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-green-50 rounded-lg p-6">
+                                <h4 class="font-bold text-lg text-gray-900 mb-2">Physical Activity</h4>
+                                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                    <li>Aim for at least 150 minutes of moderate exercise weekly</li>
+                                    <li>Include strength training twice weekly</li>
+                                    <li>Limit sedentary behavior</li>
+                                    <li>Incorporate movement into daily routines</li>
+                                    <li>Find activities you enjoy for sustainability</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Screening and Early Detection Section -->
+                    <section id="screening" class="mb-10 animate-on-scroll">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Screening and Early Detection</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            Regular cancer screenings can detect precancerous conditions or cancer at an early stage
+                            when treatment is most effective. The appropriate screening tests depend on your age,
+                            gender, and personal risk factors.
+                        </p>
+
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+                                <thead>
+                                    <tr class="bg-gray-50">
+                                        <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Cancer Type
+                                        </th>
+                                        <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Screening
+                                            Test</th>
+                                        <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Recommended
+                                            Frequency</th>
+                                        <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Starting
+                                            Age</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="py-3 px-4 border-b">Breast Cancer</td>
+                                        <td class="py-3 px-4 border-b">Mammogram</td>
+                                        <td class="py-3 px-4 border-b">Every 1-2 years</td>
+                                        <td class="py-3 px-4 border-b">40-50 years</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="py-3 px-4 border-b">Colorectal Cancer</td>
+                                        <td class="py-3 px-4 border-b">Colonoscopy</td>
+                                        <td class="py-3 px-4 border-b">Every 10 years</td>
+                                        <td class="py-3 px-4 border-b">45 years</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="py-3 px-4 border-b">Cervical Cancer</td>
+                                        <td class="py-3 px-4 border-b">Pap Test/HPV Test</td>
+                                        <td class="py-3 px-4 border-b">Every 3-5 years</td>
+                                        <td class="py-3 px-4 border-b">21 years</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="py-3 px-4 border-b">Lung Cancer</td>
+                                        <td class="py-3 px-4 border-b">Low-dose CT Scan</td>
+                                        <td class="py-3 px-4 border-b">Yearly</td>
+                                        <td class="py-3 px-4 border-b">50 years (with smoking history)</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="py-3 px-4 border-b">Prostate Cancer</td>
+                                        <td class="py-3 px-4 border-b">PSA Test</td>
+                                        <td class="py-3 px-4 border-b">Discuss with doctor</td>
+                                        <td class="py-3 px-4 border-b">50 years (45 for high risk)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="bg-yellow-50 rounded-lg p-6 mt-6">
+                            <h4 class="font-bold text-lg text-gray-900 mb-2">Important Note</h4>
+                            <p class="text-gray-700">
+                                Screening recommendations may vary based on individual risk factors, family history, and
+                                personal health status. Always consult with your healthcare provider to determine the
+                                most appropriate screening schedule for your specific situation.
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- Environmental and Occupational Risks Section -->
+                    <section id="environmental-risks" class="mb-10 animate-on-scroll">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Environmental and Occupational Risks</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            Certain environmental and occupational exposures can increase cancer risk. Being aware of
+                            these risks and taking appropriate precautions can help reduce your exposure to carcinogens.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                            <div class="bg-red-50 rounded-lg p-6">
+                                <h4 class="font-bold text-lg text-gray-900 mb-2">Sun and UV Protection</h4>
+                                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                    <li>Use broad-spectrum sunscreen with SPF 30 or higher</li>
+                                    <li>Seek shade during peak sun hours (10 AM - 4 PM)</li>
+                                    <li>Wear protective clothing, hats, and sunglasses</li>
+                                    <li>Avoid tanning beds and sunlamps</li>
+                                    <li>Perform regular skin self-exams</li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-teal-50 rounded-lg p-6">
+                                <h4 class="font-bold text-lg text-gray-900 mb-2">Environmental Carcinogens</h4>
+                                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                    <li>Test your home for radon</li>
+                                    <li>Limit exposure to asbestos and other workplace chemicals</li>
+                                    <li>Follow safety protocols when handling hazardous materials</li>
+                                    <li>Be aware of air quality in your community</li>
+                                    <li>Filter drinking water if concerned about contaminants</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Vaccination and Infectious Agents Section -->
+                    <section id="vaccination" class="mb-10 animate-on-scroll">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Vaccination and Infectious Agents</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            Certain infections are linked to an increased risk of cancer. Vaccination and proper hygiene
+                            can help prevent these infections and reduce associated cancer risks.
+                        </p>
+
+                        <div class="bg-blue-50 rounded-lg p-6 my-6">
+                            <h4 class="font-bold text-lg text-gray-900 mb-2">Cancer-Preventing Vaccines</h4>
+                            <div class="space-y-4">
+                                <div>
+                                    <h5 class="font-semibold text-gray-900">HPV Vaccine</h5>
+                                    <p class="text-gray-700">Protects against human papillomavirus, which can cause
+                                        cervical, anal, throat, and other cancers. Recommended for both males and
+                                        females aged 9-26.</p>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold text-gray-900">Hepatitis B Vaccine</h5>
+                                    <p class="text-gray-700">Protects against hepatitis B virus infection, which can
+                                        lead to liver cancer. Recommended for all infants and adults at risk.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Genetic Factors and Family History Section -->
+                    <section id="genetic-factors" class="mb-10 animate-on-scroll">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Genetic Factors and Family History</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            While most cancers are not directly inherited, having a family history of certain cancers
+                            can increase your risk. Understanding your genetic predisposition can help guide
+                            personalized prevention strategies.
+                        </p>
+
+                        <div class="bg-purple-50 rounded-lg p-6 my-6">
+                            <h4 class="font-bold text-lg text-gray-900 mb-2">When to Consider Genetic Counseling</h4>
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>Multiple relatives with the same type of cancer</li>
+                                <li>Cancers occurring at younger ages than typical</li>
+                                <li>Rare cancers in your family</li>
+                                <li>Multiple primary cancers in one individual</li>
+                                <li>Known genetic mutation in the family</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Conclusion Section -->
+                    <section id="conclusion" class="animate-on-scroll">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Conclusion</h2>
+                        <div class="bg-green-50 rounded-xl p-6">
+                            <p class="text-gray-700 leading-relaxed mb-4">
+                                Cancer prevention is a multifaceted approach that combines healthy lifestyle choices,
+                                appropriate screenings, vaccination, and awareness of environmental risks. While not all
+                                cancers can be prevented, adopting these evidence-based strategies can significantly
+                                reduce your overall cancer risk.
+                            </p>
+                            <p class="text-gray-700 leading-relaxed">
+                                Remember that prevention is a lifelong journey. Small, consistent changes to your daily
+                                habits can have a profound impact on your long-term health. Work with your healthcare
+                                provider to develop a personalized prevention plan that addresses your specific risk
+                                factors and health goals.
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- Share Section -->
+                    <div class="mt-10 pt-6 border-t border-gray-200 animate-on-scroll">
+                        <h4 class="font-bold text-lg text-gray-900 mb-4">Share this article</h4>
+                        <div class="flex space-x-4">
+                            <a href="#"
+                                class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#"
+                                class="w-10 h-10 bg-blue-400 rounded-full flex items-center justify-center text-white">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#"
+                                class="w-10 h-10 bg-blue-700 rounded-full flex items-center justify-center text-white">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#"
+                                class="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center text-white">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="lg:col-span-1">
+                <!-- Author Bio -->
+                <div class="bg-white rounded-2xl p-6 mb-8 article-card-shadow animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80"
+                        alt="Dr. Michael Reynolds" class="w-20 h-20 rounded-full mx-auto mb-4">
+                    <h3 class="text-xl font-bold text-gray-900 text-center mb-2">Dr. Michael Reynolds</h3>
+                    <p class="text-gray-600 text-center mb-4">Oncologist & Cancer Prevention Specialist</p>
+                    <p class="text-gray-700 text-sm text-center">Dr. Reynolds has dedicated his career to cancer
+                        prevention research and patient education, with over 15 years of experience in oncology.</p>
+                </div>
+
+                <!-- Table of Contents -->
+                <div class="bg-white rounded-2xl p-6 mb-8 article-card-shadow animate-on-scroll">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Table of Contents</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#key-takeaways" class="text-blue-600 hover:text-blue-800 transition-colors">Key
+                                Takeaways</a></li>
+                        <li><a href="#lifestyle-factors"
+                                class="text-blue-600 hover:text-blue-800 transition-colors">Lifestyle Factors</a></li>
+                        <li><a href="#screening" class="text-blue-600 hover:text-blue-800 transition-colors">Screening &
+                                Early Detection</a></li>
+                        <li><a href="#environmental-risks"
+                                class="text-blue-600 hover:text-blue-800 transition-colors">Environmental Risks</a></li>
+                        <li><a href="#vaccination"
+                                class="text-blue-600 hover:text-blue-800 transition-colors">Vaccination</a></li>
+                        <li><a href="#genetic-factors"
+                                class="text-blue-600 hover:text-blue-800 transition-colors">Genetic Factors</a></li>
+                        <li><a href="#conclusion"
+                                class="text-blue-600 hover:text-blue-800 transition-colors">Conclusion</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                
+            </div>
+        </div>
+
+        <!-- Related Articles -->
+        <div class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center animate-on-scroll">Related Articles</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                <!-- Related Article 1 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden article-card-shadow card-animate"
+                    data-title="Nutrition for Cancer Prevention" data-category="Nutrition">
+                    <img src="https://images.unsplash.com/photo-1490818387583-1baba5e638af?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Article 1" class="w-full h-48 object-cover article-image">
+                    <div class="p-5 article-content">
+                        <span
+                            class="text-xs font-semibold text-green-600 bg-green-50 px-3 py-1 rounded-full mb-3 inline-block category-tag">Nutrition</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Nutrition for Cancer Prevention</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            Discover the specific foods and dietary patterns that can help reduce your cancer risk.
+                        </p>
+                        <a href="#" class="text-blue-600 hover:underline text-sm font-medium read-more">Read more</a>
+                    </div>
+                </div>
+
+                <!-- Related Article 2 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden article-card-shadow card-animate"
+                    data-title="Understanding Cancer Screening" data-category="Prevention">
+                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Article 2" class="w-full h-48 object-cover article-image">
+                    <div class="p-5 article-content">
+                        <span
+                            class="text-xs font-semibold text-purple-600 bg-purple-50 px-3 py-1 rounded-full mb-3 inline-block category-tag">Prevention</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Understanding Cancer Screening</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            A comprehensive guide to cancer screening tests and when you should get them.
+                        </p>
+                        <a href="#" class="text-blue-600 hover:underline text-sm font-medium read-more">Read more</a>
+                    </div>
+                </div>
+
+                <!-- Related Article 3 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden article-card-shadow card-animate"
+                    data-title="The Role of Exercise in Cancer Prevention" data-category="Fitness">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Article 3" class="w-full h-48 object-cover article-image">
+                    <div class="p-5 article-content">
+                        <span
+                            class="text-xs font-semibold text-red-600 bg-red-50 px-3 py-1 rounded-full mb-3 inline-block category-tag">Fitness</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Exercise in Cancer Prevention</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            How physical activity can reduce cancer risk and which exercises are most beneficial.
+                        </p>
+                        <a href="#" class="text-blue-600 hover:underline text-sm font-medium read-more">Read more</a>
+                    </div>
+                </div>
+
+                <!-- Related Article 4 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden article-card-shadow card-animate"
+                    data-title="Environmental Toxins and Cancer Risk" data-category="Environment">
+                    <img src="https://images.unsplash.com/photo-1569163139394-de44cb2c8cb7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Article 4" class="w-full h-48 object-cover article-image">
+                    <div class="p-5 article-content">
+                        <span
+                            class="text-xs font-semibold text-teal-600 bg-teal-50 px-3 py-1 rounded-full mb-3 inline-block category-tag">Environment</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Environmental Toxins and Cancer</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            Identifying and reducing exposure to environmental carcinogens in daily life.
+                        </p>
+                        <a href="#" class="text-blue-600 hover:underline text-sm font-medium read-more">Read more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content stagger-animation">
+                <div class="footer-column">
+                    <h3>Gods Life Health Care</h3>
+                    <p>Providing world-class medical tourism services with compassion and excellence.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Destinations</a></li>
+                        <li><a href="#">Doctors</a></li>
+                        <li><a href="#">Testimonials</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Medical Services</h3>
+                    <ul>
+                        <li><a href="#">Cardiac Surgery</a></li>
+                        <li><a href="#">Orthopedics</a></li>
+                        <li><a href="#">Cosmetic Surgery</a></li>
+                        <li><a href="#">Dental Care</a></li>
+                        <li><a href="#">Fertility Treatments</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 18 East Azad Nagar near Krishna Nagar Delhi 110051</p>
+                    <p><i class="fas fa-phone"></i> (+91) 85128 45000</p>
+                    <p>
+    <i class="fas fa-envelope"></i> 
+    <a href="mailto:support@godslifehealthcare.com">support@godslifehealthcare.com</a>
+</p>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 Gods Life Health Care. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /**
+         * Toggle mobile menu
+         */
+        function toggleMobileMenu() {
+            const navMenu = document.querySelector('.nav-menu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Scroll Animation Functionality
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8 &&
+                rect.bottom >= 0
+            );
+        }
+
+        function handleScrollAnimation() {
+            const elements = document.querySelectorAll('.animate-on-scroll, .fade-in-left, .fade-in-right, .scale-in, .stagger-animation');
+
+            elements.forEach(element => {
+                if (isElementInViewport(element)) {
+                    element.classList.add('animated');
+                }
+            });
+
+            // Footer-specific animations
+            const footerColumns = document.querySelectorAll('.footer-column');
+            const socialIcons = document.querySelector('.social-icons');
+            const copyright = document.querySelector('.copyright');
+
+            if (isElementInViewport(document.querySelector('footer'))) {
+                footerColumns.forEach(column => {
+                    column.classList.add('animated');
+                });
+
+                if (socialIcons) {
+                    socialIcons.classList.add('animated');
+                }
+
+                if (copyright) {
+                    copyright.classList.add('animated');
+                }
+            }
+        }
+
+        // Initialize scroll animations
+        document.addEventListener('DOMContentLoaded', function () {
+            handleScrollAnimation();
+
+            // Add scroll event listener
+            window.addEventListener('scroll', handleScrollAnimation);
+        });
+    </script>
+    <script defer src="/assets/i18n/translator.js"></script>
+</body>
+
+</html>

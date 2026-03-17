@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Heart Health: Prevention and Early Detection - Gods Life Health Care</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/assets/i18n/translator.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-text': '#2a2a2a',
+                        'secondary-text': '#666666',
+                        'light-bg': '#ffffff',
+                        'light-border': '#e0e0e0',
+                        'accent-blue': '#007bff',
+                        'custom-blue': '#3498db',
+                        'custom-dark-blue': '#2980b9',
+                        'custom-dark': '#2c3e50',
+                        'custom-light-gray': '#f5f7fa',
+                        'custom-gray': '#777777',
+                        'custom-light': '#bdc3c7',
+                        'custom-teal': '#00a1ab',
+                        'custom-dark-teal': '#002c5f'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .logo-text span {
+            color: #3498db;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #3498db;
+        }
+
+        .nav-menu .btn {
+            background: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .nav-menu .btn:hover {
+            background: #2980b9;
+            color: white;
+        }
+
+        .ham-icon {
+            display: none;
+        }
+
+        .ham-img {
+            height: 25px;
+            width: auto;
+        }
+
+        /* Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-left.animated {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-right.animated {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .scale-in.animated {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .stagger-animation>* {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .stagger-animation.animated>* {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-animation.animated>*:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .stagger-animation.animated>*:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .stagger-animation.animated>*:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .stagger-animation.animated>*:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+
+        .stagger-animation.animated>*:nth-child(5) {
+            transition-delay: 0.5s;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-column p {
+            color: #bdc3c7;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: #3498db;
+        }
+
+        /* Footer Animation Styles */
+        .footer-column {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .footer-column.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger animation for footer columns */
+        .footer-column:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .footer-column:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .footer-column:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .footer-column:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+
+        /* Social icons animation */
+        .social-icons a {
+            transform: scale(0);
+            transition: transform 0.5s ease, background 0.3s;
+        }
+
+        .social-icons.animated a {
+            transform: scale(1);
+        }
+
+        .social-icons.animated a:nth-child(1) {
+            transition-delay: 0.5s;
+        }
+
+        .social-icons.animated a:nth-child(2) {
+            transition-delay: 0.6s;
+        }
+
+        .social-icons.animated a:nth-child(3) {
+            transition-delay: 0.7s;
+        }
+
+        .social-icons.animated a:nth-child(4) {
+            transition-delay: 0.8s;
+        }
+
+        /* Copyright animation */
+        .copyright {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .copyright.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #34495e;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: #3498db;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 900px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .ham-icon {
+                display: block;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        /* Blog Post Specific Styles */
+        .article-card-shadow {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Enhanced Card Animation Styles */
+        .card-animate {
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .card-animate::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.1) 0%, rgba(41, 128, 185, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .card-animate:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.12),
+                0 8px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        .card-animate:hover::before {
+            opacity: 1;
+        }
+
+        .card-animate .article-image {
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform-origin: center;
+        }
+
+        .card-animate:hover .article-image {
+            transform: scale(1.08);
+        }
+
+        .card-animate .article-content {
+            position: relative;
+            z-index: 2;
+            transition: transform 0.4s ease;
+        }
+
+        .card-animate:hover .article-content {
+            transform: translateY(-2px);
+        }
+
+        .card-animate .read-more {
+            position: relative;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .card-animate .read-more::after {
+            content: '→';
+            margin-left: 4px;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .card-animate:hover .read-more {
+            color: #2980b9;
+            font-weight: 600;
+        }
+
+        .card-animate:hover .read-more::after {
+            transform: translateX(4px);
+        }
+
+        /* Staggered animation for cards */
+        .article-card {
+            animation: cardSlideIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        @keyframes cardSlideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Apply staggered delays */
+        .article-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .article-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .article-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .article-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        /* Category tag animations */
+        .category-tag {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .card-animate:hover .category-tag {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-animate:hover .category-tag::before {
+            left: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                display: none;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .logo-text {
+                font-size: 1.25rem;
+            }
+
+            /* Adjust card animations for mobile */
+            .card-animate:hover {
+                transform: translateY(-4px) scale(1.01);
+            }
+
+            .card-animate:hover .article-image {
+                transform: scale(1.03);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN1iie8n5MkShNgEeBfpmQfPl2lCBqpYOnQg&s"
+                    alt="Gods Life Health Care" style="border-radius: 30px;">
+                <div class="logo-text">God's Life<span> Health Care</span></div>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/hospitals.html">Hospital</a></li>
+                <li><a href="/department.html">Treatments</a></li>
+                <li><a href="">Blog</a></li>
+                <li><a href="/doctor.html">Doctors</a></li>
+                <li><a href="/about.html">About Us</a></li>
+
+                <a href="/consultation.html" class="nav-consultation-btn" onclick="trackConsultationClick()">
+                    <i class="fas fa-calendar-check"></i> Consultation
+                </a>
+
+
+                <div class="ham-icon" onclick="toggleMobileMenu()">
+                    <img class="ham-img" src="https://placehold.co/25x25/2c3e50/fff?text=☰" alt="Menu">
+                </div>
+        </div>
+    </header>
+
+    <!-- Blog Post Content -->
+    <div class="container py-8">
+        <!-- Breadcrumb -->
+        <nav class="mb-8 text-sm text-gray-600 animate-on-scroll">
+            <a href="#" class="hover:text-blue-600">Home</a> &gt;
+            <a href="#" class="hover:text-blue-600">Resources</a> &gt;
+            <a href="#" class="hover:text-blue-600">Prevention</a> &gt;
+            <span class="text-gray-900 font-medium">Understanding Heart Health: Prevention and Early Detection</span>
+        </nav>
+
+        <!-- Article Header -->
+        <div class="bg-white rounded-2xl overflow-hidden mb-12 article-card-shadow animate-on-scroll">
+            <div class="p-8">
+                <span
+                    class="text-xs font-semibold text-green-600 bg-green-50 px-3 py-1 rounded-full mb-4 inline-block">Prevention</span>
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Understanding Heart Health: Prevention and
+                    Early Detection</h1>
+                <p class="text-xl text-gray-600 mb-6 max-w-3xl">Learn about the latest advancements in cardiovascular
+                    care and how to protect your heart health through lifestyle changes and regular screenings.</p>
+
+                <div
+                    class="flex flex-col sm:flex-row justify-between items-start sm:items-center text-sm text-gray-500 border-t border-b border-gray-200 py-4">
+                    <div class="flex items-center mb-4 sm:mb-0">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
+                            alt="Author Avatar" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <p class="font-medium text-gray-900">Dr. Sushant Ghimire</p>
+                            <p>Cardiologist & Preventive Medicine Specialist</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <span>Mar 15, 2025</span>
+                        <span class="mx-3">•</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>12 min read</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Image -->
+            <div class="w-full h-96 lg:h-[500px] overflow-hidden">
+                <img src="https://www.muhealth.org/sites/default/files/2019-01/hearthealth-compressor.jpg"
+                    alt="Heart Health Prevention" class="w-full h-full object-cover">
+            </div>
+        </div>
+
+        <!-- Article Content -->
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 mb-16">
+            <!-- Main Content -->
+            <div class="lg:col-span-3">
+                <div class="bg-white rounded-2xl p-8 article-card-shadow">
+                    <!-- Introduction -->
+                    <div class="mb-10 animate-on-scroll">
+                        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                            Cardiovascular disease remains the leading cause of death worldwide, but the good news is
+                            that most heart conditions are preventable. Through early detection and proactive lifestyle
+                            changes, we can significantly reduce our risk and maintain optimal heart health throughout
+                            our lives.
+                        </p>
+                        <p class="text-lg text-gray-700 leading-relaxed">
+                            This comprehensive guide explores evidence-based strategies for heart disease prevention,
+                            early warning signs to watch for, and the latest screening technologies that can detect
+                            potential issues before they become serious problems.
+                        </p>
+                    </div>
+
+                    <!-- Key Takeaways Section -->
+                    <section id="key-takeaways" class="mb-10 animate-on-scroll">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Key Takeaways</h2>
+                        <div class="bg-green-50 rounded-xl p-6">
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>Up to 80% of premature heart disease and stroke is preventable</li>
+                                <li>Regular screening can detect issues 10-15 years before symptoms appear</li>
+                                <li>Small lifestyle changes can have a significant impact on heart health</li>
+                                <li>Knowing your numbers (blood pressure, cholesterol, etc.) is crucial</li>
+                                <li>Early intervention can reverse some damage and prevent progression</li>
+                                <li>Genetic factors can be mitigated through proactive lifestyle choices</li>
+                                <li>Heart-healthy habits benefit overall health and longevity</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Risk Factors Section -->
+                    <section id="risk-factors" class="mb-10 animate-on-scroll">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Understanding Heart Disease Risk Factors</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            Heart disease develops over time, influenced by a combination of genetic, lifestyle, and
+                            environmental factors. Understanding these risk factors is the first step toward effective
+                            prevention.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                            <div class="bg-red-50 rounded-lg p-6">
+                                <h4 class="font-bold text-lg text-red-800 mb-2">Modifiable Risk Factors</h4>
+                                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                    <li>High blood pressure</li>
+                                    <li>High cholesterol levels</li>
+                                    <li>Smoking and tobacco use</li>
+                                    <li>Diabetes and prediabetes</li>
+                                    <li>Obesity and overweight</li>
+                                    <li>Physical inactivity</li>
+                                    <li>Unhealthy diet</li>
+                                    <li>Excessive alcohol consumption</li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-blue-50 rounded-lg p-6">
+                                <h4 class="font-bold text-lg text-blue-800 mb-2">Non-Modifiable Risk Factors</h4>
+                                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                    <li>Age (risk increases with age)</li>
+                                    <li>Gender (men have higher risk at younger ages)</li>
+                                    <li>Family history of heart disease</li>
+                                    <li>Ethnicity (some groups have higher risk)</li>
+                                    <li>Previous personal history of heart disease</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="bg-yellow-50 rounded-lg p-6">
+                            <h4 class="font-bold text-lg text-yellow-800 mb-2">Emerging Risk Factors</h4>
+                            <p class="text-gray-700 mb-3">Recent research has identified additional factors that
+                                influence heart disease risk:</p>
+                            <ul class="list-disc list-inside space-y-1 text-gray-700">
+                                <li>Chronic stress and inflammation</li>
+                                <li>Sleep apnea and poor sleep quality</li>
+                                <li>Air pollution and environmental toxins</li>
+                                <li>Gut microbiome health</li>
+                                <li>Social isolation and loneliness</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Prevention Strategies Section -->
+                    <section id="prevention-strategies" class="mb-10 animate-on-scroll">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Heart Disease Prevention Strategies</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            Preventing heart disease requires a comprehensive approach that addresses multiple aspects
+                            of health and lifestyle. These evidence-based strategies can significantly reduce your risk.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
+                            <div class="bg-green-50 rounded-lg p-6 text-center">
+                                <div
+                                    class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-apple-alt text-green-600 text-xl"></i>
+                                </div>
+                                <h4 class="font-bold text-gray-900 mb-2">Nutrition</h4>
+                                <p class="text-sm text-gray-700">Heart-healthy eating patterns that reduce inflammation
+                                    and support cardiovascular function</p>
+                            </div>
+
+                            <div class="bg-blue-50 rounded-lg p-6 text-center">
+                                <div
+                                    class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-running text-blue-600 text-xl"></i>
+                                </div>
+                                <h4 class="font-bold text-gray-900 mb-2">Physical Activity</h4>
+                                <p class="text-sm text-gray-700">Regular exercise that strengthens the heart and
+                                    improves circulation</p>
+                            </div>
+
+                            <div class="bg-purple-50 rounded-lg p-6 text-center">
+                                <div
+                                    class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-heartbeat text-purple-600 text-xl"></i>
+                                </div>
+                                <h4 class="font-bold text-gray-900 mb-2">Stress Management</h4>
+                                <p class="text-sm text-gray-700">Techniques to reduce chronic stress that damages
+                                    cardiovascular health</p>
+                            </div>
+                        </div>
+
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+                                <thead>
+                                    <tr class="bg-gray-50">
+                                        <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Prevention
+                                            Area</th>
+                                        <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Recommended
+                                            Actions</th>
+                                        <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Potential
+                                            Impact</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="py-3 px-4 border-b font-medium">Dietary Changes</td>
+                                        <td class="py-3 px-4 border-b">Mediterranean diet, reduced sodium, increased
+                                            fiber</td>
+                                        <td class="py-3 px-4 border-b">30-40% reduction in heart disease risk</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="py-3 px-4 border-b font-medium">Exercise Routine</td>
+                                        <td class="py-3 px-4 border-b">150 mins moderate or 75 mins vigorous activity
+                                            weekly</td>
+                                        <td class="py-3 px-4 border-b">20-35% lower risk of coronary heart disease</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="py-3 px-4 border-b font-medium">Smoking Cessation</td>
+                                        <td class="py-3 px-4 border-b">Complete tobacco avoidance, smoking cessation
+                                            programs</td>
+                                        <td class="py-3 px-4 border-b">50% reduction in risk within 1 year of quitting
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="py-3 px-4 border-b font-medium">Weight Management</td>
+                                        <td class="py-3 px-4 border-b">Maintain BMI 18.5-24.9, waist circumference
+                                            monitoring</td>
+                                        <td class="py-3 px-4 border-b">45% lower risk for every 5 kg weight loss</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="py-3 px-4 border-b font-medium">Blood Pressure Control</td>
+                                        <td class="py-3 px-4 border-b">Maintain <120 /80 mmHg through lifestyle and
+                                                medication</td>
+                                        <td class="py-3 px-4 border-b">25% reduction in cardiovascular events</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- Early Detection Section -->
+                    <section id="early-detection" class="mb-10 animate-on-scroll">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Early Detection and Screening</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            Early detection of heart disease can prevent serious complications and save lives. Regular
+                            screening allows for intervention before irreversible damage occurs.
+                        </p>
+
+                        <div class="bg-gray-50 rounded-lg p-6 my-6">
+                            <h4 class="font-bold text-lg text-gray-900 mb-4">Essential Heart Health Screenings</h4>
+                            <div class="space-y-4">
+                                <div>
+                                    <h5 class="font-semibold text-gray-900">Blood Pressure Measurement</h5>
+                                    <p class="text-gray-700">At least every 2 years starting at age 18; annually if
+                                        elevated or high risk</p>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold text-gray-900">Cholesterol Panel</h5>
+                                    <p class="text-gray-700">Every 4-6 years starting at age 20; more frequently if high
+                                        risk</p>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold text-gray-900">Blood Glucose Testing</h5>
+                                    <p class="text-gray-700">Starting at age 45, every 3 years; earlier if overweight or
+                                        high risk</p>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold text-gray-900">Body Mass Index (BMI)</h5>
+                                    <p class="text-gray-700">Annual calculation and waist circumference measurement</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                            <div class="bg-blue-50 rounded-lg p-6">
+                                <h4 class="font-bold text-lg text-gray-900 mb-2">Advanced Screening Options</h4>
+                                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                    <li>Coronary calcium scoring (CT scan)</li>
+                                    <li>Carotid artery ultrasound</li>
+                                    <li>Ankle-brachial index test</li>
+                                    <li>High-sensitivity C-reactive protein test</li>
+                                    <li>Electrocardiogram (ECG or EKG)</li>
+                                    <li>Stress testing</li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-green-50 rounded-lg p-6">
+                                <h4 class="font-bold text-lg text-gray-900 mb-2">Warning Signs to Watch For</h4>
+                                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                    <li>Chest pain, pressure, or discomfort</li>
+                                    <li>Shortness of breath with minimal exertion</li>
+                                    <li>Palpitations or irregular heartbeat</li>
+                                    <li>Swelling in legs, ankles, or feet</li>
+                                    <li>Unusual fatigue or weakness</li>
+                                    <li>Dizziness or lightheadedness</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Heart-Healthy Lifestyle Section -->
+                    <section id="heart-healthy-lifestyle" class="mb-10 animate-on-scroll">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Building a Heart-Healthy Lifestyle</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            Creating sustainable habits is key to long-term heart health. Small, consistent changes can
+                            lead to significant improvements in cardiovascular risk factors.
+                        </p>
+
+                        <div class="bg-green-50 rounded-lg p-6 my-6">
+                            <h4 class="font-bold text-lg text-gray-900 mb-4">Sample Heart-Healthy Daily Routine</h4>
+                            <div class="space-y-4">
+                                <div>
+                                    <h5 class="font-semibold text-gray-900">Morning (6:00-9:00 AM)</h5>
+                                    <p class="text-gray-700">30-minute brisk walk, heart-healthy breakfast (oatmeal with
+                                        berries), blood pressure check if recommended</p>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold text-gray-900">Daytime (9:00 AM-5:00 PM)</h5>
+                                    <p class="text-gray-700">Standing breaks every hour, healthy lunch (salad with lean
+                                        protein), hydration with water, stress-reduction techniques</p>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold text-gray-900">Evening (5:00-10:00 PM)</h5>
+                                    <p class="text-gray-700">Light strength training, heart-healthy dinner (fish with
+                                        vegetables), relaxation time, 7-8 hours of quality sleep</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-800 mb-4">Heart-Healthy Foods to Emphasize
+                                </h3>
+                                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                    <li>Fatty fish (salmon, mackerel, sardines)</li>
+                                    <li>Whole grains (oats, quinoa, brown rice)</li>
+                                    <li>Nuts and seeds (walnuts, almonds, flaxseeds)</li>
+                                    <li>Leafy greens (spinach, kale, collard greens)</li>
+                                    <li>Berries and other colorful fruits</li>
+                                    <li>Legumes (beans, lentils, chickpeas)</li>
+                                    <li>Olive oil and other healthy fats</li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-800 mb-4">Foods to Limit or Avoid</h3>
+                                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                    <li>Processed meats and red meat</li>
+                                    <li>Foods high in sodium</li>
+                                    <li>Sugar-sweetened beverages</li>
+                                    <li>Trans fats and saturated fats</li>
+                                    <li>Highly processed foods</li>
+                                    <li>Excessive alcohol</li>
+                                    <li>Refined carbohydrates</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Conclusion Section -->
+                    <section id="conclusion" class="animate-on-scroll">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Conclusion</h2>
+                        <div class="bg-green-50 rounded-xl p-6">
+                            <p class="text-gray-700 leading-relaxed mb-4">
+                                Heart disease prevention is one of the most effective ways to extend both lifespan and
+                                healthspan. Through a combination of regular screening, lifestyle modifications, and
+                                early intervention, we can significantly reduce the burden of cardiovascular disease.
+                            </p>
+                            <p class="text-gray-700 leading-relaxed">
+                                Remember that it's never too early or too late to start protecting your heart health.
+                                Small, consistent changes implemented over time can lead to dramatic improvements in
+                                cardiovascular risk. Work with your healthcare provider to develop a personalized
+                                prevention plan that addresses your specific risk factors and health goals.
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- Share Section -->
+                    <div class="mt-10 pt-6 border-t border-gray-200 animate-on-scroll">
+                        <h4 class="font-bold text-lg text-gray-900 mb-4">Share this article</h4>
+                        <div class="flex space-x-4">
+                            <a href="#"
+                                class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#"
+                                class="w-10 h-10 bg-blue-400 rounded-full flex items-center justify-center text-white">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#"
+                                class="w-10 h-10 bg-blue-700 rounded-full flex items-center justify-center text-white">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#"
+                                class="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center text-white">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="lg:col-span-1">
+                <!-- Author Bio -->
+                <div class="bg-white rounded-2xl p-6 mb-8 article-card-shadow animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80"
+                        alt="Dr. Sushant Ghimire" class="w-20 h-20 rounded-full mx-auto mb-4">
+                    <h3 class="text-xl font-bold text-gray-900 text-center mb-2">Dr. Sushant Ghimire</h3>
+                    <p class="text-gray-600 text-center mb-4">Cardiologist & Preventive Medicine Specialist</p>
+                    <p class="text-gray-700 text-sm text-center">Dr. Ghimire specializes in cardiovascular prevention
+                        with over 15 years of experience helping patients reduce their heart disease risk through
+                        evidence-based strategies.</p>
+                </div>
+
+                <!-- Table of Contents -->
+                <div class="bg-white rounded-2xl p-6 mb-8 article-card-shadow animate-on-scroll">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Table of Contents</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#key-takeaways" class="text-blue-600 hover:text-blue-800 transition-colors">Key
+                                Takeaways</a></li>
+                        <li><a href="#risk-factors" class="text-blue-600 hover:text-blue-800 transition-colors">Risk
+                                Factors</a></li>
+                        <li><a href="#prevention-strategies"
+                                class="text-blue-600 hover:text-blue-800 transition-colors">Prevention Strategies</a>
+                        </li>
+                        <li><a href="#early-detection" class="text-blue-600 hover:text-blue-800 transition-colors">Early
+                                Detection</a></li>
+                        <li><a href="#heart-healthy-lifestyle"
+                                class="text-blue-600 hover:text-blue-800 transition-colors">Heart-Healthy Lifestyle</a>
+                        </li>
+                        <li><a href="#conclusion"
+                                class="text-blue-600 hover:text-blue-800 transition-colors">Conclusion</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="bg-green-50 rounded-2xl p-6 article-card-shadow animate-on-scroll">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Heart Health Updates</h3>
+                    <p class="text-gray-700 mb-4">Receive monthly heart health tips and prevention strategies.</p>
+                    <form class="space-y-3">
+                        <input type="email" placeholder="Your email address"
+                            class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500">
+                        <button type="submit"
+                            class="w-full bg-green-600 text-white py-2 rounded-lg font-medium hover:bg-green-700 transition-colors">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Articles -->
+        <div class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center animate-on-scroll">Related Articles</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                <!-- Related Article 1 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden article-card-shadow card-animate"
+                    data-title="Exercise for Heart Health" data-category="Prevention">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Article 1" class="w-full h-48 object-cover article-image">
+                    <div class="p-5 article-content">
+                        <span
+                            class="text-xs font-semibold text-green-600 bg-green-50 px-3 py-1 rounded-full mb-3 inline-block category-tag">Prevention</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Exercise for Heart Health</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            The best cardiovascular exercises to strengthen your heart and improve overall
+                            cardiovascular fitness.
+                        </p>
+                        <a href="#" class="text-blue-600 hover:underline text-sm font-medium read-more">Read more</a>
+                    </div>
+                </div>
+
+                <!-- Related Article 2 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden article-card-shadow card-animate"
+                    data-title="Understanding Blood Pressure" data-category="Prevention">
+                    <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Article 2" class="w-full h-48 object-cover article-image">
+                    <div class="p-5 article-content">
+                        <span
+                            class="text-xs font-semibold text-green-600 bg-green-50 px-3 py-1 rounded-full mb-3 inline-block category-tag">Prevention</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Understanding Blood Pressure</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            What your blood pressure numbers mean and lifestyle changes to maintain healthy levels.
+                        </p>
+                        <a href="#" class="text-blue-600 hover:underline text-sm font-medium read-more">Read more</a>
+                    </div>
+                </div>
+
+                <!-- Related Article 3 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden article-card-shadow card-animate"
+                    data-title="Nutrition for Heart Health" data-category="Prevention">
+                    <img src="https://images.unsplash.com/photo-1490818387583-1baba5e638af?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Article 3" class="w-full h-48 object-cover article-image">
+                    <div class="p-5 article-content">
+                        <span
+                            class="text-xs font-semibold text-green-600 bg-green-50 px-3 py-1 rounded-full mb-3 inline-block category-tag">Prevention</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Nutrition for Heart Health</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            Heart-healthy eating patterns and foods that support cardiovascular function and reduce
+                            disease risk.
+                        </p>
+                        <a href="#" class="text-blue-600 hover:underline text-sm font-medium read-more">Read more</a>
+                    </div>
+                </div>
+
+                <!-- Related Article 4 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden article-card-shadow card-animate"
+                    data-title="Stress and Heart Health" data-category="Prevention">
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Article 4" class="w-full h-48 object-cover article-image">
+                    <div class="p-5 article-content">
+                        <span
+                            class="text-xs font-semibold text-green-600 bg-green-50 px-3 py-1 rounded-full mb-3 inline-block category-tag">Prevention</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Stress and Heart Health</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            How chronic stress impacts cardiovascular health and strategies to mitigate its effects.
+                        </p>
+                        <a href="#" class="text-blue-600 hover:underline text-sm font-medium read-more">Read more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content stagger-animation">
+                <div class="footer-column">
+                    <h3>Gods Life Health Care</h3>
+                    <p>Providing world-class medical tourism services with compassion and excellence.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Destinations</a></li>
+                        <li><a href="#">Doctors</a></li>
+                        <li><a href="#">Testimonials</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Medical Services</h3>
+                    <ul>
+                        <li><a href="#">Cardiac Surgery</a></li>
+                        <li><a href="#">Orthopedics</a></li>
+                        <li><a href="#">Cosmetic Surgery</a></li>
+                        <li><a href="#">Dental Care</a></li>
+                        <li><a href="#">Fertility Treatments</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 18 East Azad Nagar near Krishna Nagar Delhi 110051</p>
+                    <p><i class="fas fa-phone"></i> (+91) 85128 45000</p>
+                    <p>
+    <i class="fas fa-envelope"></i> 
+    <a href="mailto:support@godslifehealthcare.com">support@godslifehealthcare.com</a>
+</p>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 Gods Life Health Care. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /**
+         * Toggle mobile menu
+         */
+        function toggleMobileMenu() {
+            const navMenu = document.querySelector('.nav-menu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Scroll Animation Functionality
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8 &&
+                rect.bottom >= 0
+            );
+        }
+
+        function handleScrollAnimation() {
+            const elements = document.querySelectorAll('.animate-on-scroll, .fade-in-left, .fade-in-right, .scale-in, .stagger-animation');
+
+            elements.forEach(element => {
+                if (isElementInViewport(element)) {
+                    element.classList.add('animated');
+                }
+            });
+
+            // Footer-specific animations
+            const footerColumns = document.querySelectorAll('.footer-column');
+            const socialIcons = document.querySelector('.social-icons');
+            const copyright = document.querySelector('.copyright');
+
+            if (isElementInViewport(document.querySelector('footer'))) {
+                footerColumns.forEach(column => {
+                    column.classList.add('animated');
+                });
+
+                if (socialIcons) {
+                    socialIcons.classList.add('animated');
+                }
+
+                if (copyright) {
+                    copyright.classList.add('animated');
+                }
+            }
+        }
+
+        // Initialize scroll animations
+        document.addEventListener('DOMContentLoaded', function () {
+            handleScrollAnimation();
+
+            // Add scroll event listener
+            window.addEventListener('scroll', handleScrollAnimation);
+        });
+    </script>
+    <script defer src="/assets/i18n/translator.js"></script>
+</body>
+
+</html>

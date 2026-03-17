@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Blood Pressure - Gods Life Health Care</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/assets/i18n/translator.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-text': '#2a2a2a',
+                        'secondary-text': '#666666',
+                        'light-bg': '#ffffff',
+                        'light-border': '#e0e0e0',
+                        'accent-blue': '#007bff',
+                        'custom-blue': '#3498db',
+                        'custom-dark-blue': '#2980b9',
+                        'custom-dark': '#2c3e50',
+                        'custom-light-gray': '#f5f7fa',
+                        'custom-gray': '#777777',
+                        'custom-light': '#bdc3c7',
+                        'custom-teal': '#00a1ab',
+                        'custom-dark-teal': '#002c5f'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .logo-text span {
+            color: #3498db;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #3498db;
+        }
+
+        .nav-menu .btn {
+            background: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .nav-menu .btn:hover {
+            background: #2980b9;
+            color: white;
+        }
+
+        .ham-icon {
+            display: none;
+        }
+
+        .ham-img {
+            height: 25px;
+            width: auto;
+        }
+
+        /* Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-left.animated {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-right.animated {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .scale-in.animated {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .stagger-animation>* {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .stagger-animation.animated>* {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-animation.animated>*:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .stagger-animation.animated>*:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .stagger-animation.animated>*:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .stagger-animation.animated>*:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+
+        .stagger-animation.animated>*:nth-child(5) {
+            transition-delay: 0.5s;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-column p {
+            color: #bdc3c7;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: #3498db;
+        }
+
+        /* Footer Animation Styles */
+        .footer-column {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .footer-column.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger animation for footer columns */
+        .footer-column:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .footer-column:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .footer-column:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .footer-column:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+
+        /* Social icons animation */
+        .social-icons a {
+            transform: scale(0);
+            transition: transform 0.5s ease, background 0.3s;
+        }
+
+        .social-icons.animated a {
+            transform: scale(1);
+        }
+
+        .social-icons.animated a:nth-child(1) {
+            transition-delay: 0.5s;
+        }
+
+        .social-icons.animated a:nth-child(2) {
+            transition-delay: 0.6s;
+        }
+
+        .social-icons.animated a:nth-child(3) {
+            transition-delay: 0.7s;
+        }
+
+        .social-icons.animated a:nth-child(4) {
+            transition-delay: 0.8s;
+        }
+
+        /* Copyright animation */
+        .copyright {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .copyright.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #34495e;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: #3498db;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 900px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .ham-icon {
+                display: block;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        /* Blog Post Specific Styles */
+        .article-card-shadow {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Enhanced Card Animation Styles */
+        .card-animate {
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .card-animate::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.1) 0%, rgba(41, 128, 185, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .card-animate:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.12),
+                0 8px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        .card-animate:hover::before {
+            opacity: 1;
+        }
+
+        .card-animate .article-image {
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform-origin: center;
+        }
+
+        .card-animate:hover .article-image {
+            transform: scale(1.08);
+        }
+
+        .card-animate .article-content {
+            position: relative;
+            z-index: 2;
+            transition: transform 0.4s ease;
+        }
+
+        .card-animate:hover .article-content {
+            transform: translateY(-2px);
+        }
+
+        .card-animate .read-more {
+            position: relative;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .card-animate .read-more::after {
+            content: '→';
+            margin-left: 4px;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .card-animate:hover .read-more {
+            color: #2980b9;
+            font-weight: 600;
+        }
+
+        .card-animate:hover .read-more::after {
+            transform: translateX(4px);
+        }
+
+        /* Staggered animation for cards */
+        .article-card {
+            animation: cardSlideIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        @keyframes cardSlideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Apply staggered delays */
+        .article-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .article-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .article-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .article-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        /* Category tag animations */
+        .category-tag {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .card-animate:hover .category-tag {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-animate:hover .category-tag::before {
+            left: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                display: none;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .logo-text {
+                font-size: 1.25rem;
+            }
+
+            /* Adjust card animations for mobile */
+            .card-animate:hover {
+                transform: translateY(-4px) scale(1.01);
+            }
+
+            .card-animate:hover .article-image {
+                transform: scale(1.03);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN1iie8n5MkShNgEeBfpmQfPl2lCBqpYOnQg&s"
+                    alt="Gods Life Health Care" style="border-radius: 30px;">
+                <div class="logo-text">God's Life<span> Health Care</span></div>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/hospitals.html">Hospital</a></li>
+                <li><a href="/department.html">Treatments</a></li>
+                <li><a href="">Blog</a></li>
+                <li><a href="/doctor.html">Doctors</a></li>
+                <li><a href="/about.html">About Us</a></li>
+
+                <a href="/consultation.html" class="nav-consultation-btn" onclick="trackConsultationClick()">
+                    <i class="fas fa-calendar-check"></i> Consultation
+                </a>
+
+
+                <div class="ham-icon" onclick="toggleMobileMenu()">
+                    <img class="ham-img" src="https://placehold.co/25x25/2c3e50/fff?text=☰" alt="Menu">
+                </div>
+        </div>
+    </header>
+
+    <!-- Blog Post Content -->
+    <div class="container py-8">
+        <!-- Breadcrumb -->
+        <nav class="mb-8 text-sm text-gray-600 animate-on-scroll">
+            <a href="#" class="hover:text-blue-600">Home</a> &gt;
+            <a href="#" class="hover:text-blue-600">Resources</a> &gt;
+            <a href="#" class="hover:text-blue-600">Prevention</a> &gt;
+            <span class="text-gray-900 font-medium">Understanding Blood Pressure</span>
+        </nav>
+
+        <!-- Article Header -->
+        <div class="bg-white rounded-2xl overflow-hidden mb-12 article-card-shadow animate-on-scroll">
+            <div class="p-8">
+                <span
+                    class="text-xs font-semibold text-red-600 bg-red-50 px-3 py-1 rounded-full mb-4 inline-block">Prevention</span>
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Understanding Blood Pressure: What Your
+                    Numbers Mean</h1>
+                <p class="text-xl text-gray-600 mb-6 max-w-3xl">Learn how to interpret your blood pressure readings and
+                    discover lifestyle changes to maintain healthy levels for optimal heart health.</p>
+
+                <div
+                    class="flex flex-col sm:flex-row justify-between items-start sm:items-center text-sm text-gray-500 border-t border-b border-gray-200 py-4">
+                    <div class="flex items-center mb-4 sm:mb-0">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
+                            alt="Author Avatar" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <p class="font-medium text-gray-900">Dr. Sarah Johnson</p>
+                            <p>Cardiologist & Hypertension Specialist</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <span>May 22, 2025</span>
+                        <span class="mx-3">•</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>9 min read</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Image -->
+            <div class="w-full h-96 lg:h-[500px] overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="Understanding Blood Pressure" class="w-full h-full object-cover">
+            </div>
+        </div>
+
+        <!-- Article Content -->
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 mb-16">
+            <!-- Main Content -->
+            <div class="lg:col-span-3">
+                <div class="bg-white rounded-2xl p-8 article-card-shadow">
+                    <!-- Introduction -->
+                    <div class="mb-10 animate-on-scroll">
+                        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                            Blood pressure is one of the most important vital signs that reflects your cardiovascular
+                            health. Often called the "silent killer" because it typically has no symptoms, high blood
+                            pressure can quietly damage your blood vessels, heart, and other organs over time.
+                            Understanding what your blood pressure numbers mean and how to maintain healthy levels is
+                            crucial for long-term health and wellbeing.
+                        </p>
+                    </div>
+
+                    <!-- Key Takeaways Section -->
+                    <section id="key-takeaways" class="mb-10 animate-on-scroll">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Key Takeaways</h2>
+                        <div class="bg-red-50 rounded-xl p-6">
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>Blood pressure is measured as two numbers: systolic (pressure when heart beats) and
+                                    diastolic (pressure between beats)</li>
+                                <li>Normal blood pressure is below 120/80 mmHg</li>
+                                <li>Hypertension (high blood pressure) is 130/80 mmHg or higher</li>
+                                <li>Lifestyle changes can significantly impact blood pressure levels</li>
+                                <li>Regular monitoring helps detect issues early</li>
+                                <li>Diet, exercise, stress management, and medication (if needed) are key to control
+                                </li>
+                                <li>Untreated high blood pressure increases risk of heart attack, stroke, and kidney
+                                    disease</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Understanding Blood Pressure Numbers Section -->
+                    <section id="understanding-numbers" class="mb-10 animate-on-scroll">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Understanding Blood Pressure Numbers</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            Your blood pressure reading consists of two numbers measured in millimeters of mercury
+                            (mmHg). The top number (systolic) represents the pressure in your arteries when your heart
+                            beats, while the bottom number (diastolic) represents the pressure when your heart is at
+                            rest between beats.
+                        </p>
+
+                        <div class="bg-gray-50 rounded-lg p-6 my-6">
+                            <h4 class="font-bold text-lg text-gray-900 mb-2">Blood Pressure Categories</h4>
+                            <div class="overflow-x-auto">
+                                <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+                                    <thead>
+                                        <tr class="bg-gray-100">
+                                            <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">
+                                                Category</th>
+                                            <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">
+                                                Systolic (mm Hg)</th>
+                                            <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">
+                                                Diastolic (mm Hg)</th>
+                                            <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">
+                                                Recommendation</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="hover:bg-gray-50">
+                                            <td class="py-3 px-4 border-b text-green-600 font-medium">Normal</td>
+                                            <td class="py-3 px-4 border-b">Less than 120</td>
+                                            <td class="py-3 px-4 border-b">and Less than 80</td>
+                                            <td class="py-3 px-4 border-b">Maintain healthy lifestyle</td>
+                                        </tr>
+                                        <tr class="hover:bg-gray-50">
+                                            <td class="py-3 px-4 border-b text-yellow-600 font-medium">Elevated</td>
+                                            <td class="py-3 px-4 border-b">120-129</td>
+                                            <td class="py-3 px-4 border-b">and Less than 80</td>
+                                            <td class="py-3 px-4 border-b">Lifestyle changes</td>
+                                        </tr>
+                                        <tr class="hover:bg-gray-50">
+                                            <td class="py-3 px-4 border-b text-orange-600 font-medium">Stage 1
+                                                Hypertension</td>
+                                            <td class="py-3 px-4 border-b">130-139</td>
+                                            <td class="py-3 px-4 border-b">or 80-89</td>
+                                            <td class="py-3 px-4 border-b">Lifestyle changes and possibly medication
+                                            </td>
+                                        </tr>
+                                        <tr class="hover:bg-gray-50">
+                                            <td class="py-3 px-4 border-b text-red-600 font-medium">Stage 2 Hypertension
+                                            </td>
+                                            <td class="py-3 px-4 border-b">140 or higher</td>
+                                            <td class="py-3 px-4 border-b">or 90 or higher</td>
+                                            <td class="py-3 px-4 border-b">Lifestyle changes and medication</td>
+                                        </tr>
+                                        <tr class="hover:bg-gray-50">
+                                            <td class="py-3 px-4 border-b text-red-700 font-medium">Hypertensive Crisis
+                                            </td>
+                                            <td class="py-3 px-4 border-b">Higher than 180</td>
+                                            <td class="py-3 px-4 border-b">and/or Higher than 120</td>
+                                            <td class="py-3 px-4 border-b">Seek emergency care</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Lifestyle Changes Section -->
+                    <section id="lifestyle-changes" class="mb-10 animate-on-scroll">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Lifestyle Changes to Maintain Healthy Levels
+                        </h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            For many people, lifestyle modifications can significantly lower blood pressure and reduce
+                            or eliminate the need for medication. These changes not only help control blood pressure but
+                            also improve overall cardiovascular health.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                            <div class="bg-blue-50 rounded-lg p-6">
+                                <h4 class="font-bold text-lg text-gray-900 mb-2">Dietary Approaches</h4>
+                                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                    <li>Follow the DASH (Dietary Approaches to Stop Hypertension) eating plan</li>
+                                    <li>Reduce sodium intake to less than 2,300 mg daily (ideally 1,500 mg)</li>
+                                    <li>Increase potassium-rich foods like bananas, spinach, and sweet potatoes</li>
+                                    <li>Limit alcohol consumption</li>
+                                    <li>Eat more fruits, vegetables, and whole grains</li>
+                                    <li>Choose lean protein sources</li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-green-50 rounded-lg p-6">
+                                <h4 class="font-bold text-lg text-gray-900 mb-2">Physical Activity</h4>
+                                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                    <li>Aim for at least 150 minutes of moderate exercise weekly</li>
+                                    <li>Include aerobic activities like walking, swimming, or cycling</li>
+                                    <li>Add strength training twice weekly</li>
+                                    <li>Incorporate more daily movement (take stairs, walk during breaks)</li>
+                                    <li>Consult your doctor before starting a new exercise program</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                            <div class="bg-purple-50 rounded-lg p-6">
+                                <h4 class="font-bold text-lg text-gray-900 mb-2">Weight Management</h4>
+                                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                    <li>Lose weight if overweight (even 5-10% reduction helps)</li>
+                                    <li>Monitor portion sizes</li>
+                                    <li>Eat mindfully and slowly</li>
+                                    <li>Keep a food diary to identify patterns</li>
+                                    <li>Set realistic weight loss goals (1-2 pounds per week)</li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-yellow-50 rounded-lg p-6">
+                                <h4 class="font-bold text-lg text-gray-900 mb-2">Stress Management</h4>
+                                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                    <li>Practice relaxation techniques like deep breathing or meditation</li>
+                                    <li>Get adequate sleep (7-9 hours nightly)</li>
+                                    <li>Maintain social connections</li>
+                                    <li>Engage in hobbies and activities you enjoy</li>
+                                    <li>Consider counseling or therapy for chronic stress</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Monitoring and Medication Section -->
+                    <section id="monitoring-medication" class="mb-10 animate-on-scroll">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Monitoring and Medication</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            Regular monitoring and, when necessary, appropriate medication are essential components of
+                            blood pressure management. Understanding when and how to monitor your blood pressure can
+                            help you and your healthcare provider make informed decisions about your treatment plan.
+                        </p>
+
+                        <div class="bg-gray-50 rounded-lg p-6 my-6">
+                            <h4 class="font-bold text-lg text-gray-900 mb-2">Home Blood Pressure Monitoring Tips</h4>
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>Use a validated, automatic upper-arm cuff monitor</li>
+                                <li>Measure at the same time each day, preferably in the morning and evening</li>
+                                <li>Avoid caffeine, exercise, and smoking for 30 minutes before measuring</li>
+                                <li>Sit quietly for 5 minutes before taking a reading</li>
+                                <li>Keep your arm supported at heart level</li>
+                                <li>Take two or three readings, one minute apart, and record the average</li>
+                                <li>Bring your log to doctor's appointments</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-red-50 rounded-lg p-6 my-6">
+                            <h4 class="font-bold text-lg text-gray-900 mb-2">When Medication May Be Necessary</h4>
+                            <p class="text-gray-700 mb-4">
+                                While lifestyle changes are the first line of defense against high blood pressure,
+                                medication may be necessary when:
+                            </p>
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>Blood pressure remains high despite lifestyle modifications</li>
+                                <li>You have stage 2 hypertension</li>
+                                <li>You have other risk factors like diabetes or kidney disease</li>
+                                <li>You've had a heart attack or stroke</li>
+                            </ul>
+                            <p class="text-gray-700 mt-4">
+                                Common blood pressure medications include diuretics, ACE inhibitors, ARBs, calcium
+                                channel blockers, and beta blockers. Your doctor will determine the best option based on
+                                your specific health profile.
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- Risk Factors and Complications Section -->
+                    <section id="risk-factors" class="mb-10 animate-on-scroll">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Risk Factors and Potential Complications</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            Understanding your risk factors for high blood pressure can help you take preventive
+                            measures. Additionally, being aware of potential complications emphasizes the importance of
+                            maintaining healthy blood pressure levels.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                            <div class="bg-orange-50 rounded-lg p-6">
+                                <h4 class="font-bold text-lg text-gray-900 mb-2">Risk Factors for High Blood Pressure
+                                </h4>
+                                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                    <li>Family history of hypertension</li>
+                                    <li>Age (risk increases as you get older)</li>
+                                    <li>Race (more common in African Americans)</li>
+                                    <li>Being overweight or obese</li>
+                                    <li>Physical inactivity</li>
+                                    <li>Tobacco use</li>
+                                    <li>High sodium diet</li>
+                                    <li>Low potassium intake</li>
+                                    <li>Excessive alcohol consumption</li>
+                                    <li>Chronic stress</li>
+                                    <li>Certain chronic conditions (kidney disease, diabetes, sleep apnea)</li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-pink-50 rounded-lg p-6">
+                                <h4 class="font-bold text-lg text-gray-900 mb-2">Potential Complications of Uncontrolled
+                                    Hypertension</h4>
+                                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                    <li>Heart attack or heart failure</li>
+                                    <li>Stroke</li>
+                                    <li>Aneurysm</li>
+                                    <li>Kidney disease or failure</li>
+                                    <li>Vision loss</li>
+                                    <li>Metabolic syndrome</li>
+                                    <li>Problems with memory or understanding</li>
+                                    <li>Dementia</li>
+                                    <li>Peripheral artery disease</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Conclusion Section -->
+                    <section id="conclusion" class="animate-on-scroll">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Conclusion</h2>
+                        <div class="bg-green-50 rounded-xl p-6">
+                            <p class="text-gray-700 leading-relaxed mb-4">
+                                Understanding your blood pressure numbers and taking proactive steps to maintain healthy
+                                levels is one of the most important things you can do for your long-term cardiovascular
+                                health. While high blood pressure is a serious condition, it is also highly manageable
+                                through lifestyle modifications and, when necessary, appropriate medication.
+                            </p>
+                            <p class="text-gray-700 leading-relaxed">
+                                Remember that small, consistent changes can have a significant impact on your blood
+                                pressure over time. Work with your healthcare provider to develop a personalized plan
+                                that addresses your specific risk factors and health goals. Regular monitoring and
+                                follow-up are essential to ensure your blood pressure remains in a healthy range and to
+                                adjust your treatment plan as needed.
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- Share Section -->
+                    <div class="mt-10 pt-6 border-t border-gray-200 animate-on-scroll">
+                        <h4 class="font-bold text-lg text-gray-900 mb-4">Share this article</h4>
+                        <div class="flex space-x-4">
+                            <a href="#"
+                                class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#"
+                                class="w-10 h-10 bg-blue-400 rounded-full flex items-center justify-center text-white">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#"
+                                class="w-10 h-10 bg-blue-700 rounded-full flex items-center justify-center text-white">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#"
+                                class="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center text-white">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="lg:col-span-1">
+                <!-- Author Bio -->
+                <div class="bg-white rounded-2xl p-6 mb-8 article-card-shadow animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80"
+                        alt="Dr. Sarah Johnson" class="w-20 h-20 rounded-full mx-auto mb-4">
+                    <h3 class="text-xl font-bold text-gray-900 text-center mb-2">Dr. Sarah Johnson</h3>
+                    <p class="text-gray-600 text-center mb-4">Cardiologist & Hypertension Specialist</p>
+                    <p class="text-gray-700 text-sm text-center">Dr. Johnson specializes in cardiovascular disease
+                        prevention and has published numerous research papers on hypertension management and treatment.
+                    </p>
+                </div>
+
+                <!-- Table of Contents -->
+                <div class="bg-white rounded-2xl p-6 mb-8 article-card-shadow animate-on-scroll">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Table of Contents</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#key-takeaways" class="text-blue-600 hover:text-blue-800 transition-colors">Key
+                                Takeaways</a></li>
+                        <li><a href="#understanding-numbers"
+                                class="text-blue-600 hover:text-blue-800 transition-colors">Understanding Blood Pressure
+                                Numbers</a></li>
+                        <li><a href="#lifestyle-changes"
+                                class="text-blue-600 hover:text-blue-800 transition-colors">Lifestyle Changes</a></li>
+                        <li><a href="#monitoring-medication"
+                                class="text-blue-600 hover:text-blue-800 transition-colors">Monitoring & Medication</a>
+                        </li>
+                        <li><a href="#risk-factors" class="text-blue-600 hover:text-blue-800 transition-colors">Risk
+                                Factors & Complications</a></li>
+                        <li><a href="#conclusion"
+                                class="text-blue-600 hover:text-blue-800 transition-colors">Conclusion</a></li>
+                    </ul>
+                </div>
+
+                
+            </div>
+        </div>
+
+        <!-- Related Articles -->
+        <div class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center animate-on-scroll">Related Articles</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                <!-- Related Article 1 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden article-card-shadow card-animate"
+                    data-title="Exercise for Heart Health" data-category="Prevention">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Article 1" class="w-full h-48 object-cover article-image">
+                    <div class="p-5 article-content">
+                        <span
+                            class="text-xs font-semibold text-red-600 bg-red-50 px-3 py-1 rounded-full mb-3 inline-block category-tag">Prevention</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Exercise for Heart Health</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            The best cardiovascular exercises to strengthen your heart and improve overall
+                            cardiovascular fitness.
+                        </p>
+                        <a href="#" class="text-blue-600 hover:underline text-sm font-medium read-more">Read more</a>
+                    </div>
+                </div>
+
+                <!-- Related Article 2 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden article-card-shadow card-animate"
+                    data-title="Cholesterol Management" data-category="Prevention">
+                    <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Article 2" class="w-full h-48 object-cover article-image">
+                    <div class="p-5 article-content">
+                        <span
+                            class="text-xs font-semibold text-red-600 bg-red-50 px-3 py-1 rounded-full mb-3 inline-block category-tag">Prevention</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Cholesterol Management</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            Understanding your cholesterol numbers and strategies to maintain heart-healthy levels.
+                        </p>
+                        <a href="#" class="text-blue-600 hover:underline text-sm font-medium read-more">Read more</a>
+                    </div>
+                </div>
+
+                <!-- Related Article 3 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden article-card-shadow card-animate"
+                    data-title="Heart-Healthy Nutrition" data-category="Nutrition">
+                    <img src="https://images.unsplash.com/photo-1490818387583-1baba5e638af?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Article 3" class="w-full h-48 object-cover article-image">
+                    <div class="p-5 article-content">
+                        <span
+                            class="text-xs font-semibold text-green-600 bg-green-50 px-3 py-1 rounded-full mb-3 inline-block category-tag">Nutrition</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Heart-Healthy Nutrition</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            Discover the best foods and eating patterns to support cardiovascular health.
+                        </p>
+                        <a href="#" class="text-blue-600 hover:underline text-sm font-medium read-more">Read more</a>
+                    </div>
+                </div>
+
+                <!-- Related Article 4 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden article-card-shadow card-animate"
+                    data-title="Stress and Heart Health" data-category="Mental Health">
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Article 4" class="w-full h-48 object-cover article-image">
+                    <div class="p-5 article-content">
+                        <span
+                            class="text-xs font-semibold text-teal-600 bg-teal-50 px-3 py-1 rounded-full mb-3 inline-block category-tag">Mental
+                            Health</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Stress and Heart Health</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            Understanding the connection between chronic stress and cardiovascular disease.
+                        </p>
+                        <a href="#" class="text-blue-600 hover:underline text-sm font-medium read-more">Read more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content stagger-animation">
+                <div class="footer-column">
+                    <h3>Gods Life Health Care</h3>
+                    <p>Providing world-class medical tourism services with compassion and excellence.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Destinations</a></li>
+                        <li><a href="#">Doctors</a></li>
+                        <li><a href="#">Testimonials</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Medical Services</h3>
+                    <ul>
+                        <li><a href="#">Cardiac Surgery</a></li>
+                        <li><a href="#">Orthopedics</a></li>
+                        <li><a href="#">Cosmetic Surgery</a></li>
+                        <li><a href="#">Dental Care</a></li>
+                        <li><a href="#">Fertility Treatments</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 18 East Azad Nagar near Krishna Nagar Delhi 110051</p>
+                    <p><i class="fas fa-phone"></i> (+91) 85128 45000</p>
+                    <p>
+    <i class="fas fa-envelope"></i> 
+    <a href="mailto:support@godslifehealthcare.com">support@godslifehealthcare.com</a>
+</p>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 Gods Life Health Care. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /**
+         * Toggle mobile menu
+         */
+        function toggleMobileMenu() {
+            const navMenu = document.querySelector('.nav-menu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Scroll Animation Functionality
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8 &&
+                rect.bottom >= 0
+            );
+        }
+
+        function handleScrollAnimation() {
+            const elements = document.querySelectorAll('.animate-on-scroll, .fade-in-left, .fade-in-right, .scale-in, .stagger-animation');
+
+            elements.forEach(element => {
+                if (isElementInViewport(element)) {
+                    element.classList.add('animated');
+                }
+            });
+
+            // Footer-specific animations
+            const footerColumns = document.querySelectorAll('.footer-column');
+            const socialIcons = document.querySelector('.social-icons');
+            const copyright = document.querySelector('.copyright');
+
+            if (isElementInViewport(document.querySelector('footer'))) {
+                footerColumns.forEach(column => {
+                    column.classList.add('animated');
+                });
+
+                if (socialIcons) {
+                    socialIcons.classList.add('animated');
+                }
+
+                if (copyright) {
+                    copyright.classList.add('animated');
+                }
+            }
+        }
+
+        // Initialize scroll animations
+        document.addEventListener('DOMContentLoaded', function () {
+            handleScrollAnimation();
+
+            // Add scroll event listener
+            window.addEventListener('scroll', handleScrollAnimation);
+        });
+    </script>
+    <script defer src="/assets/i18n/translator.js"></script>
+</body>
+
+</html>

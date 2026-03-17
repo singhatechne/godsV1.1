@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Impact of Yoga on Chronic Back Pain - Gods Life Health Care</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/assets/i18n/translator.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-text': '#2a2a2a',
+                        'secondary-text': '#666666',
+                        'light-bg': '#ffffff',
+                        'light-border': '#e0e0e0',
+                        'accent-blue': '#007bff',
+                        'custom-blue': '#3498db',
+                        'custom-dark-blue': '#2980b9',
+                        'custom-dark': '#2c3e50',
+                        'custom-light-gray': '#f5f7fa',
+                        'custom-gray': '#777777',
+                        'custom-light': '#bdc3c7',
+                        'custom-teal': '#00a1ab',
+                        'custom-dark-teal': '#002c5f'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .logo-text span {
+            color: #3498db;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #3498db;
+        }
+
+        .nav-menu .btn {
+            background: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .nav-menu .btn:hover {
+            background: #2980b9;
+            color: white;
+        }
+
+        .ham-icon {
+            display: none;
+        }
+
+        .ham-img {
+            height: 25px;
+            width: auto;
+        }
+
+        /* Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-left.animated {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-right.animated {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .scale-in.animated {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .stagger-animation>* {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .stagger-animation.animated>* {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-animation.animated>*:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .stagger-animation.animated>*:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .stagger-animation.animated>*:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .stagger-animation.animated>*:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+
+        .stagger-animation.animated>*:nth-child(5) {
+            transition-delay: 0.5s;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-column p {
+            color: #bdc3c7;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: #3498db;
+        }
+
+        /* Footer Animation Styles */
+        .footer-column {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .footer-column.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger animation for footer columns */
+        .footer-column:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .footer-column:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .footer-column:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .footer-column:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+
+        /* Social icons animation */
+        .social-icons a {
+            transform: scale(0);
+            transition: transform 0.5s ease, background 0.3s;
+        }
+
+        .social-icons.animated a {
+            transform: scale(1);
+        }
+
+        .social-icons.animated a:nth-child(1) {
+            transition-delay: 0.5s;
+        }
+
+        .social-icons.animated a:nth-child(2) {
+            transition-delay: 0.6s;
+        }
+
+        .social-icons.animated a:nth-child(3) {
+            transition-delay: 0.7s;
+        }
+
+        .social-icons.animated a:nth-child(4) {
+            transition-delay: 0.8s;
+        }
+
+        /* Copyright animation */
+        .copyright {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .copyright.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #34495e;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: #3498db;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 900px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .ham-icon {
+                display: block;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        /* Blog Post Specific Styles */
+        .article-card-shadow {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Enhanced Card Animation Styles */
+        .card-animate {
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .card-animate::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.1) 0%, rgba(41, 128, 185, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .card-animate:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.12),
+                0 8px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        .card-animate:hover::before {
+            opacity: 1;
+        }
+
+        .card-animate .article-image {
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform-origin: center;
+        }
+
+        .card-animate:hover .article-image {
+            transform: scale(1.08);
+        }
+
+        .card-animate .article-content {
+            position: relative;
+            z-index: 2;
+            transition: transform 0.4s ease;
+        }
+
+        .card-animate:hover .article-content {
+            transform: translateY(-2px);
+        }
+
+        .card-animate .read-more {
+            position: relative;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .card-animate .read-more::after {
+            content: '→';
+            margin-left: 4px;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .card-animate:hover .read-more {
+            color: #2980b9;
+            font-weight: 600;
+        }
+
+        .card-animate:hover .read-more::after {
+            transform: translateX(4px);
+        }
+
+        /* Staggered animation for cards */
+        .article-card {
+            animation: cardSlideIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        @keyframes cardSlideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Apply staggered delays */
+        .article-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .article-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .article-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .article-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        /* Category tag animations */
+        .category-tag {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .card-animate:hover .category-tag {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-animate:hover .category-tag::before {
+            left: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                display: none;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .logo-text {
+                font-size: 1.25rem;
+            }
+
+            /* Adjust card animations for mobile */
+            .card-animate:hover {
+                transform: translateY(-4px) scale(1.01);
+            }
+
+            .card-animate:hover .article-image {
+                transform: scale(1.03);
+            }
+        }
+
+        /* Yoga Poses Section Specific Styles */
+        .yoga-pose-card {
+            background: white;
+            border-radius: 12px;
+            transition: all 0.4s ease;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+            position: relative;
+        }
+
+        .yoga-pose-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-color: #3498db;
+        }
+
+        .pose-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            margin-right: 16px;
+            flex-shrink: 0;
+            background: #3498db;
+        }
+
+        .pose-benefits {
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            background-color: #f8f9fa;
+            border-left: 4px solid #3498db;
+        }
+
+        .practice-tips {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 32px;
+            border: 1px solid #e0e0e0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN1iie8n5MkShNgEeBfpmQfPl2lCBqpYOnQg&s"
+                    alt="Gods Life Health Care" style="border-radius: 30px;">
+                <div class="logo-text">God's Life<span>Health Care</span></div>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/hospitals.html">Hospital</a></li>
+                <li><a href="/department.html">Treatments</a></li>
+                <li><a href="">Blog</a></li>
+                <li><a href="/doctor.html">Doctors</a></li>
+                <li><a href="/about.html">About Us</a></li>
+
+                <a href="/consultation.html" class="nav-consultation-btn" onclick="trackConsultationClick()">
+                    <i class="fas fa-calendar-check"></i> Consultation
+                </a>
+
+                <div class="ham-icon" onclick="toggleMobileMenu()">
+                    <img class="ham-img" src="https://placehold.co/25x25/2c3e50/fff?text=☰" alt="Menu">
+                </div>
+        </div>
+    </header>
+
+    <!-- Blog Post Content -->
+    <div class="container py-8">
+        <!-- Breadcrumb -->
+        <nav class="mb-8 text-sm text-gray-600 animate-on-scroll">
+            <a href="#" class="hover:text-blue-600">Home</a> &gt;
+            <a href="#" class="hover:text-blue-600">Resources</a> &gt;
+            <a href="#" class="hover:text-blue-600">Exercise</a> &gt;
+            <span class="text-gray-900 font-medium">The Impact of Yoga on Chronic Back Pain</span>
+        </nav>
+
+        <!-- Article Header -->
+        <div class="bg-white rounded-2xl overflow-hidden mb-12 article-card-shadow animate-on-scroll">
+            <div class="p-8">
+                <span
+                    class="text-xs font-semibold text-green-600 bg-green-50 px-3 py-1 rounded-full mb-4 inline-block">Exercise</span>
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">The Impact of Yoga on Chronic Back Pain
+                </h1>
+                <p class="text-xl text-gray-600 mb-6 max-w-3xl">Discover how yoga can provide relief from chronic back
+                    pain through improved flexibility, strength, and mindfulness.</p>
+
+                <div
+                    class="flex flex-col sm:flex-row justify-between items-start sm:items-center text-sm text-gray-500 border-t border-b border-gray-200 py-4">
+                    <div class="flex items-center mb-4 sm:mb-0">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
+                            alt="Author Avatar" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <p class="font-medium text-gray-900">Dr. Michael Reynolds</p>
+                            <p>Physical Therapist & Yoga Instructor</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <span>Apr 10, 2025</span>
+                        <span class="mx-3">•</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>10 min read</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Image -->
+            <div class="w-full h-96 lg:h-[500px] overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1820&q=80"
+                    alt="Yoga for Back Pain" class="w-full h-full object-cover">
+            </div>
+        </div>
+
+        <!-- Article Content -->
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 mb-16">
+            <!-- Main Content -->
+            <div class="lg:col-span-3">
+                <div class="bg-white rounded-2xl p-8 article-card-shadow">
+                    <!-- Introduction -->
+                    <div class="mb-10 animate-on-scroll">
+                        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                            Chronic back pain affects millions of people worldwide, impacting daily activities and
+                            quality of life. While various treatments exist, yoga has emerged as a powerful
+                            complementary therapy that addresses both the physical and psychological aspects of back
+                            pain. This comprehensive guide explores how specific yoga practices can alleviate chronic
+                            back pain and improve overall spinal health.
+                        </p>
+                    </div>
+
+                    <!-- Key Takeaways Section -->
+                    <section id="key-takeaways" class="mb-10 animate-on-scroll">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Key Takeaways</h2>
+                        <div class="bg-green-50 rounded-xl p-6">
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>Yoga improves flexibility and strengthens core muscles supporting the spine</li>
+                                <li>Mindful movement in yoga helps correct posture and movement patterns</li>
+                                <li>Breathing techniques reduce stress and muscle tension</li>
+                                <li>Regular practice can decrease pain intensity and medication dependence</li>
+                                <li>Yoga promotes body awareness to prevent re-injury</li>
+                                <li>Specific poses target different areas of back pain</li>
+                                <li>Consistency is more important than intensity for long-term benefits</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Scientific Evidence Section -->
+                    <section id="scientific-evidence" class="mb-10 animate-on-scroll">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Scientific Evidence Supporting Yoga for Back
+                            Pain</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            Multiple studies have demonstrated yoga's effectiveness in managing chronic back pain. A
+                            landmark study published in the Annals of Internal Medicine found that yoga was as effective
+                            as physical therapy for reducing pain and improving function in people with chronic low back
+                            pain.
+                        </p>
+
+                        <div class="bg-blue-50 rounded-lg p-6 my-6">
+                            <h4 class="font-bold text-lg text-gray-900 mb-2">Research Findings</h4>
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>73% of participants reported significant pain reduction after 12 weeks of yoga</li>
+                                <li>Yoga practitioners used 50% less pain medication than control groups</li>
+                                <li>Improvements in pain and function persisted for at least 6 months after the study
+                                </li>
+                                <li>Yoga was found to be more effective than conventional exercise for some types of
+                                    back pain</li>
+                            </ul>
+                        </div>
+
+                        <p class="text-gray-700 leading-relaxed">
+                            The combination of physical postures, breathing techniques, and meditation in yoga addresses
+                            the multifactorial nature of chronic pain, making it particularly effective for conditions
+                            like nonspecific low back pain.
+                        </p>
+                    </section>
+
+                    <!-- Yoga Poses Section - Less Colorful Version -->
+                    <section id="yoga-poses" class="mb-10 animate-on-scroll">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Effective Yoga Poses for Back Pain Relief</h2>
+                        <p class="text-gray-700 leading-relaxed mb-6">
+                            Not all yoga poses are created equal when it comes to back pain relief. The following poses
+                            are particularly beneficial for strengthening the back, improving flexibility, and relieving
+                            tension.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                            <!-- Pose 1 -->
+                            <div class="yoga-pose-card">
+                                <div class="p-6">
+                                    <div class="flex items-center mb-4">
+                                        <div class="pose-icon">
+                                            <span class="text-lg">1</span>
+                                        </div>
+                                        <h4 class="font-bold text-xl text-gray-900">Cat-Cow Pose<br><span
+                                                class="text-sm font-normal text-gray-600">(Marjaryasana-Bitilasana)</span>
+                                        </h4>
+                                    </div>
+                                    <p class="text-gray-700 mb-4">This gentle flow between arching and rounding the back
+                                        improves spinal flexibility and mobility.</p>
+                                    <div class="pose-benefits">
+                                        <h5 class="font-semibold text-gray-900 mb-2">Benefits:</h5>
+                                        <ul class="list-disc list-inside text-sm text-gray-700">
+                                            <li>Increases spinal flexibility</li>
+                                            <li>Relieves tension in the back and neck</li>
+                                            <li>Improves posture awareness</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pose 2 -->
+                            <div class="yoga-pose-card">
+                                <div class="p-6">
+                                    <div class="flex items-center mb-4">
+                                        <div class="pose-icon">
+                                            <span class="text-lg">2</span>
+                                        </div>
+                                        <h4 class="font-bold text-xl text-gray-900">Child's Pose<br><span
+                                                class="text-sm font-normal text-gray-600">(Balasana)</span></h4>
+                                    </div>
+                                    <p class="text-gray-700 mb-4">A resting pose that gently stretches the lower back
+                                        and hips while promoting relaxation.</p>
+                                    <div class="pose-benefits">
+                                        <h5 class="font-semibold text-gray-900 mb-2">Benefits:</h5>
+                                        <ul class="list-disc list-inside text-sm text-gray-700">
+                                            <li>Gently stretches the spine</li>
+                                            <li>Releases tension in back muscles</li>
+                                            <li>Calms the nervous system</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pose 3 -->
+                            <div class="yoga-pose-card">
+                                <div class="p-6">
+                                    <div class="flex items-center mb-4">
+                                        <div class="pose-icon">
+                                            <span class="text-lg">3</span>
+                                        </div>
+                                        <h4 class="font-bold text-xl text-gray-900">Downward-Facing Dog<br><span
+                                                class="text-sm font-normal text-gray-600">(Adho Mukha Svanasana)</span>
+                                        </h4>
+                                    </div>
+                                    <p class="text-gray-700 mb-4">This pose strengthens the entire back while stretching
+                                        the hamstrings and calves.</p>
+                                    <div class="pose-benefits">
+                                        <h5 class="font-semibold text-gray-900 mb-2">Benefits:</h5>
+                                        <ul class="list-disc list-inside text-sm text-gray-700">
+                                            <li>Strengthens back and core muscles</li>
+                                            <li>Decompresses the spine</li>
+                                            <li>Improves circulation</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pose 4 -->
+                            <div class="yoga-pose-card">
+                                <div class="p-6">
+                                    <div class="flex items-center mb-4">
+                                        <div class="pose-icon">
+                                            <span class="text-lg">4</span>
+                                        </div>
+                                        <h4 class="font-bold text-xl text-gray-900">Sphinx Pose<br><span
+                                                class="text-sm font-normal text-gray-600">(Salamba Bhujangasana)</span>
+                                        </h4>
+                                    </div>
+                                    <p class="text-gray-700 mb-4">A gentle backbend that strengthens the spine and
+                                        relieves lower back stiffness.</p>
+                                    <div class="pose-benefits">
+                                        <h5 class="font-semibold text-gray-900 mb-2">Benefits:</h5>
+                                        <ul class="list-disc list-inside text-sm text-gray-700">
+                                            <li>Strengthens spinal extensors</li>
+                                            <li>Improves posture</li>
+                                            <li>Stretches abdominal muscles</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pose 5 -->
+                            <div class="yoga-pose-card">
+                                <div class="p-6">
+                                    <div class="flex items-center mb-4">
+                                        <div class="pose-icon">
+                                            <span class="text-lg">5</span>
+                                        </div>
+                                        <h4 class="font-bold text-xl text-gray-900">Bridge Pose<br><span
+                                                class="text-sm font-normal text-gray-600">(Setu Bandhasana)</span></h4>
+                                    </div>
+                                    <p class="text-gray-700 mb-4">A gentle backbend that strengthens the glutes and
+                                        lower back while opening the chest.</p>
+                                    <div class="pose-benefits">
+                                        <h5 class="font-semibold text-gray-900 mb-2">Benefits:</h5>
+                                        <ul class="list-disc list-inside text-sm text-gray-700">
+                                            <li>Strengthens back extensors</li>
+                                            <li>Stretches chest and spine</li>
+                                            <li>Improves spinal flexibility</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pose 6 -->
+                            <div class="yoga-pose-card">
+                                <div class="p-6">
+                                    <div class="flex items-center mb-4">
+                                        <div class="pose-icon">
+                                            <span class="text-lg">6</span>
+                                        </div>
+                                        <h4 class="font-bold text-xl text-gray-900">Legs-Up-The-Wall<br><span
+                                                class="text-sm font-normal text-gray-600">(Viparita Karani)</span></h4>
+                                    </div>
+                                    <p class="text-gray-700 mb-4">A restorative pose that relieves lower back tension
+                                        and improves circulation.</p>
+                                    <div class="pose-benefits">
+                                        <h5 class="font-semibold text-gray-900 mb-2">Benefits:</h5>
+                                        <ul class="list-disc list-inside text-sm text-gray-700">
+                                            <li>Relieves lower back pressure</li>
+                                            <li>Reduces swelling in legs</li>
+                                            <li>Calms the nervous system</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="practice-tips">
+                            <h4 class="font-bold text-xl text-gray-900 mb-4">Practice Tips for Beginners</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                    <li>Start with 5-10 minutes daily and gradually increase</li>
+                                    <li>Focus on proper alignment rather than depth of pose</li>
+                                    <li>Use props like blocks and straps for support</li>
+                                    <li>Breathe deeply throughout each pose</li>
+                                </ul>
+                                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                    <li>Listen to your body and avoid pushing through pain</li>
+                                    <li>Practice on a comfortable, non-slip surface</li>
+                                    <li>Combine yoga with other forms of exercise</li>
+                                    <li>Stay hydrated before and after practice</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Mechanisms of Action Section -->
+                    <section id="mechanisms" class="mb-10 animate-on-scroll">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">How Yoga Alleviates Back Pain: Mechanisms of
+                            Action</h2>
+
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+                                <thead>
+                                    <tr class="bg-gray-50">
+                                        <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Mechanism
+                                        </th>
+                                        <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">How It
+                                            Helps</th>
+                                        <th class="py-3 px-4 text-left font-semibold text-gray-700 border-b">Yoga
+                                            Components</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="py-3 px-4 border-b">Improved Flexibility</td>
+                                        <td class="py-3 px-4 border-b">Reduces muscle stiffness and increases range of
+                                            motion</td>
+                                        <td class="py-3 px-4 border-b">Asanas (postures), flowing sequences</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="py-3 px-4 border-b">Core Strengthening</td>
+                                        <td class="py-3 px-4 border-b">Provides better support for the spine, reducing
+                                            strain</td>
+                                        <td class="py-3 px-4 border-b">Plank poses, balancing postures</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="py-3 px-4 border-b">Stress Reduction</td>
+                                        <td class="py-3 px-4 border-b">Decreases muscle tension and pain perception</td>
+                                        <td class="py-3 px-4 border-b">Pranayama (breathing), meditation</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="py-3 px-4 border-b">Posture Correction</td>
+                                        <td class="py-3 px-4 border-b">Addresses underlying postural issues causing pain
+                                        </td>
+                                        <td class="py-3 px-4 border-b">Alignment focus in poses, body awareness</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="py-3 px-4 border-b">Pain Neuroscience Education</td>
+                                        <td class="py-3 px-4 border-b">Changes perception and relationship with pain
+                                        </td>
+                                        <td class="py-3 px-4 border-b">Mindfulness, meditation techniques</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- Practice Guidelines Section -->
+                    <section id="practice-guidelines" class="mb-10 animate-on-scroll">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Yoga Practice Guidelines for Back Pain</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            When starting a yoga practice for back pain, it's important to follow these guidelines to
+                            ensure safety and maximize benefits.
+                        </p>
+
+                        <div class="bg-gray-50 rounded-lg p-6 my-6">
+                            <h4 class="font-bold text-lg text-gray-900 mb-4">Sample Weekly Practice Schedule</h4>
+                            <div class="space-y-4">
+                                <div>
+                                    <h5 class="font-semibold text-gray-900">Monday (30 minutes)</h5>
+                                    <p class="text-gray-700">Gentle flow focusing on spinal mobility and core engagement
+                                    </p>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold text-gray-900">Wednesday (30 minutes)</h5>
+                                    <p class="text-gray-700">Restorative practice with supported poses and deep
+                                        breathing</p>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold text-gray-900">Friday (40 minutes)</h5>
+                                    <p class="text-gray-700">Strength-focused session with longer holds and balance
+                                        poses</p>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold text-gray-900">Sunday (20 minutes)</h5>
+                                    <p class="text-gray-700">Gentle stretching and meditation for recovery</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                            <div class="bg-blue-50 rounded-lg p-6">
+                                <h4 class="font-bold text-lg text-gray-900 mb-2">Safety Precautions</h4>
+                                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                    <li>Consult with a healthcare provider before starting</li>
+                                    <li>Work with a qualified yoga instructor initially</li>
+                                    <li>Listen to your body and avoid pushing through pain</li>
+                                    <li>Use props for support and proper alignment</li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-green-50 rounded-lg p-6">
+                                <h4 class="font-bold text-lg text-gray-900 mb-2">Progress Indicators</h4>
+                                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                    <li>Reduced pain intensity and frequency</li>
+                                    <li>Improved range of motion</li>
+                                    <li>Decreased reliance on pain medication</li>
+                                    <li>Better sleep quality</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Conclusion Section -->
+                    <section id="conclusion" class="animate-on-scroll">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Conclusion</h2>
+                        <div class="bg-green-50 rounded-xl p-6">
+                            <p class="text-gray-700 leading-relaxed mb-4">
+                                Yoga offers a holistic approach to managing chronic back pain that addresses both
+                                physical and psychological factors. Through a combination of targeted postures,
+                                breathing techniques, and mindfulness practices, yoga can significantly reduce pain,
+                                improve function, and enhance quality of life for individuals suffering from chronic
+                                back conditions.
+                            </p>
+                            <p class="text-gray-700 leading-relaxed">
+                                While yoga is generally safe for most people with back pain, it's important to start
+                                slowly, work with knowledgeable instructors, and listen to your body's signals. With
+                                consistent practice, many individuals find that yoga not only alleviates their back pain
+                                but also transforms their relationship with their body and their experience of pain.
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- Share Section -->
+                    <div class="mt-10 pt-6 border-t border-gray-200 animate-on-scroll">
+                        <h4 class="font-bold text-lg text-gray-900 mb-4">Share this article</h4>
+                        <div class="flex space-x-4">
+                            <a href="#"
+                                class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#"
+                                class="w-10 h-10 bg-blue-400 rounded-full flex items-center justify-center text-white">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#"
+                                class="w-10 h-10 bg-blue-700 rounded-full flex items-center justify-center text-white">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#"
+                                class="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center text-white">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="lg:col-span-1">
+                <!-- Author Bio -->
+                <div class="bg-white rounded-2xl p-6 mb-8 article-card-shadow animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80"
+                        alt="Dr. Michael Reynolds" class="w-20 h-20 rounded-full mx-auto mb-4">
+                    <h3 class="text-xl font-bold text-gray-900 text-center mb-2">Dr. Michael Reynolds</h3>
+                    <p class="text-gray-600 text-center mb-4">Physical Therapist & Yoga Instructor</p>
+                    <p class="text-gray-700 text-sm text-center">Dr. Reynolds specializes in integrative approaches to
+                        chronic pain management, combining traditional physical therapy with yoga and mindfulness
+                        techniques.</p>
+                </div>
+
+                <!-- Table of Contents -->
+                <div class="bg-white rounded-2xl p-6 mb-8 article-card-shadow animate-on-scroll">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Table of Contents</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#key-takeaways" class="text-blue-600 hover:text-blue-800 transition-colors">Key
+                                Takeaways</a></li>
+                        <li><a href="#scientific-evidence"
+                                class="text-blue-600 hover:text-blue-800 transition-colors">Scientific Evidence</a></li>
+                        <li><a href="#yoga-poses" class="text-blue-600 hover:text-blue-800 transition-colors">Effective
+                                Yoga Poses</a></li>
+                        <li><a href="#mechanisms" class="text-blue-600 hover:text-blue-800 transition-colors">Mechanisms
+                                of Action</a></li>
+                        <li><a href="#practice-guidelines"
+                                class="text-blue-600 hover:text-blue-800 transition-colors">Practice Guidelines</a></li>
+                        <li><a href="#conclusion"
+                                class="text-blue-600 hover:text-blue-800 transition-colors">Conclusion</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                
+            </div>
+        </div>
+
+        <!-- Related Articles -->
+        <div class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center animate-on-scroll">Related Articles</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                <!-- Related Article 1 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden article-card-shadow card-animate"
+                    data-title="Pilates for Core Strength" data-category="Exercise">
+                    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                        alt="Pilates for Core Strength" class="w-full h-48 object-cover article-image">
+                    <div class="p-5 article-content">
+                        <span
+                            class="text-xs font-semibold text-purple-600 bg-purple-50 px-3 py-1 rounded-full mb-3 inline-block category-tag">Exercise</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Pilates for Core Strength</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            How Pilates exercises can strengthen your core muscles and improve posture for better back
+                            health.
+                        </p>
+                        <a href="#" class="text-blue-600 hover:underline text-sm font-medium read-more">Read more</a>
+                    </div>
+                </div>
+
+                <!-- Related Article 2 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden article-card-shadow card-animate"
+                    data-title="Swimming for Joint Health" data-category="Exercise">
+                    <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                        alt="Swimming for Joint Health" class="w-full h-48 object-cover article-image">
+                    <div class="p-5 article-content">
+                        <span
+                            class="text-xs font-semibold text-blue-600 bg-blue-50 px-3 py-1 rounded-full mb-3 inline-block category-tag">Exercise</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Swimming for Joint Health</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            The benefits of swimming and water exercises for people with arthritis and joint pain.
+                        </p>
+                        <a href="#" class="text-blue-600 hover:underline text-sm font-medium read-more">Read more</a>
+                    </div>
+                </div>
+
+                <!-- Related Article 3 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden article-card-shadow card-animate"
+                    data-title="Tai Chi for Balance" data-category="Exercise">
+                    <img src="https://images.unsplash.com/photo-1599901860907-93b21f5e246d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                        alt="Tai Chi for Balance" class="w-full h-48 object-cover article-image">
+                    <div class="p-5 article-content">
+                        <span
+                            class="text-xs font-semibold text-green-600 bg-green-50 px-3 py-1 rounded-full mb-3 inline-block category-tag">Exercise</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Tai Chi for Balance</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            How this ancient practice improves balance, coordination, and reduces fall risk in older
+                            adults.
+                        </p>
+                        <a href="#" class="text-blue-600 hover:underline text-sm font-medium read-more">Read more</a>
+                    </div>
+                </div>
+
+                <!-- Related Article 4 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden article-card-shadow card-animate"
+                    data-title="Walking for Heart Health" data-category="Exercise">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Walking for Heart Health" class="w-full h-48 object-cover article-image">
+                    <div class="p-5 article-content">
+                        <span
+                            class="text-xs font-semibold text-red-600 bg-red-50 px-3 py-1 rounded-full mb-3 inline-block category-tag">Exercise</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Walking for Heart Health</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            Simple walking routines that can significantly improve cardiovascular health and reduce
+                            disease risk.
+                        </p>
+                        <a href="#" class="text-blue-600 hover:underline text-sm font-medium read-more">Read more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content stagger-animation">
+                <div class="footer-column">
+                    <h3>Gods Life Health Care</h3>
+                    <p>Providing world-class medical tourism services with compassion and excellence.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Destinations</a></li>
+                        <li><a href="#">Doctors</a></li>
+                        <li><a href="#">Testimonials</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Medical Services</h3>
+                    <ul>
+                        <li><a href="#">Cardiac Surgery</a></li>
+                        <li><a href="#">Orthopedics</a></li>
+                        <li><a href="#">Cosmetic Surgery</a></li>
+                        <li><a href="#">Dental Care</a></li>
+                        <li><a href="#">Fertility Treatments</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 18 East Azad Nagar near Krishna Nagar Delhi 110051</p>
+                    <p><i class="fas fa-phone"></i> (+91) 85128 45000</p>
+                    <p>
+    <i class="fas fa-envelope"></i> 
+    <a href="mailto:support@godslifehealthcare.com">support@godslifehealthcare.com</a>
+</p>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 Gods Life Health Care. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /**
+         * Toggle mobile menu
+         */
+        function toggleMobileMenu() {
+            const navMenu = document.querySelector('.nav-menu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Scroll Animation Functionality
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8 &&
+                rect.bottom >= 0
+            );
+        }
+
+        function handleScrollAnimation() {
+            const elements = document.querySelectorAll('.animate-on-scroll, .fade-in-left, .fade-in-right, .scale-in, .stagger-animation');
+
+            elements.forEach(element => {
+                if (isElementInViewport(element)) {
+                    element.classList.add('animated');
+                }
+            });
+
+            // Footer-specific animations
+            const footerColumns = document.querySelectorAll('.footer-column');
+            const socialIcons = document.querySelector('.social-icons');
+            const copyright = document.querySelector('.copyright');
+
+            if (isElementInViewport(document.querySelector('footer'))) {
+                footerColumns.forEach(column => {
+                    column.classList.add('animated');
+                });
+
+                if (socialIcons) {
+                    socialIcons.classList.add('animated');
+                }
+
+                if (copyright) {
+                    copyright.classList.add('animated');
+                }
+            }
+        }
+
+        // Initialize scroll animations
+        document.addEventListener('DOMContentLoaded', function () {
+            handleScrollAnimation();
+
+            // Add scroll event listener
+            window.addEventListener('scroll', handleScrollAnimation);
+        });
+    </script>
+    <script defer src="/assets/i18n/translator.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Resources - Gods Life Health Care</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/assets/i18n/translator.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .logo-text span {
+            color: #3498db;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #3498db;
+        }
+
+        .nav-menu .btn {
+            background: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .nav-menu .btn:hover {
+            background: #2980b9;
+            color: white;
+        }
+
+        .ham-icon {
+            display: none;
+        }
+
+        .ham-img {
+            height: 25px;
+            width: auto;
+        }
+
+        /* Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-left.animated {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-right.animated {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .scale-in.animated {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .stagger-animation>* {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .stagger-animation.animated>* {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-animation.animated>*:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .stagger-animation.animated>*:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .stagger-animation.animated>*:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .stagger-animation.animated>*:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+
+        .stagger-animation.animated>*:nth-child(5) {
+            transition-delay: 0.5s;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-column p {
+            color: #bdc3c7;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: #3498db;
+        }
+
+        /* Footer Animation Styles */
+        .footer-column {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .footer-column.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger animation for footer columns */
+        .footer-column:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .footer-column:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .footer-column:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .footer-column:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+
+        /* Social icons animation */
+        .social-icons a {
+            transform: scale(0);
+            transition: transform 0.5s ease, background 0.3s;
+        }
+
+        .social-icons.animated a {
+            transform: scale(1);
+        }
+
+        .social-icons.animated a:nth-child(1) {
+            transition-delay: 0.5s;
+        }
+
+        .social-icons.animated a:nth-child(2) {
+            transition-delay: 0.6s;
+        }
+
+        .social-icons.animated a:nth-child(3) {
+            transition-delay: 0.7s;
+        }
+
+        .social-icons.animated a:nth-child(4) {
+            transition-delay: 0.8s;
+        }
+
+        /* Copyright animation */
+        .copyright {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .copyright.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #34495e;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: #3498db;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Styles - Updated for tabs */
+        @media (max-width: 900px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .ham-icon {
+                display: block;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            /* Improved mobile tabs styling */
+            .flex-wrap {
+                gap: 8px;
+                row-gap: 8px;
+            }
+
+            .tab-button {
+                padding: 10px 16px !important;
+                font-size: 0.85rem;
+                flex-grow: 0;
+                flex-shrink: 0;
+                text-align: center;
+                white-space: nowrap;
+            }
+
+            /* Adjust filter and search section for mobile */
+            .flex-col.md\:flex-row {
+                gap: 20px;
+            }
+
+            /* Search bar full width on mobile */
+            .relative.w-full.md\:w-auto {
+                width: 100%;
+            }
+
+            /* Article grid adjustments */
+            .grid.grid-cols-1.sm\:grid-cols-2.lg\:grid-cols-4 {
+                gap: 16px;
+            }
+        }
+
+        /* Additional mobile-specific styles for very small screens */
+        @media (max-width: 480px) {
+            .tab-button {
+                font-size: 0.8rem;
+                padding: 8px 12px !important;
+            }
+
+            /* Better spacing for the filter section */
+            .flex-col.md\:flex-row {
+                margin-bottom: 20px;
+            }
+        }
+
+        /* Enhanced tab styling for all screen sizes */
+        .tab-button {
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tab-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-active {
+            background-color: #3498db !important;
+            color: white !important;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-color: #2980b9;
+        }
+
+        /* Enhanced Card Animation Styles */
+        .card-animate {
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        .card-animate::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.1) 0%, rgba(41, 128, 185, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .card-animate:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.12),
+                0 8px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        .card-animate:hover::before {
+            opacity: 1;
+        }
+
+        .card-animate .article-image {
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform-origin: center;
+        }
+
+        .card-animate:hover .article-image {
+            transform: scale(1.08);
+        }
+
+        .card-animate .article-content {
+            position: relative;
+            z-index: 2;
+            transition: transform 0.4s ease;
+        }
+
+        .card-animate:hover .article-content {
+            transform: translateY(-2px);
+        }
+
+        .card-animate .read-more {
+            position: relative;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .card-animate .read-more::after {
+            content: '→';
+            margin-left: 4px;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .card-animate:hover .read-more {
+            color: #2980b9;
+            font-weight: 600;
+        }
+
+        .card-animate:hover .read-more::after {
+            transform: translateX(4px);
+        }
+
+        /* Staggered animation for cards */
+        .article-card {
+            animation: cardSlideIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        @keyframes cardSlideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Apply staggered delays */
+        .article-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .article-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .article-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .article-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .article-card:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .article-card:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .article-card:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+
+        .article-card:nth-child(8) {
+            animation-delay: 0.8s;
+        }
+
+        /* Category tag animations */
+        .category-tag {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .card-animate:hover .category-tag {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-animate:hover .category-tag::before {
+            left: 100%;
+        }
+
+        /* Featured article hover effects */
+        #featured-article {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        #featured-article:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        #featured-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                display: none;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .logo-text {
+                font-size: 1.25rem;
+            }
+
+            /* Adjust card animations for mobile */
+            .card-animate:hover {
+                transform: translateY(-4px) scale(1.01);
+            }
+
+            .card-animate:hover .article-image {
+                transform: scale(1.03);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN1iie8n5MkShNgEeBfpmQfPl2lCBqpYOnQg&s"
+                    alt="Gods Life Health Care" style="border-radius: 30px;">
+                <div class="logo-text">God's Life<span> Health Care</span></div>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/hospitals.html">Hospital</a></li>
+                <li><a href="/department.html">Treatments</a></li>
+                <li><a href="">Blog</a></li>
+                <li><a href="/doctor.html">Doctors</a></li>
+                <li><a href="/about.html">About Us</a></li>
+
+                <a href="/consultation.html" class="nav-consultation-btn" onclick="trackConsultationClick()">
+                    <i class="fas fa-calendar-check"></i> Consultation
+                </a>
+
+                <div class="ham-icon" onclick="toggleMobileMenu()">
+                    <img class="ham-img" src="https://placehold.co/25x25/2c3e50/fff?text=☰" alt="Menu">
+                </div>
+        </div>
+    </header>
+
+    <!-- Blog Content -->
+    <div class="p-6 md:p-10">
+        <div class="max-w-8xl mx-auto px-4 sm:px-6">
+
+            <!-- FEATURED ARTICLE SECTION -->
+            <div id="featured-article"
+                class="relative w-full rounded-2xl overflow-hidden mb-12 article-card-shadow animate-on-scroll">
+                <a id="featured-link" href="Blogfeature.html" class="block w-full h-full">
+                    <img id="featured-image"
+                        src="https://www.muhealth.org/sites/default/files/2019-01/hearthealth-compressor.jpg"
+                        alt="Featured Article Image"
+                        class="w-full h-[400px] lg:h-[690px] object-cover transition-opacity duration-500">
+
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent p-6 sm:p-8 flex flex-col justify-end text-white">
+
+                        <h2 id="featured-title" class="text-3xl sm:text-4xl font-bold mb-4 leading-tight">
+                            Understanding Heart Health: Prevention and Early Detection
+                        </h2>
+                        <p id="featured-excerpt" class="text-base text-gray-300 mb-6 max-w-2xl">
+                            Learn about the latest advancements in cardiovascular care and how to protect your heart
+                            health through lifestyle changes and regular screenings.
+                        </p>
+                        <div
+                            class="flex flex-col sm:flex-row justify-between items-start sm:items-center text-sm text-gray-400">
+                            <div class="flex items-center mb-4 sm:mb-0">
+                                <img id="featured-author-img"
+                                    src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                    alt="Author Avatar" class="w-8 h-8 rounded-full mr-2">
+                                <span id="featured-author-name">Dr. Sushant Ghimire</span>
+                                <span class="mx-3">&bull;</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                                <span id="featured-date">Mar 15, 2025</span>
+                            </div>
+                            <div id="featured-tags" class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-white bg-opacity-20 rounded-full text-xs">Cardiology</span>
+                                <span class="px-3 py-1 bg-white bg-opacity-20 rounded-full text-xs">Prevention</span>
+                                <span class="px-3 py-1 bg-white bg-opacity-20 rounded-full text-xs">Heart Health</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Filter and Search Section -->
+            <div
+                class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 space-y-4 md:space-y-0 animate-on-scroll">
+                <!-- Tabs / Categories - Updated for multi-row mobile layout -->
+                <div class="flex flex-wrap gap-2 w-full">
+                    <button
+                        class="tab-button px-4 py-2 rounded-full text-gray-700 hover:bg-gray-100 transition-all duration-200 tab-active"
+                        data-category="all">All</button>
+                    <button
+                        class="tab-button px-4 py-2 rounded-full text-gray-700 hover:bg-gray-100 transition-all duration-200"
+                        data-category="cardiology">Cardiology</button>
+                    <button
+                        class="tab-button px-4 py-2 rounded-full text-gray-700 hover:bg-gray-100 transition-all duration-200"
+                        data-category="mental-health">Mental Health</button>
+                    <button
+                        class="tab-button px-4 py-2 rounded-full text-gray-700 hover:bg-gray-100 transition-all duration-200"
+                        data-category="nutrition">Nutrition</button>
+                    <button
+                        class="tab-button px-4 py-2 rounded-full text-gray-700 hover:bg-gray-100 transition-all duration-200"
+                        data-category="treatment">Treatment</button>
+                    <button
+                        class="tab-button px-4 py-2 rounded-full text-gray-700 hover:bg-gray-100 transition-all duration-200"
+                        data-category="prevention">Prevention</button>
+                    <button
+                        class="tab-button px-4 py-2 rounded-full text-gray-700 hover:bg-gray-100 transition-all duration-200"
+                        data-category="wellness">Wellness</button>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="relative w-full md:w-auto md:min-w-[250px] mt-4 md:mt-0">
+                    <input id="search-input" onkeyup="filterArticles()" type="text"
+                        placeholder="Search medical articles..."
+                        class="w-full pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </div>
+            </div>
+            <!-- Article Grid -->
+            <div id="article-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                <!-- Article Card 1 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden article-card-shadow card-animate"
+                    data-title="Managing Diabetes Through Diet" data-category="nutrition" data-url="Blog1.html">
+                    <img src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Article 1" class="w-full h-48 object-cover article-image">
+                    <div class="p-5 article-content">
+                        <span
+                            class="text-xs font-semibold text-blue-600 bg-blue-50 px-3 py-1 rounded-full mb-3 inline-block category-tag">Nutrition</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Managing Diabetes Through Diet</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            Discover how proper nutrition can help manage blood sugar levels and prevent complications
+                            in diabetic patients.
+                        </p>
+                        <a href="Blog1.html" class="text-blue-600 hover:underline text-sm font-medium read-more">Read
+                            more</a>
+                    </div>
+                </div>
+
+                <!-- Article Card 2 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden article-card-shadow card-animate"
+                    data-title="Mental Health in the Digital Age" data-category="mental-health" data-url="Blog6.html">
+                    <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Article 2" class="w-full h-48 object-cover article-image">
+                    <div class="p-5 article-content">
+                        <span
+                            class="text-xs font-semibold text-purple-600 bg-purple-50 px-3 py-1 rounded-full mb-3 inline-block category-tag">Mental
+                            Health</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Mental Health in the Digital Age</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            Understanding the impact of technology on mental wellbeing and strategies for maintaining
+                            balance.
+                        </p>
+                        <a href="Blog6.html" class="text-blue-600 hover:underline text-sm font-medium read-more">Read
+                            more</a>
+                    </div>
+                </div>
+
+                <!-- Article Card 3 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden article-card-shadow card-animate"
+                    data-title="Exercise for Heart Health" data-category="cardiology" data-url="Blog4.html">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Article 3" class="w-full h-48 object-cover article-image">
+                    <div class="p-5 article-content">
+                        <span
+                            class="text-xs font-semibold text-red-600 bg-red-50 px-3 py-1 rounded-full mb-3 inline-block category-tag">Cardiology</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Exercise for Heart Health</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            The best cardiovascular exercises to strengthen your heart and improve overall
+                            cardiovascular fitness.
+                        </p>
+                        <a href="blog4.html" class="text-blue-600 hover:underline text-sm font-medium read-more">Read
+                            more</a>
+                    </div>
+                </div>
+
+                <!-- Article Card 4 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden article-card-shadow card-animate"
+                    data-title="Preventive Health Screenings" data-category="prevention" data-url="Blog2.html">
+                    <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Article 4" class="w-full h-48 object-cover article-image">
+                    <div class="p-5 article-content">
+                        <span
+                            class="text-xs font-semibold text-green-600 bg-green-50 px-3 py-1 rounded-full mb-3 inline-block category-tag">Prevention</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Preventive Health Screenings</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            Essential health screenings by age group to detect potential issues early and maintain
+                            optimal health.
+                        </p>
+                        <a href="Blog2.html" class="text-blue-600 hover:underline text-sm font-medium read-more">Read
+                            more</a>
+                    </div>
+                </div>
+
+                <!-- Article Card 5 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden article-card-shadow card-animate"
+                    data-title="Nutrition for Immune Support" data-category="nutrition" data-url="Blog7.html">
+                    <img src="https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Article 5" class="w-full h-48 object-cover article-image">
+                    <div class="p-5 article-content">
+                        <span
+                            class="text-xs font-semibold text-yellow-600 bg-yellow-50 px-3 py-1 rounded-full mb-3 inline-block category-tag">Nutrition</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Nutrition for Immune Support</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            Foods and nutrients that can help strengthen your immune system and protect against illness.
+                        </p>
+                        <a href="Blog7.html" class="text-blue-600 hover:underline text-sm font-medium read-more">Read
+                            more</a>
+                    </div>
+                </div>
+
+                <!-- Article Card 6 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden article-card-shadow card-animate"
+                    data-title="Stress Management Techniques" data-category="mental-health" data-url="Blog5.html">
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Article 6" class="w-full h-48 object-cover article-image">
+                    <div class="p-5 article-content">
+                        <span
+                            class="text-xs font-semibold text-teal-600 bg-teal-50 px-3 py-1 rounded-full mb-3 inline-block category-tag">Mental
+                            Health</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Stress Management Techniques</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            Effective strategies to manage daily stress and prevent its negative impact on physical and
+                            mental health.
+                        </p>
+                        <a href="Blog5.html" class="text-blue-600 hover:underline text-sm font-medium read-more">Read
+                            more</a>
+                    </div>
+                </div>
+
+                <!-- Article Card 7 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden article-card-shadow card-animate"
+                    data-title="Understanding Blood Pressure" data-category="cardiology" data-url="Blog3.html">
+                    <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Article 7" class="w-full h-48 object-cover article-image">
+                    <div class="p-5 article-content">
+                        <span
+                            class="text-xs font-semibold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full mb-3 inline-block category-tag">Cardiology</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Understanding Blood Pressure</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            What your blood pressure numbers mean and lifestyle changes to maintain healthy levels.
+                        </p>
+                        <a href="Blog3.html" class="text-blue-600 hover:underline text-sm font-medium read-more">Read
+                            more</a>
+                    </div>
+                </div>
+
+                <!-- Article Card 8 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden article-card-shadow card-animate"
+                    data-title="Sleep and Health Connection" data-category="wellness" data-url="Blog1.html">
+                    <img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?q=80&w=2060&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Article 8" class="w-full h-48 object-cover article-image">
+                    <div class="p-5 article-content">
+                        <span
+                            class="text-xs font-semibold text-pink-600 bg-pink-50 px-3 py-1 rounded-full mb-3 inline-block category-tag">Wellness</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Sleep and Health Connection</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            How quality sleep impacts your physical health, mental wellbeing, and disease prevention.
+                        </p>
+                        <a href="Blog1.html" class="text-blue-600 hover:underline text-sm font-medium read-more">Read
+                            more</a>
+                    </div>
+                </div>
+
+                <!-- Article Card 1 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden article-card-shadow card-animate"
+                    data-title="Managing Diabetes Through Diet" data-category="nutrition" data-url="Blog1.html">
+                    <img src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Article 1" class="w-full h-48 object-cover article-image">
+                    <div class="p-5 article-content">
+                        <span
+                            class="text-xs font-semibold text-blue-600 bg-blue-50 px-3 py-1 rounded-full mb-3 inline-block category-tag">Nutrition</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Managing Diabetes Through Diet</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            Discover how proper nutrition can help manage blood sugar levels and prevent complications
+                            in diabetic patients.
+                        </p>
+                        <a href="Blog1.html" class="text-blue-600 hover:underline text-sm font-medium read-more">Read
+                            more</a>
+                    </div>
+                </div>
+
+                <!-- Article Card 2 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden article-card-shadow card-animate"
+                    data-title="Mental Health in the Digital Age" data-category="mental-health" data-url="Blog6.html">
+                    <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Article 2" class="w-full h-48 object-cover article-image">
+                    <div class="p-5 article-content">
+                        <span
+                            class="text-xs font-semibold text-purple-600 bg-purple-50 px-3 py-1 rounded-full mb-3 inline-block category-tag">Mental
+                            Health</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Mental Health in the Digital Age</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            Understanding the impact of technology on mental wellbeing and strategies for maintaining
+                            balance.
+                        </p>
+                        <a href="Blog6.html" class="text-blue-600 hover:underline text-sm font-medium read-more">Read
+                            more</a>
+                    </div>
+                </div>
+
+                <!-- Article Card 3 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden article-card-shadow card-animate"
+                    data-title="Exercise for Heart Health" data-category="cardiology" data-url="Blog4.html">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Article 3" class="w-full h-48 object-cover article-image">
+                    <div class="p-5 article-content">
+                        <span
+                            class="text-xs font-semibold text-red-600 bg-red-50 px-3 py-1 rounded-full mb-3 inline-block category-tag">Cardiology</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Exercise for Heart Health</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            The best cardiovascular exercises to strengthen your heart and improve overall
+                            cardiovascular fitness.
+                        </p>
+                        <a href="blog4.html" class="text-blue-600 hover:underline text-sm font-medium read-more">Read
+                            more</a>
+                    </div>
+                </div>
+
+                <!-- Article Card 4 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden article-card-shadow card-animate"
+                    data-title="Preventive Health Screenings" data-category="prevention" data-url="Blog2.html">
+                    <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Article 4" class="w-full h-48 object-cover article-image">
+                    <div class="p-5 article-content">
+                        <span
+                            class="text-xs font-semibold text-green-600 bg-green-50 px-3 py-1 rounded-full mb-3 inline-block category-tag">Prevention</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Preventive Health Screenings</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            Essential health screenings by age group to detect potential issues early and maintain
+                            optimal health.
+                        </p>
+                        <a href="Blog2.html" class="text-blue-600 hover:underline text-sm font-medium read-more">Read
+                            more</a>
+                    </div>
+                </div>
+
+                <!-- Article Card 5 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden article-card-shadow card-animate"
+                    data-title="Nutrition for Immune Support" data-category="nutrition" data-url="Blog7.html">
+                    <img src="https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Article 5" class="w-full h-48 object-cover article-image">
+                    <div class="p-5 article-content">
+                        <span
+                            class="text-xs font-semibold text-yellow-600 bg-yellow-50 px-3 py-1 rounded-full mb-3 inline-block category-tag">Nutrition</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Nutrition for Immune Support</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            Foods and nutrients that can help strengthen your immune system and protect against illness.
+                        </p>
+                        <a href="Blog7.html" class="text-blue-600 hover:underline text-sm font-medium read-more">Read
+                            more</a>
+                    </div>
+                </div>
+
+                <!-- Article Card 6 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden article-card-shadow card-animate"
+                    data-title="Stress Management Techniques" data-category="mental-health" data-url="Blog5.html">
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Article 6" class="w-full h-48 object-cover article-image">
+                    <div class="p-5 article-content">
+                        <span
+                            class="text-xs font-semibold text-teal-600 bg-teal-50 px-3 py-1 rounded-full mb-3 inline-block category-tag">Mental
+                            Health</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Stress Management Techniques</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            Effective strategies to manage daily stress and prevent its negative impact on physical and
+                            mental health.
+                        </p>
+                        <a href="Blog5.html" class="text-blue-600 hover:underline text-sm font-medium read-more">Read
+                            more</a>
+                    </div>
+                </div>
+
+                <!-- Article Card 7 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden article-card-shadow card-animate"
+                    data-title="Understanding Blood Pressure" data-category="cardiology" data-url="Blog3.html">
+                    <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Article 7" class="w-full h-48 object-cover article-image">
+                    <div class="p-5 article-content">
+                        <span
+                            class="text-xs font-semibold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full mb-3 inline-block category-tag">Cardiology</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Understanding Blood Pressure</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            What your blood pressure numbers mean and lifestyle changes to maintain healthy levels.
+                        </p>
+                        <a href="Blog3.html" class="text-blue-600 hover:underline text-sm font-medium read-more">Read
+                            more</a>
+                    </div>
+                </div>
+
+                <!-- Article Card 8 -->
+                <div class="article-card bg-white rounded-xl overflow-hidden article-card-shadow card-animate"
+                    data-title="Sleep and Health Connection" data-category="wellness" data-url="Blog1.html">
+                    <img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?q=80&w=2060&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Article 8" class="w-full h-48 object-cover article-image">
+                    <div class="p-5 article-content">
+                        <span
+                            class="text-xs font-semibold text-pink-600 bg-pink-50 px-3 py-1 rounded-full mb-3 inline-block category-tag">Wellness</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Sleep and Health Connection</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            How quality sleep impacts your physical health, mental wellbeing, and disease prevention.
+                        </p>
+                        <a href="Blog1.html" class="text-blue-600 hover:underline text-sm font-medium read-more">Read
+                            more</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content stagger-animation">
+                <div class="footer-column">
+                    <h3>Gods Life Health Care</h3>
+                    <p>Providing world-class medical tourism services with compassion and excellence.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Destinations</a></li>
+                        <li><a href="#">Doctors</a></li>
+                        <li><a href="#">Testimonials</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Medical Services</h3>
+                    <ul>
+                        <li><a href="#">Cardiac Surgery</a></li>
+                        <li><a href="#">Orthopedics</a></li>
+                        <li><a href="#">Cosmetic Surgery</a></li>
+                        <li><a href="#">Dental Care</a></li>
+                        <li><a href="#">Fertility Treatments</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 18 East Azad Nagar near Krishna Nagar Delhi 110051</p>
+                    <p><i class="fas fa-phone"></i> (+91) 85128 45000</p>
+                    <p>
+    <i class="fas fa-envelope"></i> 
+    <a href="mailto:support@godslifehealthcare.com">support@godslifehealthcare.com</a>
+</p>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 Gods Life Health Care. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- DATA FOR FEATURED ARTICLE CYCLING ---
+        const featuredArticles = [
+            {
+                image: "https://myhbpartners.com/wp-content/uploads/2021/03/Preventative-HealthCare.jpg",
+                title: "Understanding Heart Health: Prevention and Early Detection",
+                excerpt: "Learn about the latest advancements in cardiovascular care and how to protect your heart health through lifestyle changes and regular screenings.",
+                author: "Dr. Sushant Ghimire",
+                date: "Mar 15, 2025",
+                tags: ["Cardiology", "Prevention", "Heart Health"],
+                url: "heart-health-prevention.html"
+            },
+            {
+                image: "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                title: "The Future of Personalized Medicine",
+                excerpt: "How genetic testing and AI are revolutionizing healthcare with treatments tailored to individual patients.",
+                author: "Dr. Rajiv Patel",
+                date: "Apr 22, 2025",
+                tags: ["Innovation", "Technology", "Treatment"],
+                url: "personalized-medicine.html"
+            },
+            {
+                image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                title: "Exercise for Heart Health",
+                excerpt: "The best cardiovascular exercises to strengthen your heart and improve overall cardiovascular fitness.",
+                author: "Dr. Sarah Johnson",
+                date: "May 10, 2025",
+                tags: ["Cardiology", "Exercise", "Prevention"],
+                url: "Blog4.html"
+            }
+        ];
+
+        let currentArticleIndex = 0;
+
+        /**
+         * Cycles to the next featured article and updates the DOM.
+         */
+        function toggleMenu() {
+            const hamIcon = document.querySelector('.ham-icon');
+            const navMenu = document.querySelector('.nav-menu');
+
+            if (hamIcon && navMenu) {
+                hamIcon.classList.toggle('active');
+                navMenu.classList.toggle('active');
+
+                // Prevent body scroll when menu is open
+                document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+            }
+        }
+
+        // Close menu when clicking outside or on links
+        function setupMobileMenu() {
+            const hamIcon = document.querySelector('.ham-icon');
+            const navMenu = document.querySelector('.nav-menu');
+
+            if (!hamIcon || !navMenu) return;
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (navMenu.classList.contains('active') &&
+                    !navMenu.contains(e.target) &&
+                    !hamIcon.contains(e.target)) {
+                    closeMenu();
+                }
+            });
+
+            // Close menu when clicking a link
+            const navLinks = navMenu.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    closeMenu();
+                });
+            });
+
+            // Close menu on escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                    closeMenu();
+                }
+            });
+        }
+
+        function closeMenu() {
+            const hamIcon = document.querySelector('.ham-icon');
+            const navMenu = document.querySelector('.nav-menu');
+
+            if (hamIcon && navMenu) {
+                hamIcon.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function changeFeaturedArticle(event) {
+            // Prevent the click from navigating when clicking the next button
+            if (event) {
+                event.stopPropagation();
+            }
+
+            // Fade out the image for a smooth transition effect
+            const imageElement = document.getElementById('featured-image');
+            imageElement.style.opacity = '0.3';
+
+            // Calculate the next index
+            currentArticleIndex = (currentArticleIndex + 1) % featuredArticles.length;
+            const newArticle = featuredArticles[currentArticleIndex];
+
+            // Update content after a short delay
+            setTimeout(() => {
+                imageElement.src = newArticle.image;
+                document.getElementById('featured-title').textContent = newArticle.title;
+                document.getElementById('featured-excerpt').textContent = newArticle.excerpt;
+                document.getElementById('featured-author-name').textContent = newArticle.author;
+                document.getElementById('featured-date').textContent = newArticle.date;
+
+                // Update the link URL
+                document.getElementById('featured-link').href = newArticle.url;
+
+                // Update tags
+                const tagsContainer = document.getElementById('featured-tags');
+                tagsContainer.innerHTML = '';
+                newArticle.tags.forEach(tag => {
+                    tagsContainer.innerHTML += `<span class="px-3 py-1 bg-white bg-opacity-20 rounded-full text-xs">${tag}</span>`;
+                });
+
+                // Fade the image back in
+                imageElement.style.opacity = '1';
+
+            }, 250); // Delay matches the CSS transition time for a smooth swap
+        }
+
+        /**
+         * Filters the article grid based on the search input text.
+         */
+        function filterArticles() {
+            const searchInput = document.getElementById('search-input');
+            const filter = searchInput.value.toUpperCase();
+            const articleCards = document.querySelectorAll('.article-card');
+
+            articleCards.forEach(card => {
+                const title = card.getAttribute('data-title').toUpperCase();
+                const category = card.getAttribute('data-category').toUpperCase();
+
+                // Check if the title or category contains the filter text
+                if (title.includes(filter) || category.includes(filter)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        /**
+         * Filters articles by category when a tab is clicked
+         */
+        function filterByCategory(category) {
+            const articleCards = document.querySelectorAll('.article-card');
+
+            // Update active tab styling
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('tab-active');
+            });
+            event.target.classList.add('tab-active');
+
+            // Show/hide articles based on category
+            articleCards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        /**
+         * Makes article cards clickable and redirects to their respective pages
+         */
+        function makeCardsClickable() {
+            const articleCards = document.querySelectorAll('.article-card');
+
+            articleCards.forEach(card => {
+                card.addEventListener('click', function (e) {
+                    // Don't trigger if the click was on a link inside the card
+                    if (e.target.tagName === 'A' || e.target.closest('a')) {
+                        return;
+                    }
+
+                    const url = this.getAttribute('data-url');
+                    if (url) {
+                        window.location.href = url;
+                    }
+                });
+            });
+        }
+
+        /**
+         * Toggle mobile menu
+         */
+        function toggleMobileMenu() {
+            const navMenu = document.querySelector('.nav-menu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Scroll Animation Functionality
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8 &&
+                rect.bottom >= 0
+            );
+        }
+
+        function handleScrollAnimation() {
+            const elements = document.querySelectorAll('.animate-on-scroll, .fade-in-left, .fade-in-right, .scale-in, .stagger-animation');
+
+            elements.forEach(element => {
+                if (isElementInViewport(element)) {
+                    element.classList.add('animated');
+                }
+            });
+
+            // Footer-specific animations
+            const footerColumns = document.querySelectorAll('.footer-column');
+            const socialIcons = document.querySelector('.social-icons');
+            const copyright = document.querySelector('.copyright');
+
+            if (isElementInViewport(document.querySelector('footer'))) {
+                footerColumns.forEach(column => {
+                    column.classList.add('animated');
+                });
+
+                if (socialIcons) {
+                    socialIcons.classList.add('animated');
+                }
+
+                if (copyright) {
+                    copyright.classList.add('animated');
+                }
+            }
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            // Set up tab functionality
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.addEventListener('click', function () {
+                    const category = this.getAttribute('data-category');
+                    filterByCategory(category);
+                });
+            });
+
+            // Make cards clickable
+            makeCardsClickable();
+
+            // Initialize scroll animations
+            handleScrollAnimation();
+
+            // Add scroll event listener
+            window.addEventListener('scroll', handleScrollAnimation);
+        });
+    </script>
+    <script defer src="/assets/i18n/translator.js"></script>
+</body>
+
+</html>
