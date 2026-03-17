@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Medical Consultation - Gods Life Health Care</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/assets/i18n/translator.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            height: 55px;
+            width: auto;
+            border-radius: 30px;
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+        }
+
+        .logo-text {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #2c3e50;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text span {
+            color: #3498db;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 8px 0;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #3498db;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-consultation-btn {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white !important;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .nav-consultation-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+            color: white !important;
+        }
+
+        .nav-consultation-btn:hover::after {
+            width: 0;
+        }
+
+        .ham-icon {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: #2c3e50;
+            background: #f8f9fa;
+            padding: 8px;
+            border-radius: 8px;
+        }
+
+        /* Hero Section */
+        .consultation-hero {
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.95), rgba(44, 62, 80, 0.95)),
+                url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .consultation-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateX(0) translateY(0);
+            }
+
+            100% {
+                transform: translateX(-100px) translateY(-100px);
+            }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+            background: linear-gradient(135deg, #fff, #e3f2fd);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        /* Main Container */
+        .consultation-container {
+            max-width: 1200px;
+            margin: -50px auto 80px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Booking Options Grid */
+        .booking-options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 35px;
+            margin-bottom: 70px;
+        }
+
+        .booking-option-card {
+            background: white;
+            border-radius: 20px;
+            padding: 45px 35px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(52, 152, 219, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .booking-option-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+        }
+
+        .booking-option-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(52, 152, 219, 0.15);
+        }
+
+        .option-icon {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: white;
+            font-size: 2.2rem;
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .booking-option-card:hover .option-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .booking-option-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 18px;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+
+        .booking-option-card p {
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        .btn-book {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 30px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-book::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-book:hover::before {
+            left: 100%;
+        }
+
+        .btn-book:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.4);
+        }
+
+        /* Features Section */
+        .features-section {
+            background: white;
+            border-radius: 25px;
+            padding: 70px 50px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+            margin-bottom: 70px;
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 50px;
+            color: #2c3e50;
+            font-weight: 800;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            border-radius: 2px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 30px 25px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+            border: 2px solid transparent;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-8px);
+            background: white;
+            border-color: rgba(52, 152, 219, 0.2);
+            box-shadow: 0 15px 40px rgba(52, 152, 219, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: #3498db;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .feature-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+
+        .feature-item p {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            padding: 80px 50px;
+            border-radius: 25px;
+            text-align: center;
+            margin-bottom: 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #fff, #e3f2fd);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            font-weight: 600;
+        }
+
+        /* Emergency Banner */
+        .emergency-banner {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 50px 40px;
+            border-radius: 25px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(231, 76, 60, 0.3);
+        }
+
+        .emergency-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        .emergency-banner h3 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+        }
+
+        .emergency-banner p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            opacity: 0.95;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-emergency {
+            background: white;
+            color: #e74c3c;
+            border: none;
+            padding: 16px 35px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-emergency:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Professional Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                backdrop-filter: blur(0px);
+            }
+
+            to {
+                opacity: 1;
+                backdrop-filter: blur(8px);
+            }
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
+            max-width: 550px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(52, 152, 219, 0.2);
+            position: relative;
+            animation: modalSlideIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 24px;
+            font-weight: 700;
+            cursor: pointer;
+            color: #7f8c8d;
+            background: #f8f9fa;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .modal-close:hover {
+            background: #e74c3c;
+            color: white;
+            transform: rotate(90deg);
+            border-color: #e74c3c;
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #ecf0f1;
+            position: relative;
+        }
+
+        .modal-header::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 25%;
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            border-radius: 3px;
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .modal-subtitle {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            font-weight: 500;
+        }
+
+        .specialist-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .specialist-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 15px;
+            border: 2px solid #ecf0f1;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .specialist-option::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            transition: left 0.3s ease;
+            z-index: 1;
+        }
+
+        .specialist-option:hover::before {
+            left: 0;
+        }
+
+        .specialist-option:hover {
+            border-color: #3498db;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.15);
+        }
+
+        .specialist-option i {
+            font-size: 1.5rem;
+            color: #3498db;
+            position: relative;
+            z-index: 2;
+            transition: color 0.3s ease;
+        }
+
+        .specialist-option span {
+            font-weight: 600;
+            color: #2c3e50;
+            position: relative;
+            z-index: 2;
+            transition: color 0.3s ease;
+        }
+
+        .specialist-option:hover i,
+        .specialist-option:hover span {
+            color: white;
+        }
+
+        /* Professional Form Styles */
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 18px;
+            border: 2px solid #ecf0f1;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+            font-family: inherit;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 5px 20px rgba(52, 152, 219, 0.15);
+            background: #fafbfe;
+        }
+
+        .form-group input:valid:not(:placeholder-shown) {
+            border-color: #27ae60;
+            background: #f8fff9;
+        }
+
+        .form-group input:invalid:not(:placeholder-shown) {
+            border-color: #e74c3c;
+            background: #fffafa;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .required {
+            color: #e74c3c;
+            font-weight: 700;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: flex-end;
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 2px solid #ecf0f1;
+        }
+
+        .btn-secondary {
+            background: #95a5a6;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            min-width: 120px;
+            box-shadow: 0 4px 12px rgba(149, 165, 166, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: #7f8c8d;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(149, 165, 166, 0.3);
+        }
+
+        /* Security Badge */
+        .security-badge {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            margin: 25px 0;
+            border-left: 4px solid #27ae60;
+        }
+
+        .security-badge i {
+            color: #27ae60;
+            font-size: 1.3rem;
+        }
+
+        .security-badge span {
+            font-size: 0.9rem;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .booking-options-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .ham-icon {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .booking-options-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .consultation-container {
+                margin: -30px auto 50px;
+            }
+
+            .features-section {
+                padding: 50px 30px;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .stats-section {
+                padding: 60px 30px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .specialist-options {
+                grid-template-columns: 1fr;
+            }
+
+            .form-actions {
+                flex-direction: column-reverse;
+                gap: 12px;
+            }
+
+            .btn-secondary,
+            .btn-book {
+                width: 100%;
+                min-width: auto;
+            }
+
+            .modal-content {
+                padding: 30px 25px;
+                margin: 20px;
+                width: calc(100% - 40px);
+            }
+
+            .modal-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-stats {
+                gap: 20px;
+            }
+
+            .stat-box {
+                padding: 15px;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .booking-option-card {
+                padding: 35px 25px;
+            }
+
+            .modal-content {
+                padding: 25px 20px;
+                margin: 15px;
+                width: calc(100% - 30px);
+            }
+
+            .modal-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN1iie8n5MkShNgEeBfpmQfPl2lCBqpYOnQg&s"
+                    alt="Gods Life Health Care" />
+                <div class="logo-text">Gods <span>Life</span></div>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="hospitals.html">Hospital</a></li>
+                <li><a href="doctor.html">Doctors</a></li>
+                <li><a href="#">Testimonials</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="/consultation.html" class="nav-consultation-btn">
+                        <i class="fas fa-calendar-check"></i> Get Consultation
+                    </a></li>
+            </ul>
+
+            <div class="ham-icon" id="ham-icon">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="consultation-hero">
+        <div class="hero-content">
+            <h1>Expert Medical Consultation</h1>
+            <p>Connect with our specialized healthcare professionals for personalized treatment and care</p>
+            <div class="hero-stats">
+                <div class="stat-box">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Specialized Doctors</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Available Support</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">1000+</div>
+                    <div class="stat-label">Happy Patients</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Consultation Options -->
+    <div class="consultation-container">
+        <div class="booking-options-grid">
+            <!-- General Consultation -->
+            <div class="booking-option-card">
+                <div class="option-icon">
+                    <i class="fas fa-user-md"></i>
+                </div>
+                <h3>General Consultation</h3>
+                <p>Comprehensive health assessment and personalized treatment plan from our experienced general
+                    physicians</p>
+                <button class="btn-book" onclick="openBookingModal('general')">
+                    <i class="fas fa-calendar-plus"></i> Book General Consultation
+                </button>
+            </div>
+
+            <!-- Specialist Consultation -->
+            <div class="booking-option-card">
+                <div class="option-icon">
+                    <i class="fas fa-stethoscope"></i>
+                </div>
+                <h3>Specialist Consultation</h3>
+                <p>Connect with specialized doctors for specific health conditions and advanced medical care</p>
+                <button class="btn-book" onclick="openSpecialistModal()">
+                    <i class="fas fa-search-plus"></i> Find Specialist
+                </button>
+            </div>
+
+            <!-- Video Consultation -->
+            <div class="booking-option-card">
+                <div class="option-icon">
+                    <i class="fas fa-video"></i>
+                </div>
+                <h3>Video Consultation</h3>
+                <p>Secure online video consultation from the comfort of your home with our certified doctors</p>
+                <button class="btn-book" onclick="openBookingModal('video')">
+                    <i class="fas fa-video"></i> Book Video Call
+                </button>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="features-section">
+            <h2 class="section-title">Why Choose Our Consultation Services?</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>Certified Doctors</h4>
+                    <p>All our healthcare professionals are certified and experienced in their respective fields</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h4>24/7 Availability</h4>
+                    <p>Round-the-clock consultation services for emergency and routine medical needs</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-medical"></i>
+                    </div>
+                    <h4>Digital Records</h4>
+                    <p>Secure digital health records and personalized treatment plans for every patient</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h4>Personalized Care</h4>
+                    <p>Tailored treatment approaches based on individual health conditions and requirements</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-section">
+            <h2 class="section-title">Our Healthcare Excellence</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                Trusted by thousands of patients for quality healthcare services and compassionate medical care
+            </p>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">10K+</div>
+                    <div class="stat-label">Patients Treated</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">Success Rate</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Support</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Emergency Banner -->
+        <div class="emergency-banner">
+            <h3><i class="fas fa-exclamation-triangle"></i> Medical Emergency?</h3>
+            <p>Immediate medical attention available for critical conditions</p>
+            <button class="btn-emergency" onclick="handleEmergency()">
+                <i class="fas fa-phone-alt"></i> Call Emergency: 977-9708095535
+            </button>
+        </div>
+    </div>
+
+    <!-- Specialist Selection Modal -->
+    <div id="specialistModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeSpecialistModal()">&times;</span>
+            <div class="modal-header">
+                <h3 class="modal-title">Choose Your Specialist</h3>
+                <p class="modal-subtitle">Select your required medical specialty</p>
+            </div>
+            <div class="specialist-options">
+                <div class="specialist-option" onclick="bookSpecialist('Cardiology')">
+                    <i class="fas fa-heartbeat"></i>
+                    <span>Cardiology</span>
+                </div>
+                <div class="specialist-option" onclick="bookSpecialist('Neurology')">
+                    <i class="fas fa-brain"></i>
+                    <span>Neurology</span>
+                </div>
+                <div class="specialist-option" onclick="bookSpecialist('Orthopedics')">
+                    <i class="fas fa-bone"></i>
+                    <span>Orthopedics</span>
+                </div>
+                <div class="specialist-option" onclick="bookSpecialist('Dermatology')">
+                    <i class="fas fa-allergies"></i>
+                    <span>Dermatology</span>
+                </div>
+                <div class="specialist-option" onclick="bookSpecialist('Pediatrics')">
+                    <i class="fas fa-baby"></i>
+                    <span>Pediatrics</span>
+                </div>
+                <div class="specialist-option" onclick="bookSpecialist('Gynecology')">
+                    <i class="fas fa-female"></i>
+                    <span>Gynecology</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeBookingModal()">&times;</span>
+            <div class="modal-header">
+                <h3 class="modal-title">Book Appointment</h3>
+                <p id="bookingModalSubtitle" class="modal-subtitle"></p>
+            </div>
+
+            <div class="security-badge">
+                <i class="fas fa-lock"></i>
+                <span>Your information is secure and encrypted</span>
+            </div>
+
+            <form id="bookingForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name <span class="required">*</span></label>
+                        <input type="text" name="patient_name" required placeholder="Your full name">
+                    </div>
+                    <div class="form-group">
+                        <label>Email <span class="required">*</span></label>
+                        <input type="email" name="patient_email" required placeholder="you@example.com">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Phone <span class="required">*</span></label>
+                        <input type="tel" name="patient_phone" required placeholder="+977 98XXXXXXXX">
+                    </div>
+                    <div class="form-group">
+                        <label>Age</label>
+                        <input type="number" name="patient_age" min="1" max="120" placeholder="25">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Preferred Date <span class="required">*</span></label>
+                        <input type="date" name="preferred_date" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Preferred Time <span class="required">*</span></label>
+                        <input type="time" name="preferred_time" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Gender</label>
+                    <select name="patient_gender">
+                        <option value="">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Message / Medical Concern</label>
+                    <textarea name="message" rows="3"
+                        placeholder="Describe your medical concern or requirements"></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeBookingModal()">Cancel</button>
+                    <button type="submit" class="btn-book">
+                        <i class="fab fa-whatsapp"></i> Send via WhatsApp
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const WHATSAPP_NUMBER = '9779708095535';
+        let currentBookingType = '';
+
+        // Modal Functions
+        function openSpecialistModal() {
+            document.getElementById('specialistModal').style.display = 'flex';
+        }
+
+        function closeSpecialistModal() {
+            document.getElementById('specialistModal').style.display = 'none';
+        }
+
+        function openBookingModal(type, specialization = '') {
+            currentBookingType = type;
+            const modal = document.getElementById('bookingModal');
+            const subtitle = document.getElementById('bookingModalSubtitle');
+
+            // Set modal title based on type
+            switch (type) {
+                case 'general':
+                    subtitle.textContent = 'General Consultation - Comprehensive health assessment';
+                    break;
+                case 'video':
+                    subtitle.textContent = 'Video Consultation - Remote medical consultation';
+                    break;
+                case 'specialist':
+                    subtitle.textContent = `Specialist: ${specialization} - Expert medical care`;
+                    break;
+            }
+
+            // Set minimum date to today
+            const dateInput = modal.querySelector('input[name="preferred_date"]');
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.min = today;
+
+            modal.style.display = 'flex';
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').style.display = 'none';
+            document.getElementById('specialistModal').style.display = 'none';
+        }
+
+        function bookSpecialist(specialization) {
+            closeSpecialistModal();
+            openBookingModal('specialist', specialization);
+        }
+
+        // Handle Emergency
+        function handleEmergency() {
+            if (confirm('Call emergency number: 977-9708095535?')) {
+                window.location.href = 'tel:+9779708095535';
+            }
+        }
+
+        // WhatsApp Booking Function
+        function formatBookingMessage(formData, bookingType, specialization = '') {
+            const bookingData = {
+                patient_name: formData.get('patient_name'),
+                patient_email: formData.get('patient_email'),
+                patient_phone: formData.get('patient_phone'),
+                patient_age: formData.get('patient_age'),
+                patient_gender: formData.get('patient_gender'),
+                preferred_date: formData.get('preferred_date'),
+                preferred_time: formData.get('preferred_time'),
+                message: formData.get('message')
+            };
+
+            let contextName = '';
+            let contextType = 'Consultation';
+
+            switch (bookingType) {
+                case 'general':
+                    contextName = 'General Consultation';
+                    contextType = 'General Consultation';
+                    break;
+                case 'video':
+                    contextName = 'Video Consultation';
+                    contextType = 'Video Consultation';
+                    break;
+                case 'specialist':
+                    contextName = `${specialization} Consultation`;
+                    contextType = 'Specialist Consultation';
+                    break;
+            }
+
+            return `New Appointment Booking
+
+${contextType}: ${contextName}
+Patient: ${bookingData.patient_name}
+Email: ${bookingData.patient_email}
+Phone: ${bookingData.patient_phone}
+${bookingData.patient_age ? `Age: ${bookingData.patient_age}` : ''}
+${bookingData.patient_gender ? `Gender: ${bookingData.patient_gender}` : ''}
+
+Preferred Date: ${bookingData.preferred_date}
+Preferred Time: ${bookingData.preferred_time}
+
+${specialization ? `Specialization: ${specialization}` : ''}
+${bookingData.message ? `Message: ${bookingData.message}` : ''}
+
+Please confirm this appointment.`.trim();
+        }
+
+        function sendToWhatsApp(message) {
+            const cleanNumber = WHATSAPP_NUMBER.replace(/[^0-9]/g, '');
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/${cleanNumber}?text=${encodedMessage}`;
+
+            window.open(whatsappURL, '_blank');
+        }
+
+        // Form Submission
+        document.getElementById('bookingForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const message = formatBookingMessage(formData, currentBookingType,
+                currentBookingType === 'specialist' ? document.getElementById('bookingModalSubtitle').textContent.split(': ')[1] : '');
+
+            // Show loading state
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Opening WhatsApp...';
+            submitBtn.disabled = true;
+
+            // Send to WhatsApp after a short delay
+            setTimeout(() => {
+                sendToWhatsApp(message);
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                closeBookingModal();
+
+                // Show success message
+                alert('WhatsApp is opening with your booking details. Please review and send the message to complete your booking.');
+            }, 1000);
+        });
+
+        // Close modals when clicking outside
+        window.onclick = function (event) {
+            const specialistModal = document.getElementById('specialistModal');
+            const bookingModal = document.getElementById('bookingModal');
+
+            if (event.target === specialistModal) {
+                closeSpecialistModal();
+            }
+            if (event.target === bookingModal) {
+                closeBookingModal();
+            }
+        }
+
+        // Close on Escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeSpecialistModal();
+                closeBookingModal();
+            }
+        });
+
+        // Initialize date field
+        document.addEventListener('DOMContentLoaded', function () {
+            const dateInput = document.querySelector('input[name="preferred_date"]');
+            if (dateInput) {
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.min = today;
+            }
+        });
+    </script>
+    <script defer src="/assets/i18n/translator.js"></script>
+</body>
+
+</html>

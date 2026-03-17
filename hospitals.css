@@ -1,0 +1,2358 @@
+/* =========================================================
+   HOSPITALS.CSS — Professional Hospital Website Styles
+   Cleaned, deduped, responsive, accessible
+   ========================================================= */
+
+/* ---------------------------
+   Base / variables
+----------------------------*/
+:root {
+    /* Brand */
+    --brand-1: #2563eb;
+    --brand-2: #1d4ed8;
+    --brand-light: #dbeafe;
+    --accent: #0ea5e9;
+    --accent-light: #e0f2fe;
+
+    /* Semantic */
+    --ok: #10b981;
+    --ok-light: #d1fae5;
+    --danger: #ef4444;
+    --danger-light: #fee2e2;
+    --warning: #f59e0b;
+
+    /* Ink / neutrals */
+    --ink-1: #1e293b;
+    --ink-2: #334155;
+    --ink-3: #475569;
+    --muted: #64748b;
+    --muted-light: #94a3b8;
+
+    /* Lines / surfaces */
+    --line: #e2e8f0;
+    --line-light: #f1f5f9;
+    --bg: #f8fafc;
+    --bg-card: #ffffff;
+
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, .08);
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, .10), 0 2px 4px -1px rgba(0, 0, 0, .06);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, .10), 0 4px 6px -2px rgba(0, 0, 0, .05);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, .10), 0 10px 10px -5px rgba(0, 0, 0, .04);
+    --shadow-xl: 0 16px 48px rgba(0, 0, 0, .18);
+
+    /* Radii */
+    --radius-sm: .375rem;
+    --radius: .5rem;
+    --radius-md: .75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.25rem;
+
+    /* Brand gradient */
+    --brand-gradient: linear-gradient(135deg, #3498db, #2c3e50);
+
+    /* Legacy button colors used in cards */
+    --primary-color: #00a1ab;
+    --primary-dark: #008a93;
+
+    /* Sticky filter offset under global header */
+    --global-header-h: 72px;
+
+    /* Timings */
+    --transition-fast: .2s ease;
+    --transition-normal: .3s ease;
+    --transition-slow: .5s ease;
+}
+
+/* ---------------------------
+   Reset / base
+----------------------------*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    line-height: 1.6;
+    color: var(--ink-2);
+    background: var(--bg);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.section-title h2 {
+    color: var(--ink-1);
+    margin: 0 0 .75rem;
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.section-title p {
+    color: var(--muted);
+    margin: 0 auto;
+    max-width: 600px;
+    font-size: 1.125rem;
+}
+
+/* ---------------------------
+   Hero (listing page)
+----------------------------*/
+.hospitals-hero {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    padding: 6rem 0 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hospitals-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path fill="%23ffffff" fill-opacity="0.05" d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"></path></svg>') no-repeat bottom/cover;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hospitals-hero h1 {
+    font-size: 3.5rem;
+    color: #fff;
+    margin: 0 0 1.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.hospitals-hero p {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, .9);
+    margin: 0 auto 2rem;
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn .8s ease-in;
+}
+
+.animate-fade-in-delay {
+    animation: fadeIn .8s ease-in .3s both;
+}
+
+.animate-slide-up {
+    animation: slideUp .6s ease-out;
+}
+
+/* --------------------------------------------------
+   Search & Filter (sticky below global header)
+---------------------------------------------------*/
+.search-filter-section {
+    background: var(--bg-card);
+    padding: 2rem 0;
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: var(--global-header-h);
+    z-index: 100;
+    border-bottom: 1px solid var(--line);
+}
+
+.search-filter-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.search-box {
+    position: relative;
+    flex: 1;
+}
+
+.search-box i {
+    position: absolute;
+    left: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+    font-size: 1.1rem;
+    z-index: 1;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 1rem 1.25rem 1rem 3rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    font-size: 1rem;
+    transition: all .2s;
+    background: var(--bg-card);
+    color: var(--ink-1);
+    box-shadow: var(--shadow-sm);
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, .1);
+}
+
+.filter-controls {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.filter-select {
+    padding: .875rem 1.25rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    font-size: .95rem;
+    background: var(--bg-card);
+    cursor: pointer;
+    transition: all .2s;
+    flex: 1;
+    min-width: 150px;
+    color: var(--ink-1);
+    box-shadow: var(--shadow-sm);
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, .1);
+}
+
+.clear-btn {
+    padding: .875rem 1.5rem;
+    background: var(--danger);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: .95rem;
+    transition: all .2s;
+    white-space: nowrap;
+    font-weight: 600;
+}
+
+.clear-btn:hover {
+    background: #dc2626;
+    transform: translateY(-1px);
+}
+
+.results-summary {
+    margin-top: .75rem;
+    color: var(--muted);
+    font-size: .95rem;
+}
+
+#resultsCount {
+    font-weight: 600;
+    color: var(--ink-1);
+}
+
+/* ---------------------------
+   Grid & Cards (listing)
+----------------------------*/
+.hospitals-section {
+    padding: 4rem 0;
+    background: var(--bg);
+}
+
+.hospitals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.hospital-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: all .3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.hospital-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.hospital-image-container {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--brand-1), var(--brand-2));
+}
+
+.hospital-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .5s ease;
+}
+
+.hospital-card:hover .hospital-image {
+    transform: scale(1.05);
+}
+
+.hospital-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    padding: .5rem 1rem;
+    border-radius: 2rem;
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    backdrop-filter: blur(4px);
+    box-shadow: var(--shadow);
+}
+
+.hospital-badge.featured {
+    background: linear-gradient(135deg, #f093fb, #f5576c);
+    color: #fff;
+}
+
+.hospital-info {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.hospital-name {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--ink-1);
+    margin: 0 0 .5rem;
+    line-height: 1.3;
+}
+
+.hospital-location {
+    color: var(--muted);
+    font-size: .95rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.hospital-location i {
+    color: var(--accent);
+}
+
+/* 3-line overview with standard + webkit clamp */
+.hospital-overview {
+    color: var(--ink-3);
+    font-size: .95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    /* standard property for compatibility (fixes VS Code hint) */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.hospital-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--line-light);
+    border-bottom: 1px solid var(--line-light);
+    margin-bottom: 1.5rem;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: .25rem;
+}
+
+.stat-label {
+    display: block;
+    font-size: .8rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .5px;
+}
+
+.hospital-specialities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin: .5rem 0 1.25rem;
+}
+
+.speciality-chip {
+    background: var(--brand-light);
+    color: var(--brand-1);
+    border: 1px solid #bfdbfe;
+    padding: .375rem .75rem;
+    border-radius: 2rem;
+    font-size: .82rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Actions */
+.hospital-actions {
+    display: flex;
+    gap: .75rem;
+    margin-top: auto;
+    padding: 0 1.5rem 1.5rem;
+}
+
+/* FIX: Style both .btn-view and .btn-view-details (anchors) */
+.hospital-actions .btn-view,
+.hospital-actions .btn-view:visited,
+.hospital-actions .btn-view-details,
+.hospital-actions .btn-view-details:visited {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    padding: .75rem 1rem;
+    border: none;
+    border-radius: var(--radius);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: #fff !important;
+    font-size: .95rem;
+    font-weight: 700;
+    letter-spacing: .2px;
+    text-decoration: none;
+    box-shadow: var(--shadow-sm);
+    transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease, background .2s ease;
+}
+
+.hospital-actions .btn-view:hover,
+.hospital-actions .btn-view-details:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.hospital-actions .btn-view:focus-visible,
+.hospital-actions .btn-view-details:focus-visible {
+    outline: 2px solid rgba(14, 165, 233, .6);
+    outline-offset: 2px;
+}
+
+/* If any global .btn rule exists, neutralize only inside .hospital-actions */
+.hospital-actions .btn {
+    background: none;
+    border: none;
+    color: inherit;
+    text-decoration: none;
+    padding: 0;
+}
+
+/* Optional second action (book) if you use it */
+.btn-book-now {
+    flex: 1;
+    padding: .75rem 1rem;
+    border: none;
+    border-radius: var(--radius);
+    font-size: .95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    background: var(--ok);
+    color: #fff;
+}
+
+.btn-book-now:hover {
+    background: #059669;
+    transform: translateY(-2px);
+}
+
+/* ---------------------------
+   Loading / Error / Empty
+----------------------------*/
+.loading-state,
+.error-state,
+.empty-state {
+    text-align: center;
+    padding: 5rem 2rem;
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    margin: 2rem 0;
+    box-shadow: var(--shadow);
+}
+
+.loader {
+    border: 4px solid var(--line);
+    border-top: 4px solid var(--accent);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1.5rem;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+.loading-state p,
+.error-state p,
+.empty-state p {
+    color: var(--muted);
+    font-size: 1.1rem;
+}
+
+.error-state i,
+.empty-state i {
+    font-size: 4rem;
+    color: var(--danger);
+    margin-bottom: 1.5rem;
+}
+
+.empty-state i {
+    color: var(--muted-light);
+}
+
+.retry-btn {
+    margin-top: 1.5rem;
+    padding: .75rem 2rem;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all .3s;
+    font-weight: 600;
+}
+
+.retry-btn:hover {
+    background: #0284c7;
+    transform: translateY(-2px);
+}
+
+/* ---------------------------
+   Load more
+----------------------------*/
+.load-more-container {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.load-more-btn {
+    padding: 1rem 2.5rem;
+    background: var(--bg-card);
+    color: var(--accent);
+    border: 2px solid var(--accent);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all .3s;
+    display: inline-flex;
+    align-items: center;
+    gap: .75rem;
+}
+
+.load-more-btn:hover {
+    background: var(--accent);
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(14, 165, 233, .3);
+}
+
+/* ======================================================
+   DETAIL PAGE
+======================================================*/
+.loading-overlay,
+.error-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, .98);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.loader-container,
+.error-container {
+    text-align: center;
+}
+
+.loader-large {
+    border: 6px solid var(--line);
+    border-top: 6px solid var(--accent);
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1.5rem;
+}
+
+.error-container i {
+    font-size: 5rem;
+    color: var(--danger);
+    margin-bottom: 1.5rem;
+}
+
+.error-container h2 {
+    color: var(--ink-1);
+    margin-bottom: .75rem;
+}
+
+.error-container p {
+    color: var(--muted);
+    margin-bottom: 2rem;
+}
+
+.error-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn-retry,
+.btn-back {
+    padding: .75rem 2rem;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all .3s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.btn-retry {
+    background: var(--accent);
+    color: #fff;
+}
+
+.btn-retry:hover {
+    background: #0284c7;
+}
+
+.btn-back {
+    background: var(--muted-light);
+    color: #fff;
+}
+
+.btn-back:hover {
+    background: var(--muted);
+}
+
+/* Breadcrumb */
+.breadcrumb-section {
+    background: var(--bg);
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    font-size: .95rem;
+    flex-wrap: wrap;
+}
+
+.breadcrumb a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color .3s;
+}
+
+.breadcrumb a:hover {
+    color: var(--brand-2);
+    text-decoration: underline;
+}
+
+.breadcrumb .separator {
+    color: var(--muted-light);
+}
+
+.breadcrumb span:last-child {
+    color: var(--muted);
+}
+
+/* Detail hero */
+.hospital-hero-detail {
+    background: var(--bg-card);
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.hospital-hero-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+}
+
+.hospital-main-image {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+}
+
+.hospital-main-info h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--ink-1);
+    margin: 0 0 1rem;
+    line-height: 1.3;
+}
+
+.hospital-location-detail {
+    color: var(--muted);
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+}
+
+.hospital-location-detail i {
+    color: var(--accent);
+}
+
+.hospital-quick-info,
+.hospital-quick-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.quick-info-item,
+.stat-box {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--bg);
+    border-radius: var(--radius);
+    transition: all .2s;
+}
+
+.quick-info-item:hover,
+.stat-box:hover {
+    background: var(--line-light);
+}
+
+.quick-info-item i,
+.stat-box i {
+    font-size: 1.5rem;
+    color: var(--accent);
+}
+
+.info-content {
+    flex: 1;
+}
+
+.info-label,
+.stat-label {
+    display: block;
+    font-size: .85rem;
+    color: var(--muted);
+    margin-bottom: .25rem;
+}
+
+.info-value,
+.stat-value {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--ink-1);
+}
+
+.hospital-badges {
+    display: flex;
+    gap: .75rem;
+    flex-wrap: wrap;
+}
+
+.badge,
+.badge-item {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: #fff;
+    padding: .5rem 1rem;
+    border-radius: 2rem;
+    font-size: .9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.badge.featured,
+.badge-item.featured {
+    background: linear-gradient(135deg, #f093fb, #f5576c);
+}
+
+.badge-item.verified {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+}
+
+.badge.booking {
+    background: linear-gradient(135deg, var(--ok), #059669);
+}
+
+.hospital-cta-box {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    color: #fff;
+    box-shadow: var(--shadow-lg);
+}
+
+.hospital-cta-box h3 {
+    margin: 0 0 1rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.hospital-cta-box p {
+    margin: 0 0 1.5rem;
+    opacity: .9;
+    line-height: 1.6;
+}
+
+.cta-action-btn {
+    width: 100%;
+    padding: 1rem;
+    background: var #0ea5e9 (--accent);
+    color: var(--brand-1);
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: .75rem;
+    transition: all .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .75rem;
+}
+
+.cta-action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .15);
+}
+
+.cta-action-btn.secondary {
+    background: rgba(255, 255, 255, .2);
+    color: #fff;
+    border: 2px solid #fff;
+}
+
+.contact-info-detail {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, .3);
+}
+
+.contact-item,
+.contact-email {
+    margin-bottom: .75rem;
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    font-size: .95rem;
+}
+
+.contact-item i {
+    width: 20px;
+    opacity: .9;
+}
+
+/* Tabs */
+.hospital-tabs-section {
+    padding: 4rem 0;
+    background: var(--bg);
+}
+
+.tabs-container {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.tabs-header {
+    display: flex;
+    gap: .25rem;
+    background: var(--bg);
+    padding: 1rem;
+    overflow-x: auto;
+    border-bottom: 1px solid var(--line);
+}
+
+.tab-btn {
+    padding: 1rem 1.5rem;
+    background: var(--bg-card);
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: .95rem;
+    font-weight: 600;
+    color: var(--muted);
+    transition: all .3s;
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    white-space: nowrap;
+}
+
+.tab-btn:hover {
+    background: var(--line-light);
+    color: var(--ink-1);
+}
+
+.tab-btn.active {
+    background: var(--accent);
+    color: #fff;
+}
+
+.tab-btn i {
+    font-size: 1.1rem;
+}
+
+.tabs-content {
+    padding: 2.5rem;
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+    animation: fadeIn .5s;
+}
+
+/* Tab content helpers */
+.section-title-tab {
+    font-size: 1.8rem;
+    color: var(--ink-1);
+    margin-bottom: 1.5rem;
+    padding-bottom: .75rem;
+    border-bottom: 3px solid var(--accent);
+    font-weight: 700;
+    text-align: left;
+}
+
+.overview-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+.overview-description,
+.overview-content {
+    line-height: 1.7;
+    color: var(--ink-3);
+    font-size: 1.05rem;
+}
+
+.overview-highlights {
+    background: var(--bg);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+}
+
+.overview-highlights h3 {
+    margin: 0 0 1.25rem;
+    color: var(--ink-1);
+    font-weight: 600;
+}
+
+.highlight-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: #fff;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    transition: all .2s;
+}
+
+.highlight-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.highlight-item i {
+    color: var(--accent);
+    font-size: 1.3rem;
+}
+
+.about-sections-grid,
+.about-sections {
+    display: grid;
+    gap: 2rem;
+}
+
+.about-section-card,
+.about-section {
+    background: var(--bg);
+    padding: 2rem;
+    border-radius: var(--radius);
+    border-left: 4px solid var(--accent);
+    transition: all .2s;
+}
+
+.about-section-card:hover,
+.about-section:hover {
+    background: var(--line-light);
+}
+
+.about-section-card h3,
+.about-section h3 {
+    color: var(--ink-1);
+    margin: 0 0 1rem;
+    font-weight: 600;
+}
+
+.about-section-card p,
+.about-section p {
+    line-height: 1.7;
+    color: var(--ink-3);
+}
+
+.specialties-grid,
+.facilities-grid,
+.amenities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.specialty-card,
+.facility-card,
+.amenity-card {
+    background: var(--bg);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    transition: all .3s;
+    box-shadow: var(--shadow-sm);
+}
+
+.specialty-card:hover,
+.facility-card:hover,
+.amenity-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+    background: #fff;
+}
+
+.specialty-card-header,
+.facility-card-header,
+.amenity-card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.specialty-card-header i,
+.facility-card-header i,
+.amenity-card-header i {
+    font-size: 2rem;
+    color: var(--accent);
+}
+
+.specialty-card h3,
+.facility-card h3,
+.facility-card h4,
+.amenity-card h3,
+.amenity-card h4 {
+    color: var(--ink-1);
+    margin: 0 0 .75rem;
+    font-weight: 600;
+    text-align: left;
+}
+
+.specialty-card p,
+.facility-card p,
+.amenity-card p {
+    color: var(--muted);
+    line-height: 1.6;
+    text-align: justify;
+    margin: 0;
+}
+
+.specialty-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    margin-bottom: 1rem;
+}
+
+.treatments-grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.treatment-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 2rem;
+    transition: all .3s;
+    box-shadow: var(--shadow-sm);
+}
+
+.treatment-card:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow);
+    transform: translateY(-3px);
+}
+
+.treatment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 1.5rem;
+}
+
+.treatment-header h3 {
+    color: var(--ink-1);
+    font-size: 1.4rem;
+    margin: 0;
+    font-weight: 700;
+}
+
+.treatment-price {
+    background: linear-gradient(135deg, var(--brand-1), var(--brand-2));
+    color: #fff;
+    padding: .75rem 1.25rem;
+    border-radius: var(--radius);
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-align: right;
+}
+
+.treatment-description {
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+.treatment-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.treatment-detail-item {
+    background: var(--bg);
+    padding: 1rem;
+    border-radius: var(--radius);
+}
+
+.treatment-detail-item strong {
+    display: block;
+    color: var(--ink-1);
+    margin-bottom: .5rem;
+    font-size: .9rem;
+}
+
+.treatment-detail-item span {
+    color: var(--muted);
+    text-align: left;
+}
+
+.treatment-inclusions,
+.treatment-exclusions {
+    margin-top: 1.5rem;
+    text-align: left;
+}
+
+.treatment-inclusions h4,
+.treatment-exclusions h4 {
+    color: var(--ink-1);
+    margin-bottom: .75rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-weight: 600;
+}
+
+.treatment-inclusions ul,
+.treatment-exclusions ul {
+    list-style: none;
+    padding: 0 0 0 1.5rem;
+}
+
+.treatment-inclusions li,
+.treatment-exclusions li {
+    margin-bottom: .5rem;
+    line-height: 1.5;
+    position: relative;
+    padding-left: 0;
+    text-align: left;
+    color: var(--ink-3);
+}
+
+.treatment-inclusions li::before {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    left: -1.5rem;
+    color: var(--ok);
+}
+
+.treatment-exclusions li::before {
+    content: '\f00d';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    left: -1.5rem;
+    color: var(--danger);
+}
+
+/* Doctors & Awards (detail) */
+.doctors-grid-detail,
+.doctors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.doctor-card-detail,
+.doctor-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: all .3s;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+}
+
+.doctor-card-detail:hover,
+.doctor-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+    border-color: var(--accent);
+}
+
+.doctor-image-detail {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    position: relative;
+}
+
+.doctor-info-detail {
+    padding: 1.5rem;
+}
+
+.doctor-name-detail {
+    font-size: 1.2rem;
+    color: var(--ink-1);
+    margin: 0 0 .5rem;
+    font-weight: 600;
+}
+
+.doctor-specialty,
+.doctor-specialty-detail {
+    color: var(--accent);
+    font-size: .95rem;
+    margin-bottom: .75rem;
+    font-weight: 500;
+    text-align: left;
+}
+
+.doctor-experience,
+.doctor-experience-detail {
+    color: var(--muted);
+    font-size: .9rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    text-align: left;
+}
+
+.awards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.award-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: all .3s;
+    box-shadow: var(--shadow-sm);
+}
+
+.award-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+}
+
+.award-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.award-info {
+    padding: 1.5rem;
+}
+
+.award-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 1rem;
+}
+
+.award-header h3 {
+    color: var(--ink-1);
+    font-size: 1.2rem;
+    flex: 1;
+    margin: 0;
+    font-weight: 600;
+}
+
+.award-year {
+    background: var(--warning);
+    color: #fff;
+    padding: .375rem .75rem;
+    border-radius: 2rem;
+    font-size: .9rem;
+    font-weight: 600;
+}
+
+.award-organization,
+.award-org {
+    color: var(--accent);
+    font-size: .95rem;
+    margin-bottom: .75rem;
+    font-weight: 600;
+    text-align: left;
+}
+
+.award-description {
+    color: var(--muted);
+    line-height: 1.6;
+    text-align: justify;
+    white-space: pre-line;
+    margin: 0;
+}
+
+/* Booking CTA strip */
+.booking-cta-section {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    padding: 4rem 0;
+}
+
+.booking-cta-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.cta-text h2 {
+    color: #fff;
+    font-size: 2rem;
+    margin: 0 0 .75rem;
+    font-weight: 700;
+}
+
+.cta-text p {
+    color: rgba(255, 255, 255, .9);
+    font-size: 1.1rem;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.cta-btn-large {
+    background: #fff;
+    color: var(--brand-1);
+    padding: 1.125rem 2.5rem;
+    border: none;
+    border-radius: var(--radius-lg);
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all .3s;
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    white-space: nowrap;
+    box-shadow: var(--shadow);
+}
+
+.cta-btn-large:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
+}
+
+/* ======================================================
+   BOOKING MODAL
+======================================================*/
+.modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, .5);
+    z-index: 10000;
+    padding: 1rem;
+    backdrop-filter: blur(4px);
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    width: min(680px, 100%);
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    padding: 2rem;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: modalSlideIn .3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(.95)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1)
+    }
+}
+
+.modal-close {
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--muted);
+    cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all .2s;
+    background: var(--bg);
+}
+
+.modal-close:hover {
+    color: var(--ink-1);
+    background: var(--line);
+}
+
+.modal-header {
+    margin-bottom: 1.5rem;
+    padding-right: 2.5rem;
+}
+
+.modal-header h2 {
+    color: var(--ink-1);
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0 0 .5rem;
+}
+
+.modal-header p {
+    color: var(--muted);
+    margin: 0;
+}
+
+.booking-card__header {
+    background: linear-gradient(135deg, #3498db, #2c3e50);
+    color: #fff;
+    padding: 30px;
+    border-radius: 12px 12px 0 0;
+}
+
+.booking-card__title {
+    margin: 0 0 10px;
+    font-size: 24px;
+}
+
+.booking-card__subtitle {
+    margin: 0;
+    opacity: .9;
+    font-size: 16px;
+}
+
+.booking-card__body {
+    padding: 30px;
+}
+
+.booking-card__footer {
+    background: #f8f9fa;
+    padding: 15px 30px;
+    border-radius: 0 0 12px 12px;
+    text-align: center;
+    color: #2c3e50;
+    font-size: 14px;
+}
+
+/* Form elements */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.25rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-size: .92rem;
+    color: var(--ink-1);
+    font-weight: 600;
+    margin-bottom: .5rem;
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+}
+
+.form-group label.required::after {
+    content: "*";
+    color: var(--danger);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    appearance: none;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    background: var(--bg-card);
+    transition: border-color .3s;
+    box-shadow: none;
+    color: var(--ink-1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, .15);
+}
+
+.required {
+    color: #e74c3c;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.btn-primary {
+    background: #25D366;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background .3s;
+}
+
+.btn-primary:hover {
+    background: #20BA5A;
+}
+
+.btn-primary:disabled {
+    background: #95a5a6;
+    cursor: not-allowed;
+}
+
+.btn-secondary {
+    background: #f1f3f5;
+    color: #333;
+    border: 1px solid #ddd;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all .3s;
+}
+
+.btn-secondary:hover {
+    background: #e9ecef;
+}
+
+.booking-result {
+    display: none;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.booking-result.show {
+    display: block;
+}
+
+.booking-result.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.booking-result.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Right sidebar layout */
+.page-with-right-sidebar {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 2rem;
+    align-items: start;
+}
+
+.main-content {
+    min-width: 0;
+}
+
+.booking-sidebar {
+    position: sticky;
+    top: 6rem;
+    align-self: start;
+    z-index: 5;
+}
+
+.booking-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(8px);
+    animation: bookIn .4s ease forwards .05s;
+}
+
+@keyframes bookIn {
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+.booking-card__footer.note {
+    color: var(--muted);
+    font-size: .9rem;
+    border-top: 1px dashed var(--line);
+    text-align: center;
+}
+
+/* ===== RESPONSIVE ADDITIONS (keep originality) ===== */
+
+/* Large tablets / small laptops: shrink sidebar a bit */
+@media (max-width: 1120px) {
+    .page-with-right-sidebar {
+        grid-template-columns: 1fr 320px;
+        gap: 1.5rem;
+    }
+}
+
+/* Tablets & below: stack form fields, softer paddings */
+@media (max-width: 900px) {
+    .page-with-right-sidebar {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .booking-sidebar {
+        position: static;
+        top: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .modal {
+        padding: .75rem;
+    }
+
+    .modal-content {
+        padding: 1.25rem;
+        width: min(560px, 100%);
+        border-radius: 12px;
+    }
+
+    .modal-header {
+        padding-right: 2rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .modal-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .booking-card__header {
+        padding: 20px;
+    }
+
+    .booking-card__title {
+        font-size: 20px;
+    }
+
+    .booking-card__subtitle {
+        font-size: 14px;
+    }
+
+    .booking-card__body {
+        padding: 20px;
+    }
+
+    .booking-card__footer {
+        padding: 12px 20px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-bottom: 12px;
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 11px;
+        font-size: 15px;
+    }
+
+    .form-actions {
+        flex-direction: column-reverse;
+        align-items: stretch;
+        gap: 12px;
+        justify-content: flex-start;
+        margin-top: 16px;
+    }
+
+    .form-actions .btn-primary,
+    .form-actions .btn-secondary {
+        width: 100%;
+        padding: 12px 16px;
+        font-size: 15px;
+    }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+    .modal {
+        padding: .5rem;
+    }
+
+    .modal-content {
+        padding: 1rem;
+        border-radius: 10px;
+    }
+
+    .modal-close {
+        right: 1rem;
+        top: 1rem;
+        font-size: 1.25rem;
+        width: 1.75rem;
+        height: 1.75rem;
+    }
+
+    .booking-card__header {
+        padding: 16px;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .booking-card__title {
+        font-size: 18px;
+    }
+
+    .booking-card__subtitle {
+        font-size: 13px;
+    }
+
+    .booking-card__body {
+        padding: 16px;
+    }
+
+    .booking-card__footer {
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+
+    .form-group {
+        margin-bottom: .875rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .form-actions {
+        gap: 10px;
+    }
+
+    .form-actions .btn-primary,
+    .form-actions .btn-secondary {
+        padding: 11px 14px;
+        font-size: 14px;
+    }
+}
+
+/* ===== REPLACE your old modal `.btn-primary` rules with these ===== */
+
+/* WhatsApp submit button – SCOPED name so it won't clash */
+.btn-modal-submit {
+    background: #25D366;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background .3s, transform .15s ease;
+    box-shadow: 0 8px 24px rgba(37, 211, 102, .25);
+}
+
+.btn-modal-submit:hover {
+    background: #20BA5A;
+    transform: translateY(-1px);
+}
+
+.btn-modal-submit:disabled {
+    background: #95a5a6;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+/* Mobile/full-width in modal actions */
+@media (max-width: 768px) {
+    .form-actions {
+        flex-direction: column-reverse;
+        align-items: stretch;
+        gap: 12px;
+        justify-content: flex-start;
+        margin-top: 16px;
+    }
+
+    .form-actions .btn-modal-submit,
+    .form-actions .btn-secondary {
+        width: 100%;
+        padding: 12px 16px;
+        font-size: 15px;
+    }
+}
+
+/* ======================================================
+   RIGHT-SIDE "BOOK APPOINTMENT" STICKY SIDEBAR
+======================================================*/
+.page-with-right-sidebar {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 2rem;
+    align-items: start;
+}
+
+.main-content {
+    min-width: 0;
+}
+
+.booking-sidebar {
+    position: sticky;
+    top: 6rem;
+    align-self: start;
+    z-index: 5;
+}
+
+.booking-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(8px);
+    animation: bookIn .4s ease forwards .05s;
+}
+
+@keyframes bookIn {
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+.booking-card__footer.note {
+    color: var(--muted);
+    font-size: .9rem;
+    border-top: 1px dashed var(--line);
+    text-align: center;
+}
+
+/* ======================================================
+   TEXT JUSTIFICATION & TYPO
+======================================================*/
+.overview-content p {
+    text-align: justify;
+    line-height: 1.7;
+    color: var(--ink-3);
+    font-size: 1.05rem;
+    margin-bottom: 1.5rem;
+}
+
+.about-section p {
+    text-align: justify;
+    line-height: 1.7;
+    color: var(--ink-3);
+    margin-bottom: 1rem;
+}
+
+.about-section h3 {
+    color: var(--ink-1);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.specialty-card p {
+    text-align: justify;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0;
+}
+
+.specialty-card h3 {
+    color: var(--ink-1);
+    margin: 0 0 .5rem;
+    font-weight: 600;
+}
+
+.facility-card p,
+.amenity-card p {
+    text-align: justify;
+    line-height: 1.6;
+    color: var(--ink-3);
+    margin: 0;
+    white-space: pre-line;
+}
+
+.facility-card h4,
+.amenity-card h4 {
+    color: var(--ink-1);
+    margin: 0 0 .5rem;
+    font-weight: 600;
+}
+
+.treatment-description {
+    text-align: justify;
+    line-height: 1.7;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+}
+
+.treatment-detail-item span {
+    text-align: left;
+    color: var(--muted);
+}
+
+.treatment-inclusions li,
+.treatment-exclusions li {
+    text-align: left;
+    color: var(--ink-3);
+}
+
+.doctor-specialty,
+.doctor-experience {
+    text-align: left;
+    color: var(--muted);
+    margin: .25rem 0;
+}
+
+.award-description {
+    text-align: justify;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0;
+    white-space: pre-line;
+}
+
+.award-organization {
+    text-align: left;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: .75rem;
+}
+
+.award-header h3 {
+    color: var(--ink-1);
+    margin: 0;
+    font-weight: 600;
+}
+
+/* Ensure card content alignment + spacing */
+.specialty-card,
+.facility-card,
+.amenity-card,
+.award-card {
+    background: var(--bg);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    transition: all .3s;
+    box-shadow: var(--shadow-sm);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+/* Better paragraph spacing */
+.overview-content p+p,
+.about-section p+p {
+    margin-top: 1rem;
+}
+
+/* ======================================================
+   RESPONSIVE
+======================================================*/
+@media (max-width:1200px) {
+    .page-with-right-sidebar {
+        grid-template-columns: 1fr 320px;
+    }
+}
+
+@media (max-width:1024px) {
+    .hospital-hero-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .overview-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hospitals-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+
+    .page-with-right-sidebar {
+        grid-template-columns: 1fr;
+    }
+
+    .booking-sidebar {
+        position: static;
+        top: auto;
+        margin-top: 2rem;
+        z-index: 1;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        grid-template-columns: 1fr;
+        gap: .75rem;
+    }
+
+    #bookingForm .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width:768px) {
+    .hospitals-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hospitals-hero p {
+        font-size: 1.1rem;
+    }
+
+    .filter-controls {
+        flex-direction: column;
+    }
+
+    .filter-select {
+        width: 100%;
+    }
+
+    .hospitals-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tabs-header {
+        flex-wrap: wrap;
+    }
+
+    .tab-btn {
+        flex: 1 1 calc(50% - .25rem);
+        justify-content: center;
+        font-size: .9rem;
+        padding: .875rem 1rem;
+    }
+
+    .tabs-content {
+        padding: 1.5rem;
+    }
+
+    .specialties-grid,
+    .facilities-grid,
+    .amenities-grid,
+    .doctors-grid-detail,
+    .doctors-grid,
+    .awards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .booking-cta-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+
+    .cta-btn-large {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .treatment-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .treatment-price {
+        width: 100%;
+        text-align: left;
+    }
+
+    .modal-content {
+        padding: 1.5rem;
+    }
+
+    .modal-header {
+        padding-right: 0;
+    }
+
+    /* mobile reading */
+    .overview-content p,
+    .about-section p,
+    .specialty-card p,
+    .facility-card p,
+    .amenity-card p,
+    .award-description,
+    .treatment-description {
+        text-align: left;
+    }
+
+    .section-title-tab {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+}
+
+@media (max-width:480px) {
+    .hospitals-hero {
+        padding: 4rem 0 2.5rem;
+    }
+
+    .hospitals-hero h1 {
+        font-size: 2rem;
+    }
+
+    .search-filter-section {
+        position: relative;
+        top: 0;
+    }
+
+    .hospital-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .tab-btn {
+        flex: 1 1 100%;
+        font-size: .9rem;
+        padding: .75rem 1rem;
+    }
+
+    .hospital-quick-info,
+    .hospital-quick-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-content {
+        padding: 1.25rem;
+    }
+
+    .booking-card__header {
+        padding: 1.25rem;
+    }
+
+    .booking-card__body,
+    .booking-card__footer {
+        padding: 1.25rem;
+    }
+
+    .booking-card__title {
+        font-size: 1.15rem;
+    }
+
+    .section-title h2 {
+        font-size: 1.75rem;
+    }
+
+    .hospital-main-info h1 {
+        font-size: 1.75rem;
+    }
+}

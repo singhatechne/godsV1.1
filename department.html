@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gods Life Health Care - Medical Departments</title>
+
+    <link rel="icon" type="image/x-icon" href="./assets/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- Your existing global styles -->
+    <link rel="stylesheet" href="/assets/i18n/translator.css">
+    <link rel="stylesheet" href="assets/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+
+.ham-icon {
+    background-color: rgb(228, 219, 219) !important;
+    border: 2px solid rgb(224, 224, 217) !important;
+    z-index: 9999 !important;
+    position: relative !important;
+    cursor: pointer !important;
+}
+
+.ham-icon:active {
+    background-color: orange !important;
+}
+
+/* Treatment Search Bar Styles */
+.treatment-search-container {
+    max-width: 800px;
+    margin: 20px auto 30px;
+    padding: 0 20px;
+}
+
+.treatment-search-wrapper {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 50px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    padding: 5px 5px 5px 20px;
+    border: 1px solid #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.treatment-search-wrapper:focus-within {
+    box-shadow: 0 5px 25px rgba(0, 86, 179, 0.2);
+    border-color: #0056b3;
+}
+
+.treatment-search-icon {
+    color: #666;
+    font-size: 1.2rem;
+    margin-right: 10px;
+}
+
+.treatment-search-input {
+    flex: 1;
+    padding: 15px 0;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background: transparent;
+}
+
+.treatment-search-input::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+.treatment-search-button {
+    background: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    white-space: nowrap;
+}
+
+.treatment-search-button:hover {
+    background: #003d80;
+}
+
+.treatment-search-results {
+    margin-top: 15px;
+    max-height: 300px;
+    overflow-y: auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+.treatment-search-results.active {
+    display: block;
+}
+
+.treatment-result-item {
+    padding: 12px 20px;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.treatment-result-item:hover {
+    background: #f5f9ff;
+}
+
+.treatment-result-item:last-child {
+    border-bottom: none;
+}
+
+.treatment-result-title {
+    font-weight: 600;
+    color: #0056b3;
+    margin-bottom: 5px;
+}
+
+.treatment-result-category {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    .treatment-search-wrapper {
+        flex-wrap: wrap;
+        border-radius: 20px;
+        padding: 10px;
+    }
+    
+    .treatment-search-input {
+        width: 100%;
+        padding: 10px 0;
+    }
+    
+    .treatment-search-button {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+</style>
+
+
+</head>
+
+
+
+<body>
+    <!-- Header -->
+    <header class="glass-header">
+        <div class="container"
+            style="display: flex; align-items: center; justify-content: space-between; padding: 10px 20px;">
+            <a href="#home" class="logo">
+                <img src="assets/logo.png"
+                    alt="Gods Life Health Care" style="border-radius: 30px;" />
+                <div class="logo-text">God's Life<span> Health Care</span></div>
+            </a>
+
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link" data-translate="home">Home</a>
+                <a href="about.html" class="nav-link" data-translate="about">About Us</a>
+                <a href="hospitals.html" class="nav-link" data-translate="hospital">Hospital</a>
+                <a href="department.html" class="nav-link" data-translate="treatments">Treatments</a>
+                <a href="doctor.html" class="nav-link" data-translate="doctors">Doctors</a>
+                <a href="services1.html" class="nav-link" data-translate="services">Services</a>
+                <a href="blog/Blog.html" class="nav-link" data-translate="blog">knowledge</a>
+                <!-- <a href="#testimonials" class="nav-link" data-translate="testimonials">Testimonials</a> -->
+                
+                <a href="/consultation.html" class="nav-consultation-btn" onclick="trackConsultationClick()">
+                    <i class="fas fa-calendar-check"></i> Consultation
+                </a>
+
+                <!-- IMPROVED COMPACT LANGUAGE SELECTOR -->
+                <!-- FIXED LANGUAGE SELECTOR - COPY THIS INTO YOUR HEADER -->
+                <div class="language-selector-simple">
+                    <select id="languageSelect" onchange="changeLanguage(this.value)">
+                        <!-- Africa -->
+                        <optgroup label="Africa">
+                            <option value="en-ke">🇰🇪 Kenya</option>
+                            <option value="fr-cm">🇨🇲 Cameroon</option>
+                            <option value="am">🇪🇹 Ethiopia</option>
+                            <option value="en-ug">🇺🇬 Uganda</option>
+                            <option value="en-gh">🇬🇭 Ghana</option>
+                            <option value="en-zm">🇿🇲 Zambia</option>
+                            <option value="sw">🇹🇿 Tanzania</option>
+                            <option value="en-mu">🇲🇺 Mauritius</option>
+                            <option value="mg">🇲🇬 Madagascar</option>
+                            <option value="en-sl">🇸🇱 S. Leone</option>
+                            <option value="ar-ly">🇱🇾 Libya</option>
+                            <option value="ar-sd">🇸🇩 Sudan</option>
+                            <option value="en-ng">🇳🇬 Nigeria</option>
+                        </optgroup>
+
+                        <!-- Middle East -->
+                        <optgroup label="Middle East">
+                            <option value="ar-kw">🇰🇼 Kuwait</option>
+                            <option value="ar-sa">🇸🇦 Saudi</option>
+                            <option value="ar-sy">🇸🇾 Syria</option>
+                            <option value="ar-iq">🇮🇶 Iraq</option>
+                            <option value="ar-om">🇴🇲 Oman</option>
+                            <option value="ar-jo">🇯🇴 Jordan</option>
+                            <option value="ar-ye">🇾🇪 Yemen</option>
+                        </optgroup>
+
+                        <!-- CIS Countries -->
+                        <optgroup label="CIS">
+                            <option value="uz">🇺🇿 Uzbek</option>
+                            <option value="kk">🇰🇿 Kazakh</option>
+                            <option value="tk">🇹🇲 Turkmen</option>
+                            <option value="tg">🇹🇯 Tajik</option>
+                        </optgroup>
+
+                        <!-- Asia -->
+                        <optgroup label="Asia">
+                            <option value="my">🇲🇲 Myanmar</option>
+                            <option value="km">🇰🇭 Cambodia</option>
+                            <option value="bn">🇧🇩 Bangladesh</option>
+                            <option value="ne">🇳🇵 Nepal</option>
+                            <option value="dz">🇧🇹 Bhutan</option>
+                            <option value="si">🇱🇰 Sri Lanka</option>
+                            <option value="hi">🇮🇳 India</option>
+                        </optgroup>
+
+                        <!-- Americas -->
+                        <optgroup label="Americas">
+                            <option value="es-mx">🇲🇽 Mexico</option>
+                            <option value="es-co">🇨🇴 Colombia</option>
+                            <option value="pt-br">🇧🇷 Brazil</option>
+                            <option value="es-pe">🇵🇪 Peru</option>
+                            <option value="es-do">🇩🇴 Dom. Rep</option>
+                        </optgroup>
+
+                        <!-- Western -->
+                        <optgroup label="Western">
+                            <option value="en" selected>🇺🇸 US</option>
+                            <option value="en-gb">🇬🇧 UK</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+
+            </nav>
+
+            <div class="ham-icon" >
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    
+    <!-- Treatment Search Bar - Added exactly here, before body tag -->
+    <div class="treatment-search-container">
+        <div class="treatment-search-wrapper">
+            <i class="fas fa-search treatment-search-icon"></i>
+            <input type="text" class="treatment-search-input" placeholder="Search for treatments, procedures, specialists..." id="treatmentSearchInput">
+            <button class="treatment-search-button" id="treatmentSearchButton">Search</button>
+        </div>
+        <div class="treatment-search-results" id="treatmentSearchResults">
+            <!-- Search results will appear here dynamically -->
+        </div>
+    </div>
+
+    <body class="has-fixed-header"></body>
+    <div class="tab-container">
+        <div class="tab-buttons">
+            <div class="tab-button active" data-tab="departments">Departments</div>
+            <div class="tab-button" data-tab="experts">Consult with Experts</div>
+        </div>
+
+        <!-- Experts Tab -->
+        <div id="experts" class="tab-content">
+            <div class="page-title">
+                <h1>Consult with Experts</h1>
+                <p>Talk to our healthcare professionals for your personalized treatment plan.</p>
+            </div>
+            <!-- Hospitals (max 10) and Doctors (max 10) will be rendered here by script.js -->
+        </div>
+
+        <!-- Departments Tab -->
+        <div id="departments" class="tab-content active">
+            <div class="page-title">
+                <h1>Departments</h1>
+                <p>Comprehensive information about our specialized treatments</p>
+            </div>
+
+            <div class="tab-interface">
+                <div class="vertical-tabs" id="department-tabs">
+                    <!-- Department tabs will be dynamically generated here -->
+                </div>
+
+                <div class="tab-content-area" id="department-content">
+
+                    <!-- Department content will be dynamically generated here -->
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-us">
+        <div class="container">
+            <div class="section-title animate-on-scroll">
+                <h2>Why Choose Gods Life Health Care</h2>
+                <p>We are committed to providing the highest quality healthcare experience</p>
+            </div>
+
+            <div class="features stagger-animation">
+                <div class="feature">
+                    <i class="fas fa-user-md"></i>
+                    <h3>World-Class Doctors</h3>
+                    <p>Our network includes internationally trained and experienced medical professionals.</p>
+                </div>
+
+                <div class="feature">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <h3>Affordable Pricing</h3>
+                    <p>High-quality treatments at 30-70% lower costs compared to Western countries.</p>
+                </div>
+
+                <div class="feature">
+                    <i class="fas fa-notes-medical"></i>
+                    <h3>Comprehensive Care</h3>
+                    <p>End-to-end assistance from consultation to recovery and follow-up care.</p>
+                </div>
+
+                <div class="feature">
+                    <i class="fas fa-globe"></i>
+                    <h3>Global Destinations</h3>
+                    <p>Access to premium healthcare facilities in world-renowned medical tourism destinations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Patient Testimonials</h2>
+                <p>Hear from our patients who have experienced our exceptional healthcare services</p>
+            </div>
+
+            <!-- Filter Controls -->
+            <div class="filters" id="filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="featured">Featured</button>
+            </div>
+
+            <div class="testimonials-container" id="testimonialsContainer">
+                <div id="loadingState" class="loading">Loading testimonials</div>
+            </div>
+
+            <!-- Dots Navigation -->
+            <div class="dots-container" id="dotsContainer"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content stagger-animation" id="footer-content">
+                <!-- Footer content will be dynamically generated here -->
+            </div>
+
+            <div class="copyright">
+                    <p>&copy; 2025 Gods Life Health Care. All rights reserved. Developed by 
+                    <a href="https://singhatechne.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    style="color: #3498db; text-decoration: none; transition: color 0.3s ease;">
+                    Singha Techne
+                    </a>
+                    </p>
+                </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+   <script>
+// ==================== SIMPLIFIED HAMBURGER MENU ====================
+function toggleMenu() {
+    const navMenu = document.querySelector('.nav-menu');
+    const hamIcon = document.querySelector('.ham-icon');
+    
+    if (!navMenu || !hamIcon) return;
+    
+    navMenu.classList.toggle('active');
+    hamIcon.classList.toggle('active');
+    
+    // Toggle body scroll lock
+    document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    const hamIcon = document.querySelector('.ham-icon');
+    
+    // Add click event to hamburger
+    if (hamIcon) {
+        hamIcon.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent event bubbling
+            toggleMenu();
+        });
+    }
+    
+    // Close menu when clicking nav links
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function() {
+            const navMenu = document.querySelector('.nav-menu');
+            const hamIcon = document.querySelector('.ham-icon');
+            
+            if (navMenu && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                hamIcon?.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+        const navMenu = document.querySelector('.nav-menu');
+        const hamIcon = document.querySelector('.ham-icon');
+        
+        if (navMenu && navMenu.classList.contains('active') && 
+            hamIcon && !hamIcon.contains(e.target) && 
+            !navMenu.contains(e.target)) {
+            
+            navMenu.classList.remove('active');
+            hamIcon.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+    
+    // Close menu on window resize (if mobile menu is open on desktop)
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            const navMenu = document.querySelector('.nav-menu');
+            const hamIcon = document.querySelector('.ham-icon');
+            
+            if (navMenu && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                hamIcon?.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+    });
+
+    // Treatment Search Functionality
+    const searchInput = document.getElementById('treatmentSearchInput');
+    const searchButton = document.getElementById('treatmentSearchButton');
+    const searchResults = document.getElementById('treatmentSearchResults');
+
+    // Sample treatment data (you can replace this with your actual data)
+    const treatments = [
+        { name: 'Cardiology', category: 'Heart Care', icon: 'fa-heart' },
+        { name: 'Neurology', category: 'Brain & Nervous System', icon: 'fa-brain' },
+        { name: 'Orthopedics', category: 'Bone & Joint', icon: 'fa-bone' },
+        { name: 'Oncology', category: 'Cancer Care', icon: 'fa-ribbon' },
+        { name: 'Pediatrics', category: 'Child Care', icon: 'fa-child' },
+        { name: 'Dermatology', category: 'Skin Care', icon: 'fa-hand' },
+        { name: 'Ophthalmology', category: 'Eye Care', icon: 'fa-eye' },
+        { name: 'Dentistry', category: 'Dental Care', icon: 'fa-tooth' },
+        { name: 'Gastroenterology', category: 'Digestive System', icon: 'fa-stethoscope' },
+        { name: 'Pulmonology', category: 'Respiratory System', icon: 'fa-lungs' },
+        { name: 'Urology', category: 'Urinary System', icon: 'fa-kidneys' },
+        { name: 'Gynecology', category: "Women's Health", icon: 'fa-female' }
+    ];
+
+    function performSearch() {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        
+        if (searchTerm === '') {
+            searchResults.classList.remove('active');
+            return;
+        }
+
+        const filteredTreatments = treatments.filter(treatment => 
+            treatment.name.toLowerCase().includes(searchTerm) ||
+            treatment.category.toLowerCase().includes(searchTerm)
+        );
+
+        if (filteredTreatments.length > 0) {
+            let resultsHTML = '';
+            filteredTreatments.forEach(treatment => {
+                resultsHTML += `
+                    <div class="treatment-result-item" onclick="window.location.href='department.html?treatment=${encodeURIComponent(treatment.name)}'">
+                        <div class="treatment-result-title">
+                            <i class="fas ${treatment.icon}" style="margin-right: 8px; color: #0056b3;"></i>
+                            ${treatment.name}
+                        </div>
+                        <div class="treatment-result-category">${treatment.category}</div>
+                    </div>
+                `;
+            });
+            searchResults.innerHTML = resultsHTML;
+            searchResults.classList.add('active');
+        } else {
+            searchResults.innerHTML = `
+                <div class="treatment-result-item" style="color: #666;">
+                    <i class="fas fa-info-circle" style="margin-right: 8px;"></i>
+                    No treatments found matching "${searchTerm}"
+                </div>
+            `;
+            searchResults.classList.add('active');
+        }
+    }
+
+    // Event listeners for search
+    if (searchInput) {
+        searchInput.addEventListener('input', performSearch);
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+    }
+
+    if (searchButton) {
+        searchButton.addEventListener('click', performSearch);
+    }
+
+    // Close search results when clicking outside
+    document.addEventListener('click', function(e) {
+        if (searchResults && !e.target.closest('.treatment-search-container')) {
+            searchResults.classList.remove('active');
+        }
+    });
+});
+</script>
+
+<script>
+// SIMPLE TEST - Add this to check if clicks work
+document.addEventListener('DOMContentLoaded', function() {
+    const hamIcon = document.querySelector('.ham-icon');
+    
+    console.log('Hamburger icon found:', hamIcon);
+    
+    if (hamIcon) {
+        // Test if click works
+        hamIcon.addEventListener('click', function(e) {
+            console.log('Hamburger clicked!');
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Manual toggle
+            const navMenu = document.querySelector('.nav-menu');
+            if (navMenu) {
+                navMenu.classList.toggle('active');
+                this.classList.toggle('active');
+                document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+                console.log('Menu toggled, active:', navMenu.classList.contains('active'));
+            }
+        });
+        
+        // Also test touch events for mobile
+        hamIcon.addEventListener('touchstart', function(e) {
+            console.log('Hamburger touched!');
+            e.preventDefault();
+            this.click(); // Trigger click event
+        });
+    }
+});
+</script>
+
+    <script defer src="/assets/i18n/translator.js"></script>
+    <script src="booking-modal-standalone.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

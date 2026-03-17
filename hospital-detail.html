@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hospital Details - Gods Life Health Care</title>
+
+    <!-- Icons + Site CSS -->
+    <link rel="stylesheet" href="/assets/i18n/translator.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="hospitals.css" />
+    <!-- Ensure this file exists and is served as text/css -->
+    <!-- <link rel="stylesheet" href="./booking-modal.css" /> -->
+</head>
+
+<body>
+    <!-- Loading Overlay (required by HospitalDetailPage) -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div class="loader-container">
+            <div class="loader-large"></div>
+            <p style="color: #2c3e50; font-size: 1.2rem; margin-top: 20px;">Loading hospital details...</p>
+        </div>
+    </div>
+
+    <!-- Error Overlay (required by HospitalDetailPage) -->
+    <div id="errorOverlay" class="error-overlay" style="display: none;">
+        <div class="error-container">
+            <i class="fas fa-exclamation-circle"></i>
+            <h2>Unable to Load Hospital</h2>
+            <p id="errorMessageDetail">Something went wrong. Please try again.</p>
+            <div class="error-actions">
+                <button class="btn-retry" onclick="location.reload()">
+                    <i class="fas fa-redo"></i> Try Again
+                </button>
+                <a href="hospitals.html" class="btn-back">
+                    <i class="fas fa-arrow-left"></i> Back to Hospitals
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="glass-header">
+        <div class="container"
+            style="display: flex; align-items: center; justify-content: space-between; padding: 10px 20px;">
+            <a href="#home" class="logo">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN1iie8n5MkShNgEeBfpmQfPl2lCBqpYOnQg&s"
+                    alt="Gods Life Health Care" style="border-radius: 30px;" />
+                <div class="logo-text">Gods <span>Life</span></div>
+            </a>
+
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link" data-translate="home">Home</a>
+                <a href="hospitals.html" class="nav-link" data-translate="hospital">Hospital</a>
+                <a href="department.html" class="nav-link" data-translate="treatments">Treatments</a>
+                <a href="blog/Blog.html" class="nav-link" data-translate="blog">Blog</a>
+                <a href="doctor.html" class="nav-link" data-translate="doctors">Doctors</a>
+                <!-- <a href="#testimonials" class="nav-link" data-translate="testimonials">Testimonials</a> -->
+                <a href="about.html" class="nav-link" data-translate="about">About Us</a>
+                <li><a href="/consultation.html" class="nav-consultation-btn" onclick="trackConsultationClick()">
+                        <i class="fas fa-calendar-check"></i> Consultation
+                    </a></li>
+
+                <!-- IMPROVED COMPACT LANGUAGE SELECTOR -->
+                <!-- FIXED LANGUAGE SELECTOR - COPY THIS INTO YOUR HEADER -->
+                <div class="language-selector-simple">
+                    <select id="languageSelect" onchange="changeLanguage(this.value)">
+                        <!-- Africa -->
+                        <optgroup label="Africa">
+                            <option value="en-ke">🇰🇪 Kenya</option>
+                            <option value="fr-cm">🇨🇲 Cameroon</option>
+                            <option value="am">🇪🇹 Ethiopia</option>
+                            <option value="en-ug">🇺🇬 Uganda</option>
+                            <option value="en-gh">🇬🇭 Ghana</option>
+                            <option value="en-zm">🇿🇲 Zambia</option>
+                            <option value="sw">🇹🇿 Tanzania</option>
+                            <option value="en-mu">🇲🇺 Mauritius</option>
+                            <option value="mg">🇲🇬 Madagascar</option>
+                            <option value="en-sl">🇸🇱 S. Leone</option>
+                            <option value="ar-ly">🇱🇾 Libya</option>
+                            <option value="ar-sd">🇸🇩 Sudan</option>
+                            <option value="en-ng">🇳🇬 Nigeria</option>
+                        </optgroup>
+
+                        <!-- Middle East -->
+                        <optgroup label="Middle East">
+                            <option value="ar-kw">🇰🇼 Kuwait</option>
+                            <option value="ar-sa">🇸🇦 Saudi</option>
+                            <option value="ar-sy">🇸🇾 Syria</option>
+                            <option value="ar-iq">🇮🇶 Iraq</option>
+                            <option value="ar-om">🇴🇲 Oman</option>
+                            <option value="ar-jo">🇯🇴 Jordan</option>
+                            <option value="ar-ye">🇾🇪 Yemen</option>
+                        </optgroup>
+
+                        <!-- CIS Countries -->
+                        <optgroup label="CIS">
+                            <option value="uz">🇺🇿 Uzbek</option>
+                            <option value="kk">🇰🇿 Kazakh</option>
+                            <option value="tk">🇹🇲 Turkmen</option>
+                            <option value="tg">🇹🇯 Tajik</option>
+                        </optgroup>
+
+                        <!-- Asia -->
+                        <optgroup label="Asia">
+                            <option value="my">🇲🇲 Myanmar</option>
+                            <option value="km">🇰🇭 Cambodia</option>
+                            <option value="bn">🇧🇩 Bangladesh</option>
+                            <option value="ne">🇳🇵 Nepal</option>
+                            <option value="dz">🇧🇹 Bhutan</option>
+                            <option value="si">🇱🇰 Sri Lanka</option>
+                        </optgroup>
+
+                        <!-- Americas -->
+                        <optgroup label="Americas">
+                            <option value="es-mx">🇲🇽 Mexico</option>
+                            <option value="es-co">🇨🇴 Colombia</option>
+                            <option value="pt-br">🇧🇷 Brazil</option>
+                            <option value="es-pe">🇵🇪 Peru</option>
+                            <option value="es-do">🇩🇴 Dom. Rep</option>
+                        </optgroup>
+
+                        <!-- Western -->
+                        <optgroup label="Western">
+                            <option value="en" selected>🇺🇸 US</option>
+                            <option value="en-gb">🇬🇧 UK</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+
+            </nav>
+
+            <div class="ham-icon" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb-section">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <span class="separator">/</span>
+                <a href="hospitals.html">Hospitals</a>
+                <span class="separator">/</span>
+                <!-- HospitalDetailPage sets this -->
+                <span id="breadcrumbName">Loading...</span>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Hospital Hero Section (target container; JS fills it) -->
+    <section class="hospital-hero-detail">
+        <div class="container">
+            <div id="hospitalHero" class="hospital-hero-content">
+                <!-- Populated by HospitalDetailPage.renderHospitalHero() -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Hospital Tabs Section -->
+    <section class="hospital-tabs-section">
+        <div class="container">
+            <div class="tabs-container">
+                <!-- Tab buttons (HospitalDetailPage uses these for switching) -->
+                <div class="tabs-header">
+                    <button class="tab-btn active" data-tab="overviewContent">
+                        <i class="fas fa-info-circle"></i> Overview
+                    </button>
+                    <button class="tab-btn" data-tab="aboutContent">
+                        <i class="fas fa-hospital"></i> About
+                    </button>
+                    <button class="tab-btn" data-tab="specialtiesContent">
+                        <i class="fas fa-stethoscope"></i> Specialties
+                    </button>
+                    <button class="tab-btn" data-tab="facilitiesContent">
+                        <i class="fas fa-building"></i> Facilities
+                    </button>
+                    <button class="tab-btn" data-tab="treatmentsContent">
+                        <i class="fas fa-notes-medical"></i> Treatments
+                    </button>
+                    <button class="tab-btn" data-tab="doctorsContent">
+                        <i class="fas fa-user-md"></i> Doctors
+                    </button>
+                    <button class="tab-btn" data-tab="awardsContent">
+                        <i class="fas fa-trophy"></i> Awards
+                    </button>
+                </div>
+
+                <!-- Tab panes; IDs must match data-tab values -->
+                <div class="tabs-content">
+                    <div id="overviewContent" class="tab-pane active"></div>
+                    <div id="aboutContent" class="tab-pane"></div>
+                    <div id="specialtiesContent" class="tab-pane"></div>
+                    <div id="facilitiesContent" class="tab-pane"></div>
+                    <div id="treatmentsContent" class="tab-pane"></div>
+                    <div id="doctorsContent" class="tab-pane"></div>
+                    <div id="awardsContent" class="tab-pane"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking CTA Section -->
+    <section class="booking-cta-section">
+        <div class="container">
+            <div class="booking-cta-content">
+                <div class="cta-text">
+                    <h2>Ready to Book Your Appointment?</h2>
+                    <p>Schedule your consultation with our expert medical team today</p>
+                </div>
+                <!-- Uses global openBookingModal(slug, id) from JS when button rendered in hero -->
+                <button class="cta-btn-large" onclick="openBookingModal(getURLParameter('slug'), 1)">
+                    <i class="fas fa-calendar-check"></i>
+                    Book Appointment Now
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Gods Life Health Care</h3>
+                    <p>Your trusted partner for world-class medical tourism and healthcare services.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="hospitals.html">Hospitals</a></li>
+                        <li><a href="doctor.html">Doctors</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Medical Tourism</a></li>
+                        <li><a href="#">Treatment Packages</a></li>
+                        <li><a href="#">Travel Assistance</a></li>
+                        <li><a href="#">Visa Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-phone"></i> +91 70655 14010</p>
+                    <p>
+    <i class="fas fa-envelope"></i> 
+    <a href="mailto:support@godslifehealthcare.com">support@godslifehealthcare.com</a>
+</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 18 East Azad Nagar near Krishna Nagar Delhi 110051</p>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 Gods Life Health Care. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- App JS (must be last) -->
+    <script defer src="/assets/i18n/translator.js"></script>
+    <script src="hospitals-script.js"></script>
+</body>
+
+</html>

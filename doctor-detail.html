@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Profile - Gods Life Health Care</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/assets/i18n/translator.css">
+
+    <link rel="stylesheet" href="doctor-detail.css">
+</head>
+
+<body>
+    <!-- Header - Same as index.html for consistency -->
+    <header class="glass-header">
+        <div class="container"
+            style="display: flex; align-items: center; justify-content: space-between; padding: 10px 20px;">
+            <a href="#home" class="logo">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN1iie8n5MkShNgEeBfpmQfPl2lCBqpYOnQg&s"
+                    alt="Gods Life Health Care" style="border-radius: 30px;" />
+                <div class="logo-text">Gods <span>Life</span></div>
+            </a>
+
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link" data-translate="home">Home</a>
+                <a href="hospitals.html" class="nav-link" data-translate="hospital">Hospital</a>
+                <a href="department.html" class="nav-link" data-translate="treatments">Treatments</a>
+                <a href="blog/Blog.html" class="nav-link" data-translate="blog">Blog</a>
+                <a href="doctor.html" class="nav-link" data-translate="doctors">Doctors</a>
+                <!-- <a href="#testimonials" class="nav-link" data-translate="testimonials">Testimonials</a> -->
+                <a href="about.html" class="nav-link" data-translate="about">About Us</a>
+                <a href="/consultation.html" class="nav-consultation-btn" onclick="trackConsultationClick()">
+                    <i class="fas fa-calendar-check"></i> Consultation
+                </a>
+
+                <!-- IMPROVED COMPACT LANGUAGE SELECTOR -->
+                <!-- FIXED LANGUAGE SELECTOR - COPY THIS INTO YOUR HEADER -->
+                <div class="language-selector-simple">
+                    <select id="languageSelect" onchange="changeLanguage(this.value)">
+                        <!-- Africa -->
+                        <optgroup label="Africa">
+                            <option value="en-ke">🇰🇪 Kenya</option>
+                            <option value="fr-cm">🇨🇲 Cameroon</option>
+                            <option value="am">🇪🇹 Ethiopia</option>
+                            <option value="en-ug">🇺🇬 Uganda</option>
+                            <option value="en-gh">🇬🇭 Ghana</option>
+                            <option value="en-zm">🇿🇲 Zambia</option>
+                            <option value="sw">🇹🇿 Tanzania</option>
+                            <option value="en-mu">🇲🇺 Mauritius</option>
+                            <option value="mg">🇲🇬 Madagascar</option>
+                            <option value="en-sl">🇸🇱 S. Leone</option>
+                            <option value="ar-ly">🇱🇾 Libya</option>
+                            <option value="ar-sd">🇸🇩 Sudan</option>
+                            <option value="en-ng">🇳🇬 Nigeria</option>
+                        </optgroup>
+
+                        <!-- Middle East -->
+                        <optgroup label="Middle East">
+                            <option value="ar-kw">🇰🇼 Kuwait</option>
+                            <option value="ar-sa">🇸🇦 Saudi</option>
+                            <option value="ar-sy">🇸🇾 Syria</option>
+                            <option value="ar-iq">🇮🇶 Iraq</option>
+                            <option value="ar-om">🇴🇲 Oman</option>
+                            <option value="ar-jo">🇯🇴 Jordan</option>
+                            <option value="ar-ye">🇾🇪 Yemen</option>
+                        </optgroup>
+
+                        <!-- CIS Countries -->
+                        <optgroup label="CIS">
+                            <option value="uz">🇺🇿 Uzbek</option>
+                            <option value="kk">🇰🇿 Kazakh</option>
+                            <option value="tk">🇹🇲 Turkmen</option>
+                            <option value="tg">🇹🇯 Tajik</option>
+                        </optgroup>
+
+                        <!-- Asia -->
+                        <optgroup label="Asia">
+                            <option value="my">🇲🇲 Myanmar</option>
+                            <option value="km">🇰🇭 Cambodia</option>
+                            <option value="bn">🇧🇩 Bangladesh</option>
+                            <option value="ne">🇳🇵 Nepal</option>
+                            <option value="dz">🇧🇹 Bhutan</option>
+                            <option value="si">🇱🇰 Sri Lanka</option>
+                        </optgroup>
+
+                        <!-- Americas -->
+                        <optgroup label="Americas">
+                            <option value="es-mx">🇲🇽 Mexico</option>
+                            <option value="es-co">🇨🇴 Colombia</option>
+                            <option value="pt-br">🇧🇷 Brazil</option>
+                            <option value="es-pe">🇵🇪 Peru</option>
+                            <option value="es-do">🇩🇴 Dom. Rep</option>
+                        </optgroup>
+
+                        <!-- Western -->
+                        <optgroup label="Western">
+                            <option value="en" selected>🇺🇸 US</option>
+                            <option value="en-gb">🇬🇧 UK</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+
+            </nav>
+
+            <div class="ham-icon" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Loading doctor profile...</p>
+        </div>
+    </div>
+
+    <!-- Error Overlay -->
+    <div class="error-overlay" id="errorOverlay" style="display: none;">
+        <div class="error-message">
+            <h2>⚠️ Unable to Load Profile</h2>
+            <p id="errorMessage">Failed to load doctor profile. Please try again.</p>
+            <button class="retry-button" onclick="location.reload()">Retry</button>
+            <a href="index.html" class="back-button">Back to Home</a>
+        </div>
+    </div>
+
+    <!-- Doctor Profile Content -->
+    <main class="doctor-profile-main" id="doctorProfileMain">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <div class="container">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <a href="index.html#experts">Doctors</a>
+                <span>/</span>
+                <span id="breadcrumbName">Doctor Profile</span>
+            </div>
+        </div>
+
+        <!-- Profile Hero Section -->
+        <section class="profile-hero">
+            <div class="container">
+                <div class="profile-hero-content" id="profileHero">
+                    <!-- Dynamically loaded -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Details Tabs -->
+        <section class="profile-details">
+            <div class="container">
+                <div class="profile-tabs">
+                    <button class="profile-tab-btn active" data-tab="overview">Overview</button>
+                    <button class="profile-tab-btn" data-tab="experience">Experience & Qualifications</button>
+                    <button class="profile-tab-btn" data-tab="achievements">Achievements</button>
+                    <button class="profile-tab-btn" data-tab="availability">Availability & Booking</button>
+                </div>
+
+                <div class="profile-tab-content">
+                    <!-- Overview Tab -->
+                    <div class="tab-pane active" id="overview">
+                        <div id="overviewContent">
+                            <!-- Dynamically loaded -->
+                        </div>
+                    </div>
+
+                    <!-- Experience Tab -->
+                    <div class="tab-pane" id="experience">
+                        <div id="experienceContent">
+                            <!-- Dynamically loaded -->
+                        </div>
+                    </div>
+
+                    <!-- Achievements Tab -->
+                    <div class="tab-pane" id="achievements">
+                        <div id="achievementsContent">
+                            <!-- Dynamically loaded -->
+                        </div>
+                    </div>
+
+                    <!-- Availability Tab -->
+                    <div class="tab-pane" id="availability">
+                        <div id="availabilityContent">
+                            <!-- Dynamically loaded -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related Doctors Section -->
+        <section class="related-doctors">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Other Specialists</h2>
+                    <p>Meet more of our expert doctors</p>
+                </div>
+                <div class="related-doctors-grid" id="relatedDoctors">
+                    <!-- Dynamically loaded -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer - Same as index.html for consistency -->
+    <footer>
+        <div class="container">
+            <div class="footer-content stagger-animation">
+                <div class="footer-column">
+                    <h3>Gods Life Health Care</h3>
+                    <p>Providing world-class medical tourism services with compassion and excellence.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#departments">Services</a></li>
+                        <li><a href="#">Destinations</a></li>
+                        <li><a href="index.html#experts">Doctors</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Medical Services</h3>
+                    <ul>
+                        <li><a href="#">Cardiac Surgery</a></li>
+                        <li><a href="#">Cosmetic Surgery</a></li>
+                        <li><a href="#">Dental Care</a></li>
+                        <li><a href="#">Orthopedics</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Medical Avenue, Health City</p>
+                    <p><i class="fas fa-phone"></i> +1 234 567 8900</p>
+                    <p>
+    <i class="fas fa-envelope"></i> 
+    <a href="mailto:support@godslifehealthcare.com">support@godslifehealthcare.com</a>
+</p>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 Gods Life Health Care. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script defer src="/assets/i18n/translator.js"></script>
+    <script src="booking-modal-standalone.js"></script>
+    <script src="doctor-detail.js"></script>
+
+</body>
+
+</html>

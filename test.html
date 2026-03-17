@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Test - Departments</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f7fa;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        button:hover {
+            background: #2980b9;
+        }
+
+        .result {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            white-space: pre-wrap;
+            font-family: 'Courier New', monospace;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+
+        .error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+
+        .info {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .stat {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🔍 API Test Tool - Departments</h1>
+
+        <div class="info">
+            <strong>📌 Purpose:</strong> This page helps you test if your departments API is working correctly.
+        </div>
+
+        <div>
+            <button onclick="testDepartmentsAPI()">🧪 Test Departments API</button>
+            <button onclick="testTestimonialsAPI()">🧪 Test Testimonials API</button>
+            <button onclick="testDoctorsAPI()">🧪 Test Doctors API</button>
+            <button onclick="clearResults()">🗑️ Clear Results</button>
+        </div>
+
+        <div id="stats" style="margin-top: 20px;"></div>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const API_BASE_URL = 'http://127.0.0.1:8000';
+
+        function showLoading() {
+            document.getElementById('result').innerHTML = '<div class="result">Loading...</div>';
+        }
+
+        function showSuccess(message) {
+            document.getElementById('result').innerHTML = `<div class="result success">${message}</div>`;
+        }
+
+        function showError(message) {
+            document.getElementById('result').innerHTML = `<div class="result error">${message}</div>`;
+        }
+
+        function showStats(stats) {
+            const statsHtml = Object.entries(stats)
+                .map(([key, value]) => `<div class="stat"><strong>${key}:</strong> ${value}</div>`)
+                .join('');
+            document.getElementById('stats').innerHTML = statsHtml;
+        }
+
+        function clearResults() {
+            document.getElementById('result').innerHTML = '';
+            document.getElementById('stats').innerHTML = '';
+        }
+
+        async function testDepartmentsAPI() {
+            showLoading();
+
+            try {
+                const url = `${API_BASE_URL}/api/treatments/api/departments/all_data/`;
+                console.log('Testing URL:', url);
+
+                const response = await fetch(url);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+
+                // Analyze the response
+                const analysis = {
+                    'Response Type': typeof data,
+                    'Is Array': Array.isArray(data),
+                    'Has Results': !!(data && data.results),
+                };
+
+                let departments = [];
+                if (Array.isArray(data)) {
+                    departments = data;
+                    analysis['Structure'] = 'Direct Array';
+                } else if (data && Array.isArray(data.results)) {
+                    departments = data.results;
+                    analysis['Structure'] = 'Paginated (results key)';
+                    analysis['Total Count'] = data.count || 'N/A';
+                } else if (data && typeof data === 'object') {
+                    departments = [data];
+                    analysis['Structure'] = 'Single Object';
+                }
+
+                analysis['Departments Found'] = departments.length;
+
+                showStats(analysis);
+
+                if (departments.length === 0) {
+                    showError('⚠️ API responded successfully but returned 0 departments!\n\n' +
+                        'Possible causes:\n' +
+                        '1. No departments in database\n' +
+                        '2. Serializer is filtering them out\n' +
+                        '3. Wrong queryset in view\n\n' +
+                        'Raw Response:\n' + JSON.stringify(data, null, 2));
+                } else {
+                    // Show first department as sample
+                    const sample = departments[0];
+                    showSuccess(`✅ SUCCESS! Found ${departments.length} department(s)\n\n` +
+                        `Sample Department:\n` +
+                        `- ID: ${sample.id || 'N/A'}\n` +
+                        `- Name: ${sample.name || 'N/A'}\n` +
+                        `- Slug: ${sample.slug || 'N/A'}\n` +
+                        `- Has treatment_options: ${!!(sample.treatment_options)}\n` +
+                        `- Has symptoms: ${!!(sample.symptoms)}\n\n` +
+                        `Full Sample Data:\n` +
+                        JSON.stringify(sample, null, 2));
+                }
+
+            } catch (error) {
+                showError(`❌ ERROR: ${error.message}\n\n` +
+                    `Common causes:\n` +
+                    `1. Django server not running (start with: python manage.py runserver)\n` +
+                    `2. Wrong URL (check your urls.py)\n` +
+                    `3. CORS not configured\n` +
+                    `4. Network/firewall issue\n\n` +
+                    `Error Details:\n${error.stack || error}`);
+            }
+        }
+
+        async function testTestimonialsAPI() {
+            showLoading();
+
+            try {
+                const url = `${API_BASE_URL}/api/testimonials/public/testimonials/`;
+                const response = await fetch(url);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                const testimonials = data.results || data || [];
+
+                showStats({
+                    'Testimonials Found': Array.isArray(testimonials) ? testimonials.length : 1,
+                    'Response Type': typeof data,
+                });
+
+                showSuccess(`✅ Testimonials API Working!\n\n` +
+                    `Found ${testimonials.length} testimonial(s)\n\n` +
+                    `Response:\n${JSON.stringify(data, null, 2)}`);
+
+            } catch (error) {
+                showError(`❌ Testimonials API Error: ${error.message}`);
+            }
+        }
+
+        async function testDoctorsAPI() {
+            showLoading();
+
+            try {
+                const url = `${API_BASE_URL}/api/doctors/doctors/`;
+                const response = await fetch(url);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                const doctors = data.results || data || [];
+
+                showStats({
+                    'Doctors Found': Array.isArray(doctors) ? doctors.length : 1,
+                    'Response Type': typeof data,
+                });
+
+                showSuccess(`✅ Doctors API Working!\n\n` +
+                    `Found ${doctors.length} doctor(s)\n\n` +
+                    `Response:\n${JSON.stringify(data, null, 2)}`);
+
+            } catch (error) {
+                showError(`❌ Doctors API Error: ${error.message}`);
+            }
+        }
+
+        // Auto-test on page load
+        window.addEventListener('load', () => {
+            console.log('API Test Tool loaded. Click buttons to test your APIs.');
+        });
+    </script>
+</body>
+
+</html>

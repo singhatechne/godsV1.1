@@ -1,0 +1,2836 @@
+"<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Gods Life Health Care</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/x-icon" href="./assets/logo.png">
+    <link rel="stylesheet" href="/assets/i18n/translator.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Language Translation Script from index.html -->
+    <script>
+        (function () {
+            "use strict";
+
+            const MAP = {
+                // Western / English variants
+                "en": "en", "en-gb": "en", "en-ke": "en", "en-ug": "en", "en-gh": "en",
+                "en-zm": "en", "en-mu": "en", "en-sl": "en", "en-ng": "en",
+                // French (Cameroon)
+                "fr-cm": "fr",
+                // Arabic variants
+                "ar": "ar", "ar-ly": "ar", "ar-sd": "ar", "ar-kw": "ar", "ar-sa": "ar",
+                "ar-sy": "ar", "ar-iq": "ar", "ar-om": "ar", "ar-jo": "ar", "ar-ye": "ar",
+                // Africa / others
+                "am": "am",      // Amharic
+                "sw": "sw",      // Swahili
+                "mg": "mg",      // Malagasy
+                // CIS
+                "uz": "uz", "kk": "kk", "tk": "tk", "tg": "tg",
+                // Asia
+                "my": "my",      // Burmese
+                "km": "km",      // Khmer
+                "bn": "bn",      // Bengali
+                "ne": "ne",      // Nepali
+                "hi": "hi",      // Hindi
+                "in": "in",      // Hindi (not supported) -> fallback English
+                "dz": "en",      // Dzongkha (not supported) -> fallback English
+                "si": "si",      // Sinhala
+                // Americas (map regional Spanish/Portuguese to base)
+                "es-mx": "es", "es-co": "es", "es-pe": "es", "es-do": "es",
+                "pt-br": "pt"
+            };
+
+            // 2) Init Google element (runs after their script loads)
+            window.googleTranslateElementInit = function () {
+                new google.translate.TranslateElement({
+                    pageLanguage: 'en',                 // your site source language
+                    includedLanguages: uniqueValues(MAP), // allow only languages from map
+                    autoDisplay: false
+                }, 'google_translate_element');
+
+                // Apply saved language choice (or default to 'en')
+                const saved = getSavedLang();
+                setLanguage(saved, /*reload*/ false);
+
+                // Sync dropdown to saved value if the <select> exists now
+                const select = document.getElementById('languageSelect');
+                if (select) {
+                    select.value = saved in MAP ? saved : 'en';
+                    select.addEventListener('change', function () { setLanguage(this.value); });
+                }
+            };
+
+            // 3) Switch language by cookie (what Google widget reads)
+            function setLanguage(appValue, reload = true) {
+                const tgt = MAP[appValue] || "en";
+                setHtmlLangDir(tgt);
+                localStorage.setItem("lang", appValue);
+
+                // Set googtrans cookie for both current host and dot-domain (covers subpaths)
+                const cookieVal = "/auto/" + tgt;
+                const exp = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toUTCString();
+                document.cookie = "googtrans=" + cookieVal + "; expires=" + exp + "; path=/";
+                document.cookie = "googtrans=" + cookieVal + "; expires=" + exp + "; path=/; domain=" + location.hostname;
+
+                // Force re-render so Google applies translation consistently
+                if (reload) location.reload();
+            }
+
+            function setHtmlLangDir(code) {
+                document.documentElement.lang = code;
+                const rtl = new Set(["ar", "he", "fa", "ur"]);
+                document.documentElement.dir = rtl.has(code) ? "rtl" : "ltr";
+            }
+
+            function getSavedLang() {
+                const saved = localStorage.getItem("lang");
+                return (saved && (saved in MAP)) ? saved : "en";
+            }
+
+            function uniqueValues(obj) {
+                // Collect unique target codes once (Google expects a comma list string but array is fine here)
+                return Array.from(new Set(Object.values(obj))).join(',');
+            }
+
+            // 4) If header select is created later (e.g., templated), attach once it exists
+            document.addEventListener('DOMContentLoaded', () => {
+                const select = document.getElementById('languageSelect');
+                if (select) {
+                    const saved = getSavedLang();
+                    select.value = saved in MAP ? saved : 'en';
+                    select.addEventListener('change', function () { setLanguage(this.value); });
+                }
+            });
+
+            // 5) Load Google's script (async)
+            const s = document.createElement('script');
+            s.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+            s.defer = true;
+            document.head.appendChild(s);
+        })();
+    </script>
+
+    <style>
+
+        .scrollable-description::-webkit-scrollbar {
+            width: 5px;
+        }
+        .scrollable-description::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        .scrollable-description::-webkit-scrollbar-thumb {
+            background: #00a1ab;
+            border-radius: 10px;
+        }
+        .scrollable-description::-webkit-scrollbar-thumb:hover {
+            background: #008a93;
+        }
+        @media (max-width: 640px) {
+            .scrollable-description {
+                max-height: 30vh;
+            }
+            .scrollable-description p {
+                font-size: 0.9rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .scrollable-description {
+                max-height: 25vh;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+    #detail-view-overlay {
+        flex-direction: column;
+    }
+    
+    .detail-left, 
+    .detail-right {
+        width: 100% !important;
+        height: 50% !important;
+    }
+    
+    .detail-right {
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .detail-description-content {
+        max-height: calc(50vh - 150px);
+        overflow-y: auto;
+    }
+}
+
+/* Ensure detail-description-content is scrollable when needed */
+.detail-description-content {
+    max-height: 100%;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+
+
+        /* Import main.css styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #222222;
+            line-height: 1.6;
+            background-color: #fafafa;
+            overflow-x: hidden;
+            cursor: default;
+        }
+
+        .glass-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            padding: 0;
+        }
+
+        .glass-header.scrolled {
+            background: rgba(255, 255, 255, 1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+        }
+
+        /* Logo */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            padding: 2px 4px;
+            flex-shrink: 0;
+        }
+
+        .logo img {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+
+        .logo-text {
+            font-size: 26px;
+            font-weight: 700;
+            color: #002c5f;
+            line-height: 1.2;
+            white-space: nowrap;
+        }
+
+        .health-care-text {
+             color: #00a1ab; 
+        }
+
+        .logo-text span {
+            background: linear-gradient(135deg, #00a1ab, #008a93);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: #008a93;
+            background-clip: text;
+        }
+
+        /* Navigation Menu */
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-left: auto;
+            flex-wrap: nowrap;
+        }
+
+        .nav-link {
+            color: #002c5f;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            padding: 8px 16px;
+            position: relative;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: #00a1ab;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #00a1ab;
+        }
+
+        .nav-link:hover::after {
+            width: 70%;
+        }
+
+        /* Language Selector */
+        .language-selector-simple {
+            position: relative;
+            margin-left: 10px;
+            flex-shrink: 0;
+        }
+
+        .language-selector-simple select {
+            background: linear-gradient(135deg, #00a1ab 0%, #008a93 100%);
+            color: white;
+            width: 105px;
+            min-width: 105px;
+            max-width: 105px;
+            height: 36px;
+            padding: 8px 26px 8px 10px;
+            border: none;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 500;
+            font-family: inherit;
+            line-height: 1.2;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 161, 171, 0.3);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            user-select: none;
+            -webkit-user-select: none;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        .language-selector-simple select:hover {
+            box-shadow: 0 4px 12px rgba(0, 161, 171, 0.4);
+            transform: translateY(-1px);
+        }
+
+        .language-selector-simple select:focus {
+            box-shadow: 0 0 0 3px rgba(0, 161, 171, 0.2);
+            outline: none;
+        }
+
+        .language-selector-simple::after {
+            content: "▼";
+            font-size: 8px;
+            color: white;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Hamburger Menu */
+        .ham-icon {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 10px;
+            margin-left: 15px;
+            background: transparent;
+            border: none;
+        }
+
+        .ham-icon span {
+            width: 28px;
+            height: 3px;
+            background: #002c5f;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .ham-icon.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+            background: #00a1ab;
+        }
+
+        .ham-icon.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .ham-icon.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+            background: #00a1ab;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 767px) {
+            /* Mobile Navigation */
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 85%;
+                max-width: 320px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 80px 30px 30px;
+                gap: 0;
+                box-shadow: -5px 0 30px rgba(0, 0, 0, 0.2);
+                transition: right 0.3s ease;
+                z-index: 1001;
+                overflow-y: auto;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-link {
+                font-size: 16px;
+                padding: 15px 0;
+                width: 100%;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-link::after {
+                display: none;
+            }
+
+            .nav-menu .btn-glow {
+                margin: 20px 0 0 0;
+                width: 100%;
+            }
+
+            .language-selector-simple {
+                margin: 20px 0 0 0;
+                width: 100%;
+            }
+
+            .language-selector-simple select {
+                width: 100%;
+                min-width: unset;
+                max-width: unset;
+            }
+
+            /* Show hamburger menu */
+            .ham-icon {
+                display: flex;
+                z-index: 1002;
+            }
+
+            .logo img {
+                width: 45px;
+                height: 45px;
+            }
+
+            .logo-text {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .logo-text {
+                font-size: 22px;
+            }
+            
+            .nav-link {
+                font-size: 14px;
+                padding: 6px 12px;
+            }
+            
+            .language-selector-simple select {
+                width: 95px;
+                min-width: 95px;
+                max-width: 95px;
+                height: 34px;
+                font-size: 11px;
+                padding: 7px 24px 7px 9px;
+            }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Active nav link */
+        .nav-link.active {
+            color: #00a1ab;
+        }
+
+        .nav-link.active::after {
+            width: 70%;
+        }
+
+        /* Button styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00a1ab 0%, #008a93 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 161, 171, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #00a1ab;
+            color: #00a1ab;
+        }
+
+        .btn-outline:hover {
+            background: #00a1ab;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 161, 171, 0.3);
+        }
+
+        .btn-glow {
+            background: linear-gradient(135deg, #00a1ab 0%, #008a93 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 161, 171, 0.4);
+        }
+
+        .btn-glow:hover {
+            box-shadow: 0 6px 20px rgba(0, 161, 171, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .btn-lg {
+            padding: 16px 32px;
+            font-size: 16px;
+        }
+
+        /* Footer styles */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 0 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        footer.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            color: #3498db;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: #3498db;
+        }
+
+        .footer-column p {
+            margin-bottom: 10px;
+            color: #ecf0f1;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #34495e;
+            border-radius: 50%;
+            color: white;
+            transition: background 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: #3498db;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #34495e;
+            color: #95a5a6;
+        }
+
+        /* Hero section adjustments */
+        .hero-section {
+            padding-top: 100px;
+        }
+
+        /* Scroll animation classes */
+        .scroll-fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .scroll-fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-fade-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .scroll-fade-in-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scroll-fade-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .scroll-fade-in-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .language-selector-simple select,
+        .language-selector-simple select option {
+            -webkit-text-fill-color: rgb(19, 17, 17) !important;
+           
+            color: rgb(12, 12, 12) !important;
+        }
+
+        .language-selector-simple select option {
+            background: linear-gradient(135deg, #00a1ab 0%, #008a93 100%);
+        }
+
+        /* Custom animations from about.html */
+        @keyframes slideInRight {
+            0% {
+                transform: translateX(20px) scale(0.98);
+                opacity: 0;
+                filter: blur(5px);
+            }
+
+            100% {
+                transform: translateX(0) scale(1);
+                opacity: 1;
+                filter: blur(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            0% {
+                transform: translateX(-20px) scale(0.98);
+                opacity: 0;
+                filter: blur(5px);
+            }
+
+            100% {
+                transform: translateX(0) scale(1);
+                opacity: 1;
+                filter: blur(0);
+            }
+        }
+
+        .text-animate-meet,
+        .text-animate-team {
+            animation: slideInRight 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+            animation-delay: 0.1s;
+        }
+
+        .text-animate-our {
+            animation: slideInLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+            animation-delay: 0.3s;
+        }
+
+        .content-fade-in {
+            animation: fadeIn 1s ease-out 0.5s both;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Profile Card Styling */
+        .profile-card {
+            position: absolute;
+            top: 50%;
+            left: 40%;
+            transform: translate(-50%, -50%);
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            padding: 0 0 20px 0;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            opacity: 0;
+            transform: translate(calc(-50% + 100px), -50%) scale(0.9);
+            cursor: pointer;
+        }
+
+        .profile-card.active {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+            z-index: 4;
+            transition-delay: 0.1s;
+        }
+
+        .profile-card.next-1 {
+            opacity: 0.8;
+            transform: translate(calc(-50% + 130px), -50%) scale(0.9);
+            z-index: 3;
+            transition-delay: 0.2s;
+        }
+
+        .profile-card.next-2 {
+            opacity: 0.6;
+            transform: translate(calc(-50% + 260px), -50%) scale(0.8);
+            z-index: 2;
+            transition-delay: 0.3s;
+        }
+
+        .profile-card.hidden {
+            opacity: 0.4;
+            transform: translate(calc(-50% + 300px), -50%) scale(0.7);
+            z-index: 1;
+            transition-delay: 0s;
+        }
+
+        .profile-specialties {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+    max-width: 100%;
+    padding: 0 10px;
+}
+
+.specialty-card {
+    display: inline-block;
+    background-color: #f0f9ff;
+    color: #0369a1;
+    padding: 4px 8px; /* Reduce padding */
+    border-radius: 16px; /* More rounded */
+    font-size: 0.7rem; /* Smaller font */
+    font-weight: 500;
+    margin: 2px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    white-space: nowrap; /* Keep text on one line */
+    max-width: 100%; /* Prevent overflow */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Add ... if text is too long */
+}
+
+        .profile-image {
+            width: 100%;
+            height: 70%;
+            border-radius: 16px 16px 0 0;
+            object-fit: cover;
+            transition: all 0.4s ease 0.2s, transform 0.4s ease 0.2s;
+            transform: translateY(20px) scale(1.02);
+            opacity: 0;
+        }
+
+        .profile-card.active .profile-image {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+
+        .profile-content {
+            width: 100%;
+            height: 30%;
+            padding: 15px 25px 0 25px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        /* Detail View Overlay - UPDATED FOR SCROLLABLE CONTENT */
+        #detail-view-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #f9f6f0;
+            z-index: 9999; /* Increased z-index */
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            display: flex;
+            flex-direction: row;
+            overflow: hidden;
+        }
+
+        #detail-view-overlay.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .detail-left {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5%;
+            box-sizing: border-box;
+            position: relative;
+            background: #f9f6f0;
+            overflow: hidden;
+        }
+
+        .detail-right {
+            width: 50%;
+            height: 100%;
+            background-color: #C3C5B5;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Changed from center to flex-start */
+            padding: 5% 8%;
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Make detail-right scrollable on mobile */
+        @media (max-width: 767px) {
+            .detail-right {
+                overflow-y: auto;
+                padding-top: 60px; /* Add padding for close button */
+                justify-content: flex-start;
+            }
+        }
+
+        #detail-image {
+            position: absolute;
+            transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+            z-index: 101;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .detail-left.expanded-image-final #detail-image {
+            width: 90% !important;
+            height: 90% !important;
+            max-width: 600px;
+            max-height: 600px;
+            position: relative !important;
+            top: auto !important;
+            left: auto !important;
+            transform: none !important;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .name-container {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s, transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s;
+        }
+
+        .detail-right.visible-content .name-container {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .name-part {
+            display: inline-block;
+        }
+
+        .name-first {
+            color: #f9f6f0;
+        }
+
+        .name-last {
+            color: #1e1e1e;
+        }
+
+        .detail-description-content {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s cubic-bezier(0.215, 0.61, 0.355, 1) 0.9s, transform 1s cubic-bezier(0.215, 0.61, 0.355, 1) 0.9s;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .detail-right.visible-content .detail-description-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile-specific styles for scrollable description */
+        @media (max-width: 767px) {
+            .detail-description-content {
+                flex: 1;
+                overflow-y: auto;
+                padding-bottom: 20px;
+            }
+            
+            .scrollable-description-mobile {
+                max-height: 200px;
+                overflow-y: auto;
+                padding-right: 8px;
+                margin: 10px 0;
+            }
+            
+            /* Scrollbar styling */
+            .scrollable-description-mobile::-webkit-scrollbar {
+                width: 4px;
+            }
+            
+            .scrollable-description-mobile::-webkit-scrollbar-track {
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 2px;
+            }
+            
+            .scrollable-description-mobile::-webkit-scrollbar-thumb {
+                background: rgba(0, 161, 171, 0.5);
+                border-radius: 2px;
+            }
+            
+            .scrollable-description-mobile::-webkit-scrollbar-thumb:hover {
+                background: rgba(0, 161, 171, 0.7);
+            }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            z-index: 102;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid #1e1e1e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .close-btn:hover {
+            background: #1e1e1e;
+            color: #f9f6f0;
+        }
+
+        /* Mobile close button positioning */
+        @media (max-width: 767px) {
+            .close-btn {
+                top: 1rem;
+                right: 1rem;
+                width: 40px;
+                height: 40px;
+                background: rgba(255, 255, 255, 0.9);
+            }
+        }
+
+        .mission-section {
+            padding-top: 8rem;
+            padding-bottom: 8rem;
+        }
+
+        .vision-section {
+            padding-top: 8rem;
+            padding-bottom: 8rem;
+        }
+
+        /* Mobile menu styles */
+        .mobile-menu {
+            display: none;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        /* Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-left.animated {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-right.animated {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .scale-in.animated {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .stagger-animation>* {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .stagger-animation.animated>* {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-animation.animated>*:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .stagger-animation.animated>*:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .stagger-animation.animated>*:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .stagger-animation.animated>*:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+
+        .stagger-animation.animated>*:nth-child(5) {
+            transition-delay: 0.5s;
+        }
+
+        /* Key Features Animation */
+        .feature-item {
+            transition: all 0.5s ease;
+            transform: scale(0.95);
+            opacity: 0.8;
+            /* Add these lines to reduce horizontal space */
+            padding-left: 12px !important;
+            padding-right: 12px !important;
+            max-width: 280px;
+            margin: 0 auto;
+        }
+
+        /* Or if you want even more compact */
+        .feature-item.compact {
+            padding: 8px 10px !important;
+            max-width: 240px;
+            font-size: 0.9rem;
+        }
+
+        .feature-item.inactive {
+            transform: scale(0.95);
+            opacity: 0.8;
+        }
+
+        /* Updated Key Features Animation */
+        .feature-item {
+            transition: all 0.5s ease;
+            transform: scale(0.95);
+            opacity: 0.8;
+            max-width: 280px;
+            margin: 0 auto;
+        }
+
+        .feature-item.active {
+            transform: scale(1);
+            opacity: 1;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-item.inactive {
+            transform: scale(0.95);
+            opacity: 0.8;
+        }
+
+        /* Footer Animation */
+        .footer-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .footer-section.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .footer-section:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .footer-section:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .footer-section:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .footer-section:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+
+        /* Specialty Cards Styling */
+        .specialty-card {
+            display: inline-block;
+            background-color: #f0f9ff;
+            color: #0369a1;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin: 2px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Testimonials Section Styles */
+        .testimonials {
+            padding: 60px 0;
+            background: white;
+        }
+
+        .testimonials-container {
+            position: relative;
+            overflow: hidden;
+            margin-top: 40px;
+        }
+
+        .testimonial-wrapper {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 30px;
+        }
+
+        .testimonial img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px auto;
+            border: 3px solid #3498db;
+            display: block;
+        }
+
+        .testimonial p {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .name {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .position {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        /* Section Divider */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #eaeaea, transparent);
+            margin: 40px 0;
+        }
+
+        /* New Scroll Animation Classes */
+        .scroll-fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .scroll-fade-in.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-fade-in-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .scroll-fade-in-left.animated {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scroll-fade-in-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .scroll-fade-in-right.animated {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 1024px) {
+            .profile-card {
+                width: 380px;
+                height: 450px;
+                left: 50%;
+            }
+
+            .name-container {
+                font-size: 3rem;
+            }
+
+            .detail-left,
+            .detail-right {
+                width: 100%;
+                height: 50%;
+            }
+
+            #detail-view-overlay {
+                flex-direction: column;
+            }
+
+            .detail-left.expanded-image-final #detail-image {
+                max-width: 400px;
+                max-height: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .profile-card {
+                width: 280px;
+                height: 420px;
+            }
+
+            .name-container {
+                font-size: 2.5rem;
+            }
+
+            .detail-left.expanded-image-final #detail-image {
+                max-width: 300px;
+                max-height: 300px;
+            }
+
+            .testimonial {
+                padding: 20px;
+            }
+
+            .testimonial img {
+                width: 60px;
+                height: 60px;
+            }
+
+            .feature-item {
+                max-width: 220px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .profile-card {
+                width: 250px;
+                height: 380px;
+            }
+
+            .name-container {
+                font-size: 2rem;
+            }
+
+            .detail-left.expanded-image-final #detail-image {
+                max-width: 250px;
+                max-height: 250px;
+            }
+
+            .testimonial {
+                padding: 15px;
+            }
+
+            .testimonial p {
+                font-size: 0.9rem;
+            }
+
+            .feature-item {
+                max-width: 200px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-card {
+                width: 220px;
+                height: 350px;
+            }
+
+            .name-container {
+                font-size: 1.8rem;
+            }
+
+            .detail-left.expanded-image-final #detail-image {
+                max-width: 200px;
+                max-height: 200px;
+            }
+
+            .testimonial {
+                padding: 10px;
+            }
+
+            .testimonial img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .feature-item {
+                max-width: 180px;
+                font-size: 0.75rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+    /* Header adjustments */
+    .header-content {
+        padding: 8px 20px !important;
+    }
+    
+    .logo img {
+        width: 40px !important;
+        height: 40px !important;
+    }
+    
+    .logo-text {
+        font-size: 16px !important;
+    }
+    
+    /* Hero section */
+    .hero-section {
+        padding-top: 80px !important;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+    
+    .hero-section h1 {
+        font-size: 24px !important;
+        line-height: 1.3 !important;
+    }
+    
+    /* Mission/Vision sections */
+    .mission-section,
+    .vision-section {
+        padding: 60px 16px !important;
+    }
+    
+    .mission-section h2,
+    .vision-section h2 {
+        font-size: 26px !important;
+    }
+    
+    /* Team section */
+    #team-section {
+        padding: 30px 16px !important;
+        min-height: auto !important;
+    }
+    
+    #team-section .font-display {
+        font-size: 32px !important;
+        line-height: 1.2 !important;
+    }
+    
+    .profile-card {
+        width: 260px !important;
+        height: 380px !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+    }
+    
+    .profile-card.active {
+        transform: translate(-50%, -50%) scale(1) !important;
+    }
+    
+    .profile-card.next-1 {
+        transform: translate(calc(-50% + 80px), -50%) scale(0.9) !important;
+    }
+    
+    .profile-card.next-2 {
+        transform: translate(calc(-50% + 160px), -50%) scale(0.8) !important;
+    }
+    
+    .profile-card.hidden {
+        transform: translate(calc(-50% + 200px), -50%) scale(0.7) !important;
+    }
+    
+    /* Key Features - Make them fit on small screens */
+    #key-features .feature-item {
+        width: 100% !important;
+        max-width: 300px !important;
+        font-size: 13px !important;
+        padding: 8px 12px !important;
+        margin: 4px auto !important;
+    }
+    
+    /* Detail view overlay for mobile */
+    #detail-view-overlay {
+        flex-direction: column !important;
+    }
+    
+    .detail-left,
+    .detail-right {
+        width: 100% !important;
+        height: 50% !important;
+    }
+    
+    .detail-left.expanded-image-final #detail-image {
+        width: 80% !important;
+        height: 80% !important;
+        max-width: 250px !important;
+        max-height: 250px !important;
+    }
+    
+    .name-container {
+        font-size: 2.5rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .detail-description-content {
+        font-size: 14px !important;
+    }
+    
+    /* Testimonials */
+    .testimonial {
+        padding: 20px 16px !important;
+        margin: 0 8px !important;
+    }
+    
+    .testimonial p {
+        font-size: 14px !important;
+    }
+    
+    /* Footer */
+    footer {
+        padding: 30px 16px 20px !important;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+    
+    .footer-column h3 {
+        font-size: 18px !important;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 375px) {
+    .profile-card {
+        width: 240px !important;
+        height: 360px !important;
+    }
+    
+    #key-features .feature-item {
+        max-width: 280px !important;
+        font-size: 12px !important;
+    }
+    
+    .detail-left.expanded-image-final #detail-image {
+        max-width: 220px !important;
+        max-height: 220px !important;
+    }
+    
+    .name-container {
+        font-size: 2rem !important;
+    }
+    
+    .logo-text {
+        display: none; /* Hide logo text on very small screens */
+    }
+}
+
+/* Add this to your existing CSS for the close button */
+#close-detail-btn {
+     position: fixed !important;
+    top: 30px !important;
+    right: 30px !important;
+    z-index: 10000 !important; /* Higher than overlay */
+    width: 50px !important;
+    height: 50px !important;
+    background: rgba(0, 0, 0, 0.85) !important;
+    color: white !important;
+    border: 2px solid white !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+    opacity: 0; /* Hidden by default */
+    pointer-events: none; /* Disabled by default */
+}
+
+#detail-view-overlay.visible #close-detail-btn {
+    opacity: 1 !important;
+    pointer-events: all !important;
+}
+
+#close-detail-btn:hover {
+    background: #00a1ab !important;
+    transform: scale(1.1) !important;
+    border-color: #00a1ab !important;
+}
+
+/* Mobile-specific close button */
+@media (max-width: 767px) {
+    #close-detail-btn {
+        top: 20px !important;
+        right: 20px !important;
+        width: 44px !important;
+        height: 44px !important;
+        background: rgba(0, 0, 0, 0.9) !important;
+    }
+    
+    #close-detail-btn svg {
+        width: 20px !important;
+        height: 20px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #close-detail-btn {
+        top: 15px !important;
+        right: 15px !important;
+        width: 40px !important;
+        height: 40px !important;
+    }
+    
+    #close-detail-btn svg {
+        width: 18px !important;
+        height: 18px !important;
+    }
+
+
+
+}    </style>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-green': '#10b981',
+                        'primary-blue': '#2c3e50',
+                        'secondary-teal': '#3498db',
+                        'light-teal': '#13a5a5',
+                        'light-bg': '#f8f6f6',
+                        'card-bg': '#13a5a51a',
+                        'dark-text': '#1f2937',
+                        'footer-bg': '#2c3e50',
+                        'custom-blue': '#3498db',
+                        'custom-dark-blue': '#2980b9',
+                        'custom-dark': '#2c3e50',
+                        'custom-light-gray': '#f5f7fa',
+                        'custom-gray': '#777777',
+                        'custom-light': '#bdc3c7',
+                        'custom-teal': '#00a1ab',
+                        'custom-dark-teal': '#002c5f'
+                    },
+                    fontFamily: {
+                        'display': ['Playfair Display', 'serif'],
+                        'sans': ['Inter', 'sans-serif'],
+                        'inter': ['Inter', 'Segoe UI', 'sans-serif'],
+                        'playfair': ['Playfair Display', 'serif']
+                    },
+                    boxShadow: {
+                        'card': '0 10px 30px rgba(0, 0, 0, 0.08)',
+                        'partner': '0 5px 15px rgba(0, 0, 0, 0.1)',
+                        'partner-hover': '0 10px 25px rgba(0, 0, 0, 0.15)',
+                        'nav-btn': '0 4px 10px rgba(0, 0, 0, 0.1)',
+                        'nav-btn-hover': '0 6px 15px rgba(0, 0, 0, 0.15)'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-inter text-gray-800 bg-custom-light-gray overflow-x-hidden">
+    <!-- Hidden container Google needs -->
+    <div id="google_translate_element" style="display:none"></div>
+
+    <!-- Header with Glassmorphism -->
+    <header class="glass-header">
+        <div class="header-content">
+            <!-- Logo -->
+            <a href="index.html" class="logo" style="margin-right: auto;">
+                <img src="assets/logo.png" alt="Gods Life Health Care" />
+                <div class="logo-text">God's Life <span class="health-care-text">Health Care</span></div>
+            </a>
+
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link" data-translate="home">Home</a>
+                <a href="about.html" class="nav-link" data-translate="about">About Us</a>
+                <a href="hospitals.html" class="nav-link" data-translate="hospital">Hospital</a>
+                <a href="department.html" class="nav-link" data-translate="treatments">Treatments</a>
+                <a href="doctor.html" class="nav-link" data-translate="doctors">Doctors</a>
+                <a href="services1.html" class="nav-link" data-translate="services">Services</a>
+                <a href="blog/Blog.html" class="nav-link" data-translate="blog">knowledge</a>
+
+                <button class="btn btn-glow" onclick="openConsultationWizard()">
+                    <i class="fas fa-calendar-check"></i>
+                    <span data-translate="getConsultation">Consultation</span>
+                </button>
+
+                <div class="language-selector-simple">
+                    <select id="languageSelect" onchange="changeLanguage(this.value)">
+                        <!-- Africa -->
+                        <optgroup label="Africa">
+                            <option value="en-ke">🇰🇪 Kenya</option>
+                            <option value="fr-cm">🇨🇲 Cameroon</option>
+                            <option value="am">🇪🇹 Ethiopia</option>
+                            <option value="en-ug">🇺🇬 Uganda</option>
+                            <option value="en-gh">🇬🇭 Ghana</option>
+                            <option value="en-zm">🇿🇲 Zambia</option>
+                            <option value="sw">🇹🇿 Tanzania</option>
+                            <option value="en-mu">🇲🇺 Mauritius</option>
+                            <option value="mg">🇲🇬 Madagascar</option>
+                            <option value="en-sl">🇸🇱 S. Leone</option>
+                            <option value="ar-ly">🇱🇾 Libya</option>
+                            <option value="ar-sd">🇸🇩 Sudan</option>
+                            <option value="en-ng">🇳🇬 Nigeria</option>
+                        </optgroup>
+
+                        <!-- Middle East -->
+                        <optgroup label="Middle East">
+                            <option value="ar-kw">🇰🇼 Kuwait</option>
+                            <option value="ar-sa">🇸🇦 Saudi</option>
+                            <option value="ar-sy">🇸🇾 Syria</option>
+                            <option value="ar-iq">🇮🇶 Iraq</option>
+                            <option value="ar-om">🇴🇲 Oman</option>
+                            <option value="ar-jo">🇯🇴 Jordan</option>
+                            <option value="ar-ye">🇾🇪 Yemen</option>
+                        </optgroup>
+
+                        <!-- CIS Countries -->
+                        <optgroup label="CIS">
+                            <option value="uz">🇺🇿 Uzbek</option>
+                            <option value="kk">🇰🇿 Kazakh</option>
+                            <option value="tk">🇹🇲 Turkmen</option>
+                            <option value="tg">🇹🇯 Tajik</option>
+                        </optgroup>
+
+                        <!-- Asia -->
+                        <optgroup label="Asia">
+                            <option value="my">🇲🇲 Myanmar</option>
+                            <option value="km">🇰🇭 Cambodia</option>
+                            <option value="bn">🇧🇩 Bangladesh</option>
+                            <option value="ne">🇳🇵 Nepal</option>
+                            <option value="dz">🇧🇹 Bhutan</option>
+                            <option value="si">🇱🇰 Sri Lanka</option>
+                            <option value="hi">🇮🇳 India</option>
+                        </optgroup>
+
+                        <!-- Americas -->
+                        <optgroup label="Americas">
+                            <option value="es-mx">🇲🇽 Mexico</option>
+                            <option value="es-co">🇨🇴 Colombia</option>
+                            <option value="pt-br">🇧🇷 Brazil</option>
+                            <option value="es-pe">🇵🇪 Peru</option>
+                            <option value="es-do">🇩🇴 Dom. Rep</option>
+                        </optgroup>
+
+                        <!-- Western -->
+                        <optgroup label="Western">
+                            <option value="en" selected>🇺🇸 US</option>
+                            <option value="en-gb">🇬🇧 UK</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </nav>
+
+            <div class="ham-icon" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero/About Section -->
+    <section class="py-16 px-4 md:px-8 lg:px-16 bg-white hero-section">
+        <div class="container mx-auto flex flex-col lg:flex-row items-center gap-12">
+            <div class="lg:w-1/2 scroll-fade-in">
+                <span class="bg-light-teal text-white px-4 py-1 rounded-full text-sm font-medium">OUR STORY</span>
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mt-6 mb-4 text-primary-blue">
+                    Dedicated to Your <br><span class="text-light-teal italic">Health & Wellness</span>
+                </h1>
+                <br>
+                <p class="text-gray-600 mb-8 max-w-lg">
+                    At God's Life Healthcare, we believe that hope and healing go hand in hand. Our mission is to make
+                    world-class medical care accessible to everyone, wherever they are.
+                    We are more than a healthcare service. We're your partner in your wellness journey guiding,
+                    supporting, and caring for you every step of the way.
+                </p>
+                <div class="bg-card-bg p-4 rounded-lg scroll-fade-in" data-delay="0.1">
+                    <div class="flex items-start gap-4">
+                        <i class="fa-solid fa-chart-line text-light-teal text-2xl mt-1"></i>
+                        <div>
+                            <h4 class="font-bold text-lg">Virtual consultation platform</h4>
+                            <p class="text-gray-600 mt-2">
+                                Patients can connect with expert doctors and specialists to discuss their health
+                                conditions, explore treatment options, and make informed decisions all before traveling.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                
+            </div>
+            <div class="lg:w-1/2 mt-10 lg:mt-0 flex justify-center scroll-fade-in-right">
+                <img src="./assets/family1.jpg" alt="happy family"
+                    class="rounded-2xl shadow-xl w-full max-w-md lg:max-w-lg">
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-16 px-4 md:px-8 lg:px-16 bg-gray-50">
+        <div class="container mx-auto">
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2 scroll-fade-in-left">
+                    <div class="mb-8">
+                        <img src="./assets/doctorpatient.jpg" alt="doctor with patient"
+                            class="rounded-2xl shadow-lg w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="lg:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-primary-blue scroll-fade-in">Why Patients Choose
+                        God's Life?</h2>
+                    <p class="text-gray-600 mb-8 scroll-fade-in" data-delay="0.1">
+                        At God's Life Health Care, we go beyond borders to bring hope, healing, and expert care closer
+                        to you. Whether you're seeking treatment in India or connecting virtually from anywhere in the
+                        world, we make your health journey smooth, trusted, and personal.
+                    </p>
+
+                    <div class="bg-card-bg p-4 rounded-2xl w-[400px] mx-auto scroll-fade-in" data-delay="0.2">
+                        <h3 class="text-xl font-bold mb-4 text-center text-light-teal">Key Features</h3>
+                        <div class="space-y-3 flex flex-col items-center" id="key-features">
+                            <div class="feature-item flex items-center bg-light-teal text-white px-4 py-3 rounded-full transition-all duration-500 w-[550px]"
+                                data-delay="0">
+                                <span class="mr-3">✔</span> Experienced & Certified
+                            </div>
+                            <div class="feature-item flex items-center bg-light-teal text-white px-4 py-3 rounded-full transition-all duration-500 w-[450px]"
+                                data-delay="200">
+                                <span class="mr-3">✔</span> 24/7 Medical Support
+                            </div>
+                            <div class="feature-item flex items-center bg-light-teal text-white px-4 py-3 rounded-full transition-all duration-500 w-[450px]"
+                                data-delay="400">
+                                <span class="mr-3">✔</span> Advanced Technology
+                            </div>
+                            <div class="feature-item flex items-center bg-light-teal text-white px-4 py-3 rounded-full transition-all duration-500 w-[450px]"
+                                data-delay="600">
+                                <span class="mr-3">✔</span> Patient-Centric Approach
+                            </div>
+                            <div class="feature-item flex items-center bg-light-teal text-white px-4 py-3 rounded-full transition-all duration-500 w-[450px]"
+                                data-delay="800">
+                                <span class="mr-3">✔</span> Seamless Appointments
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <style>
+        :root {
+            --primary-blue: #002c5f;
+            --light-teal: #00a1ab;
+            --gray-1000: #4a5568;
+        }
+
+        .scroll-fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .scroll-fade-in-left {
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .scroll-fade-in.visible,
+        .scroll-fade-in-left.visible {
+            opacity: 1;
+            transform: translate(0);
+        }
+
+        .text-primary-blue {
+            color: var(--primary-blue);
+        }
+
+        .text-light-teal {
+            color: var(--light-teal);
+        }
+
+        .text-gray-1000 {
+            color: var(--gray-1000);
+        }
+
+        .bg-light-teal {
+            background-color: var(--light-teal);
+        }
+    </style>
+    </head>
+
+    <body class="bg-gray-50">
+        <!-- Mission Section -->
+        <section class="mission-section px-4 md:px-8 lg:px-16 bg-white py-16">
+            <div class="container mx-auto">
+                <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
+                    <!-- Image Container -->
+                    <div class="lg:w-1/2 relative mb-10 lg:mb-0">
+                        <div
+                            class="w-full max-w-md lg:max-w-none mx-auto lg:w-full h-[320px] lg:h-[450px] bg-white rounded-xl shadow-2xl overflow-hidden z-10">
+                            <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80"
+                                alt="Medical equipment" class="w-full h-full object-cover">
+                        </div>
+                        <div
+                            class="absolute -bottom-6 -right-4 w-52 h-36 lg:w-72 lg:h-52 bg-light-teal rounded-xl shadow-xl overflow-hidden hidden md:block lg:-right-10 lg:-bottom-10 z-20">
+                            <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+                                alt="Medical team" class="w-full h-full object-cover opacity-100">
+                        </div>
+                    </div>
+
+                    <!-- Text Content -->
+                    <div class="lg:w-1/2">
+                        <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-6 text-primary-blue">Our Mission
+                        </h2>
+                        <p class="text-gray-1000 mb-8 leading-relaxed">
+                            To provide exceptional healthcare services that exceed patient expectations through
+                            innovation,
+                            quality care, and a commitment to wellness. We aim to build lasting relationships and create
+                            healthcare experiences that enhance lives. Through precision, expertise, and a
+                            patient-centric
+                            approach, we strive to exceed expectations in every interaction. Our dedication to integrity
+                            and
+                            excellence drives us to build lasting relationships and a legacy of trust.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex items-start text-lg">
+                                <svg class="flex-shrink-0 w-6 h-6 mr-3 text-light-teal mt-1" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span class="font-medium">Fostering Sustainable Health and Well-being</span>
+                            </div>
+                            <div class="flex items-start text-lg">
+                                <svg class="flex-shrink-0 w-6 h-6 mr-3 text-light-teal mt-1" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span class="font-medium">Innovating for Better Healthcare Solutions</span>
+                            </div>
+                            <div class="flex items-start text-lg">
+                                <svg class="flex-shrink-0 w-6 h-6 mr-3 text-light-teal mt-1" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span class="font-medium">Patient-Centric Approach</span>
+                            </div>
+                            <div class="flex items-start text-lg">
+                                <svg class="flex-shrink-0 w-6 h-6 mr-3 text-light-teal mt-1" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span class="font-medium">Building Stronger Health Communities</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            // Simple scroll animation
+            document.addEventListener('DOMContentLoaded', function () {
+                const observerOptions = {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+
+                const observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                }, observerOptions);
+
+                // Observe elements with animation classes
+                const animatedElements = document.querySelectorAll('.scroll-fade-in, .scroll-fade-in-left');
+                animatedElements.forEach(el => {
+                    observer.observe(el);
+                });
+            });
+        </script>
+
+        <!-- Vision Section -->
+        <section class="vision-section px-4 md:px-8 lg:px-16 bg-grey-150">
+            <div class="container mx-auto">
+                <div class="flex flex-col lg:flex-row-reverse items-center gap-16">
+                    <div class="lg:w-1/2 relative scroll-fade-in-right">
+                        <div
+                            class="w-full max-w-md lg:max-w-none lg:w-[680px] h-[320px] lg:h-[450px] bg-white rounded-xl shadow-2xl overflow-hidden z-10">
+                            <img src="https://media.istockphoto.com/id/1354172627/photo/medical-research-laboratory-portrait-of-a-handsome-male-scientist-using-digital-tablet.jpg?s=612x612&w=0&k=20&c=-XS_A69Cl-IqQDPTFtI8WwhQPjS-lJDzETwMPznq6gA="
+                                alt="Medical research" class="w-full h-full object-cover">
+                        </div>
+
+                        <div
+                            class="absolute -bottom-6 -left-4 w-52 h-36 lg:w-72 lg:h-52 bg-gray-400 rounded-xl shadow-xl overflow-hidden hidden md:block lg:-left-10 lg:-bottom-10 z-20">
+                            <img src="https://www.undp.org/sites/g/files/zskgke326/files/2021-06/UNDP-India-2021-COVID19-vaccination-22.jpg"
+                                alt="Healthcare innovation" class="w-full h-full object-cover opacity-80">
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 mt-10 lg:mt-0">
+                        <h2
+                            class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-6 text-primary-blue scroll-fade-in">
+                            Our Vision</h2>
+                        <p class="text-gray-600 mb-8 leading-relaxed scroll-fade-in" data-delay="0.1">
+                            At God's Life Healthcare, our vision is to redefine the future of healthcare through
+                            innovation,
+                            compassion, and excellence. We aim to create healthcare experiences that not only heal but
+                            also
+                            contribute to the well-being of individuals and communities. By embracing cutting-edge
+                            technology and patient-centered practices, we strive to lead the industry toward a
+                            healthier,
+                            more connected future. Our focus is on delivering value, quality, and longevity in every
+                            patient
+                            interaction. Together, we envision a world where healthcare empowers progress and transforms
+                            lives.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex items-start text-lg scroll-fade-in" data-delay="0.2">
+                                <svg class="flex-shrink-0 w-6 h-6 mr-3 text-light-teal mt-1" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span class="font-medium">Inspiring Modern Healthcare Solutions</span>
+                            </div>
+                            <div class="flex items-start text-lg scroll-fade-in" data-delay="0.3">
+                                <svg class="flex-shrink-0 w-6 h-6 mr-3 text-light-teal mt-1" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 01118 0z" />
+                                </svg>
+                                <span class="font-medium">Pioneering Sustainable Healthcare</span>
+                            </div>
+                            <div class="flex items-start text-lg scroll-fade-in" data-delay="0.4">
+                                <svg class="flex-shrink-0 w-6 h-6 mr-3 text-light-teal mt-1" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span class="font-medium">Empowering Communities Through Health Innovation</span>
+                            </div>
+                            <div class="flex items-start text-lg scroll-fade-in" data-delay="0.5">
+                                <svg class="flex-shrink-0 w-6 h-6 mr-3 text-light-teal mt-1" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span class="font-medium">Leading the Future of Healthcare Solutions</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="team-section" class="min-h-screen flex flex-col lg:flex-row p-0 bg-white">
+            <div class="lg:w-[30%] flex flex-col justify-center py-4 lg:py-8 px-4 sm:px-6 ml-auto">
+                <div class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-display font-medium leading-tight">
+                    <div id="meet-text" class="text-animate-meet scroll-fade-in">MEET</div>
+                    <div id="our-text" class="text-animate-our text-teal-200 my-1 lg:my-2 scroll-fade-in"
+                        data-delay="0.1">
+                        OUR</div>
+                    <div id="team-text" class="text-animate-team scroll-fade-in" data-delay="0.2">TEAM</div>
+                </div>
+
+                <div class="mt-8 lg:mt-12 content-fade-in scroll-fade-in" data-delay="0.3">
+                    <p class="font-sans text-base sm:text-lg text-gray-700 max-w-md leading-relaxed">
+                        When you need fast and effective medical services, you can trust our team at God's Life
+                        Healthcare.
+                    </p>
+                </div>
+            </div>
+
+            <div class="lg:w-[50%] flex flex-col items-center justify-center relative p-0 lg:p-0 mt-0 lg:mt-0 mr-auto">
+                <div id="card-stack"
+                    class="relative w-full max-w-2xl h-[500px] flex items-center justify-center scroll-fade-in-right">
+                    <!-- Cards will be inserted here by JavaScript -->
+                </div>
+
+                <div class="w-full max-w-4xl lg:w-[90%] xl:w-[85%] mt-8 lg:mt-12 flex flex-col items-center content-fade-in scroll-fade-in"
+                    data-delay="0.4">
+                    <div class="flex items-center gap-6 mt-4">
+                        <button id="prev-btn"
+                            class="nav-arrow w-14 h-14 rounded-full border border-dark-text flex items-center justify-center cursor-pointer transition-all hover:bg-dark-text hover:text-amber-50"
+                            aria-label="Previous profile" disabled>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M19 12H5"></path>
+                                <path d="M12 19l-7-7 7-7"></path>
+                            </svg>
+                        </button>
+
+                        <span id="page-indicator"
+                            class="text-base font-sans text-dark-text px-4 py-2 bg-white/50 rounded-full transition-all duration-300">
+                            1 / 5
+                        </span>
+
+                        <button id="next-btn"
+                            class="nav-arrow w-14 h-14 rounded-full border border-dark-text flex items-center justify-center cursor-pointer transition-all hover:bg-dark-text hover:text-amber-50"
+                            aria-label="Next profile">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"></path>
+                                <path d="M12 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Detail View Overlay -->
+        <div id="detail-view-overlay">
+            <button id="close-detail-btn" class="close-btn" aria-label="Close detail view">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+
+            <div class="detail-left" id="detail-left">
+                <img id="detail-image" src="" alt="" style="width: 0; height: 0; opacity: 0;" />
+            </div>
+
+            <div class="detail-right" id="detail-right">
+                <h1 class="name-container">
+                    <span id="detail-first-name" class="name-part name-first"></span>
+                    <span id="detail-last-name" class="name-part name-last ml-2"></span>
+                </h1>
+
+                <div id="detail-description-content" class="detail-description-content font-sans text-dark-text">
+                    <!-- Content will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials bg-gray-100">
+            <div class="container mx-auto px-4 max-w-7xl">
+                <div class="section-title text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-custom-dark mb-4 scroll-fade-in">Patient Testimonials
+                    </h2>
+                    <p class="text-custom-gray text-lg max-w-2xl mx-auto scroll-fade-in" data-delay="0.1">Hear from our
+                        patients who have experienced our exceptional healthcare services</p>
+                </div>
+
+                <div class="testimonials-container">
+                    <div class="testimonial-wrapper stagger-animation scroll-fade-in" data-delay="0.2">
+                        <div class="testimonial">
+                            <img src="assets/Mohammad.png" alt="Mohammad Qasim Fahim">
+                            <p>"Gods Life Health Care transformed my life. The cardiac surgery I received in India was world-class, and I saved over $100,000 compared to costs in the US. The team handled everything from flights to hospital stays."</p>
+                            <div class="name">Mohammad Qasim Fahim</div>
+                            <div class="position">Heart Surgery Patient</div>
+                        </div>
+
+                        <div class="testimonial">
+                            <img src="assets/Esther Thompson.png" alt="Esther Thompson">
+                            <p>"I was skeptical at first, but the entire experience exceeded my expectations. The hospital was modern, the doctors were highly qualified, and the care was exceptional. I can walk pain-free now!"</p>
+                            <div class="name">Esther Thompson</div>
+                            <div class="position">Knee Replacement Patient</div>
+                        </div>
+
+                        <div class="testimonial">
+                            <img src="assets/Sobekne.png" alt="Sobekne Feru">
+                            <p>"The dental work I received was outstanding. The facilities were state-of-the-art, and the dentist was incredibly skilled. Plus, I saved 70% on costs. I highly recommend Gods Life Health Care!"</p>
+                            <div class="name">Sobekne Feru</div>
+                            <div class="position">Dental Implant Patient</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-column scroll-fade-in">
+                        <h3>Gods Life Health Care</h3>
+                        <p>Providing world-class medical tourism services with compassion and excellence.</p>
+                        <div class="social-icons">
+                        <a href="https://www.facebook.com/godslife.healthcare/"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.tiktok.com/@godslifehealthcare"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.instagram.com/hgodslife/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/gods-life-undefined-956b4a391/"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    </div>
+                    
+                    <div class="footer-column scroll-fade-in-left">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="services1.html">Services</a></li>
+                            <li><a href="hospitals.html">Hospitals</a></li>
+                            <li><a href="doctor.html">Doctors</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column scroll-fade-in">
+                        <h3>Medical Services</h3>
+                        <ul>
+                            <li><a href="#">Cardiac Surgery</a></li>
+                            <li><a href="#">Orthopedic Surgery</a></li>
+                            <li><a href="#">Cosmetic Surgery</a></li>
+                            <li><a href="#">Dental Care</a></li>
+                            <li><a href="#">Fertility Treatments</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column scroll-fade-in-right">
+                        <h3>Contact Us</h3>
+                        <p><i class="fas fa-map-marker-alt"></i>  18 East Azad Nagar near Krishna Nagar Delhi 110051</p>
+                        <p><i class="fas fa-phone"></i>  +91 70655 14010'</p>
+                        <p><i class="fas fa-envelope"></i>  support@godslifehealthcare.com</p>
+                    </div>
+                </div>
+                
+                <div class="copyright">
+                    <p>&copy; 2025 Gods Life Health Care. All rights reserved. Developed by 
+                    <a href="https://singhatechne.com" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       style="color: #3498db; text-decoration: none; transition: color 0.3s ease;">
+                       Singha Techne
+                    </a>
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            // Navigation Toggle
+            function toggleMenu() {
+                const navMenu = document.querySelector('.nav-menu');
+                const hamIcon = document.querySelector('.ham-icon');
+
+                navMenu.classList.toggle('active');
+                hamIcon.classList.toggle('active');
+
+                if (navMenu.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            }
+
+            // Close menu when clicking nav links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function () {
+                    const navMenu = document.querySelector('.nav-menu');
+                    const hamIcon = document.querySelector('.ham-icon');
+
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        hamIcon.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function (event) {
+                const navMenu = document.querySelector('.nav-menu');
+                const hamIcon = document.querySelector('.ham-icon');
+                const logo = document.querySelector('.logo');
+
+                if (!navMenu.contains(event.target) && !hamIcon.contains(event.target) && !logo.contains(event.target)) {
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        hamIcon.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                }
+            });
+
+            // Header Scroll Effect
+            window.addEventListener('scroll', function () {
+                const header = document.querySelector('.glass-header');
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Language Selection
+            function changeLanguage(value) {
+                setLanguage(value);
+            }
+
+            // Language functionality
+            (function () {
+                const MAP = {
+                    "en": "en", "en-gb": "en", "en-ke": "en", "en-ug": "en", "en-gh": "en",
+                    "en-zm": "en", "en-mu": "en", "en-sl": "en", "en-ng": "en",
+                    "fr-cm": "fr",
+                    "ar": "ar", "ar-ly": "ar", "ar-sd": "ar", "ar-kw": "ar", "ar-sa": "ar",
+                    "ar-sy": "ar", "ar-iq": "ar", "ar-om": "ar", "ar-jo": "ar", "ar-ye": "ar",
+                    "am": "am", "sw": "sw", "mg": "mg",
+                    "uz": "uz", "kk": "kk", "tk": "tk", "tg": "tg",
+                    "my": "my", "km": "km", "bn": "bn", "ne": "ne", "hi": "hi",
+                    "in": "in", "dz": "en", "si": "si",
+                    "es-mx": "es", "es-co": "es", "es-pe": "es", "es-do": "es",
+                    "pt-br": "pt"
+                };
+
+                function setLanguage(appValue, reload = true) {
+                    const tgt = MAP[appValue] || "en";
+                    setHtmlLangDir(tgt);
+                    localStorage.setItem("lang", appValue);
+
+                    const cookieVal = "/auto/" + tgt;
+                    const exp = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toUTCString();
+                    document.cookie = "googtrans=" + cookieVal + "; expires=" + exp + "; path=/";
+                    
+                    if (reload) location.reload();
+                }
+
+                function setHtmlLangDir(code) {
+                    document.documentElement.lang = code;
+                    const rtl = new Set(["ar", "he", "fa", "ur"]);
+                    document.documentElement.dir = rtl.has(code) ? "rtl" : "ltr";
+                }
+
+                function getSavedLang() {
+                    const saved = localStorage.getItem("lang");
+                    return (saved && (saved in MAP)) ? saved : "en";
+                }
+
+                // Initialize language selector
+                document.addEventListener('DOMContentLoaded', () => {
+                    const select = document.getElementById('languageSelect');
+                    if (select) {
+                        const saved = getSavedLang();
+                        select.value = saved in MAP ? saved : 'en';
+                        select.addEventListener('change', function () { 
+                            setLanguage(this.value); 
+                        });
+                    }
+                });
+            })();
+
+            // Team data
+            const teamData = [
+                {
+                    name: "Himanshu Sethi",
+                    title: "Founder",
+                    specialties: ["Primary Care", "Preventive Care"],
+                    image: "/assets/himanshupic1.png",
+                    alt: "Dr. Himanshu Sethi, MD",
+                    description: "With over a decade of hands-on experience across India's leading hospitals and healthcare organizations, Himanshu Sethi has built his career on trust, compassion, and excellence in patient care. Before founding God's Life Health Care, he worked extensively in major medical institutions such as Sanjeevan Hospital (Delhi), Narinder Mohan Hospital (Ghaziabad), APR Healthcare (Noida), and Felix Hospital (Noida). His diverse experience includes overseeing international patient coordination, organizing large-scale medical events, managing corporate healthcare partnerships, and supporting treatment for global clients.",
+                    titleDisplay: ""
+                },
+                
+                {
+                    name: "Neel Kusum Chaudhary",
+                    title: "Associate of Business Director",
+                    specialties: ["LPN, Licensed Practical Nurse"],
+                    image: "/assets/kusumpic1.png",
+                    alt: "Neel Kusum Chaudhary, LPN",
+                    description: "Kusum is a Registered Nurse (RN/IEN) with over 10 years of diverse experience in acute care, critical care, post-operative care, and community health. I have worked across leading hospitals, contributing to patient care, clinical training, and major accreditation processes such as NABH and JCIA. Skilled in tracheostomy care, ventilator management, dementia care, and patient-centered nursing, I am known for my professionalism, adaptability, and strong work ethic. I also have experience as a nursing educator, enhancing staff competency and clinical standards. Fluent in English, Hindi, and Nepali, I bring compassion, technical expertise, and dedication to every healthcare setting I serve.",
+                    titleDisplay: "Licensed Practical Nurse"
+                },
+               
+            ];
+
+            let currentIndex = 0;
+            const totalProfiles = teamData.length;
+
+            const cardStackEl = document.getElementById('card-stack');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const pageIndicator = document.getElementById('page-indicator');
+            const detailOverlayEl = document.getElementById('detail-view-overlay');
+            const detailRightEl = document.getElementById('detail-right');
+            const detailLeftEl = document.getElementById('detail-left');
+            const detailImageEl = document.getElementById('detail-image');
+            const detailFirstNameEl = document.getElementById('detail-first-name');
+            const detailLastNameEl = document.getElementById('detail-last-name');
+            const detailDescriptionEl = document.getElementById('detail-description-content');
+            const closeDetailBtn = document.getElementById('close-detail-btn');
+
+            // Text elements for animation reset
+            const meetText = document.getElementById('meet-text');
+            const ourText = document.getElementById('our-text');
+            const teamText = document.getElementById('team-text');
+
+            let isAnimating = false;
+            const ANIMATION_DURATION = 600; // Duration for card and text animation
+
+
+            function animateText() {
+                // Force browser to reset animation by removing and reapplying classes
+                meetText.classList.remove('text-animate-meet');
+                ourText.classList.remove('text-animate-our');
+                teamText.classList.remove('text-animate-team');
+
+                // Timeout needed to allow repaint (class removal) before re-addition
+                setTimeout(() => {
+                    meetText.classList.add('text-animate-meet');
+                    ourText.classList.add('text-animate-our');
+                    teamText.classList.add('text-animate-team');
+                }, 50);
+            }
+
+            function createCardElements() {
+                cardStackEl.innerHTML = ''; // Clear existing content
+                teamData.forEach((profile, index) => {
+                    const cardEl = document.createElement('div');
+                    cardEl.classList.add('profile-card');
+                    cardEl.setAttribute('data-index', index);
+
+                    // Construct specialties HTML as cards
+                    const specialtiesHTML = profile.specialties.map(spec =>
+                        `<span class="specialty-card">${spec}</span>`
+                    ).join('');
+
+                    // Added event listener to the card
+                    cardEl.addEventListener('click', (e) => {
+                        // Only allow click if it's the active card
+                        if (cardEl.classList.contains('active')) {
+                            showProfileDetail(e, index);
+                        }
+                    });
+
+                    cardEl.innerHTML = `
+                    <img src="${profile.image}" alt="${profile.alt}" class="profile-image">
+                    <div class="profile-content">
+                        <h2 class="profile-name text-xl font-bold text-center">${profile.name}</h2>
+                        <p class="profile-title text-gray-600 text-center mt-2">${profile.title}</p>
+                        <div class="profile-specialties flex flex-wrap justify-center gap-2 mt-3">
+                            ${specialtiesHTML}
+                        </div>
+                    </div>
+                `;
+
+                    cardStackEl.appendChild(cardEl);
+                });
+                updateCardClasses(); // Apply initial classes
+
+                
+            }
+
+
+            function updateCardClasses() {
+                const cards = document.querySelectorAll('.profile-card');
+
+                // Update button states
+                prevBtn.disabled = currentIndex === 0 || isAnimating;
+                nextBtn.disabled = currentIndex >= totalProfiles - 1 || isAnimating;
+
+                // Update profile counter
+                pageIndicator.textContent = `${currentIndex + 1} / ${totalProfiles}`;
+
+                cards.forEach((card, index) => {
+                    card.classList.remove('active', 'next-1', 'next-2', 'hidden');
+
+                    if (index === currentIndex) {
+                        card.classList.add('active');
+                    } else if (index === currentIndex + 1) {
+                        card.classList.add('next-1');
+                    } else if (index === currentIndex + 2) {
+                        card.classList.add('next-2');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            }
+
+            function nextProfile() {
+                if (currentIndex < totalProfiles - 1 && !isAnimating) {
+                    isAnimating = true;
+                    currentIndex++;
+                    updateCardClasses();
+                    animateText(); // Re-run text animation
+
+                    setTimeout(() => {
+                        isAnimating = false;
+                        updateCardClasses(); // Re-run to update button disabled state
+                    }, ANIMATION_DURATION);
+                }
+            }
+
+            function prevProfile() {
+                if (currentIndex > 0 && !isAnimating) {
+                    isAnimating = true;
+                    currentIndex--;
+                    updateCardClasses();
+                    animateText(); // Re-run text animation
+
+                    setTimeout(() => {
+                        isAnimating = false;
+                        updateCardClasses(); // Re-run to update button disabled state
+                    }, ANIMATION_DURATION);
+                }
+            }
+
+            // --- NEW FUNCTIONALITY: Detail View Transition ---
+
+            function getProfileImagePosition(cardIndex) {
+                const cardEl = document.querySelector(`.profile-card[data-index="${cardIndex}"]`);
+                if (!cardEl) return null;
+
+                // Get the image element inside the card
+                const imageEl = cardEl.querySelector('.profile-image');
+                if (!imageEl) return null;
+
+                // Get the image's current bounding box relative to the viewport
+                const rect = imageEl.getBoundingClientRect();
+
+                return {
+                    top: rect.top,
+                    left: rect.left,
+                    width: rect.width,
+                    height: rect.height,
+                    src: imageEl.src,
+                    name: cardEl.querySelector('.profile-name').textContent,
+                    data: teamData[cardIndex]
+                };
+            }
+
+            function showProfileDetail(event, index) {
+
+                if (isAnimating || detailOverlayEl.classList.contains('visible')) return;
+
+                const positionData = getProfileImagePosition(index);
+                if (!positionData) return;
+
+                // Disable navigation while the detail view is open
+                isAnimating = true;
+                document.body.style.overflow = 'hidden';
+
+                // --- 1. Initial setup of the detail image (Starting point) ---
+                detailImageEl.src = positionData.src;
+                detailImageEl.style.width = `${positionData.width}px`;
+                detailImageEl.style.height = `${positionData.height}px`;
+                detailImageEl.style.top = `${positionData.top}px`;
+                detailImageEl.style.left = `${positionData.left}px`;
+                detailImageEl.style.opacity = '1';
+                detailImageEl.style.borderRadius = '16px 16px 0 0';
+                detailImageEl.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.1)'; // Match card shadow
+
+                // Clear any lingering animation classes
+                detailRightEl.classList.remove('visible-content');
+                detailLeftEl.classList.remove('expanded-image-final');
+
+                // 2. Show the overlay immediately (Opacity transition will make it fade in)
+                detailOverlayEl.classList.add('visible');
+
+                // 3. Set up the text content immediately
+                const nameParts = positionData.data.name.split(/\s+/);
+                const firstName = nameParts.slice(0, -1).join(' ');
+                const lastName = nameParts[nameParts.length - 1];
+
+                detailFirstNameEl.textContent = firstName;
+                detailLastNameEl.textContent = lastName;
+
+                // Construct specialties HTML as cards for detail view
+                const specialtiesHTML = positionData.data.specialties.map(spec =>
+                    `<span class="specialty-card">${spec}</span>`
+                ).join('');
+
+                // Check if mobile device for scrollable description
+                const isMobile = window.innerWidth <= 767;
+                const descriptionClass = isMobile ? 'scrollable-description-mobile' : 'scrollable-description';
+
+                detailDescriptionEl.innerHTML = `
+                    <h2 class="font-display text-2xl font-semibold mb-4 text-white">${positionData.data.titleDisplay}</h2>
+                    <div class="mb-4">
+                        ${specialtiesHTML}
+                    </div>
+                    <div class="scrollable-description" style="overflow-y: auto; max-height: 50vh; padding-right: 10px;">
+                        <p class="text-base sm:text-lg leading-relaxed text-gray-700">${positionData.data.description}</p>
+                    </div>
+                    
+                `;
+
+
+                setTimeout(() => {
+                    detailLeftEl.classList.add('expanded-image-final');
+                    // The transition is handled by the CSS for #detail-image
+                    detailImageEl.style.borderRadius = '12px'; // Match final state
+                    detailImageEl.style.boxShadow = '0 20px 50px rgba(0, 0, 0, 0.2)'; // Match final state
+                }, 50);
+
+
+
+                // Set initial off-screen state for the right panel for the slide effect
+                detailRightEl.style.transform = 'translateX(100%)';
+                detailRightEl.style.transition = 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s';
+
+                setTimeout(() => {
+                    // Animate the right panel back into view
+                    detailRightEl.style.transform = 'translateX(0)';
+                    // And show the content inside it (which is delayed by CSS)
+                    detailRightEl.classList.add('visible-content');
+                }, 100);
+
+                // End animation block
+                setTimeout(() => {
+                    // Clean up the temporary transition style on the right panel
+                    detailRightEl.style.transition = '';
+                    isAnimating = false;
+                }, 1000);
+            }
+
+            function closeProfileDetail() {
+                if (isAnimating) return;
+                isAnimating = true;
+
+                // 1. Hide text content and start the right panel slide-out
+                detailRightEl.classList.remove('visible-content');
+                detailRightEl.style.transition = 'transform 0.6s cubic-bezier(0.55, 0.085, 0.68, 0.53)';
+                detailRightEl.style.transform = 'translateX(100%)'; // Slide right out
+
+                // 2. Reverse the image transition
+                detailLeftEl.classList.remove('expanded-image-final');
+
+                // Get current active card's image position for the reverse animation
+                const positionData = getProfileImagePosition(currentIndex);
+
+
+                setTimeout(() => {
+                    detailImageEl.style.width = `${positionData.width}px`;
+                    detailImageEl.style.height = `${positionData.height}px`;
+                    detailImageEl.style.top = `${positionData.top}px`;
+                    detailImageEl.style.left = `${positionData.left}px`;
+                    detailImageEl.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.1)';
+                    detailImageEl.style.borderRadius = '16px 16px 0 0';
+                }, 200); // Slight delay so the image shrinks after the background transition starts
+
+                // 3. Hide the overlay once the main transitions are complete
+                setTimeout(() => {
+                    detailOverlayEl.classList.remove('visible');
+                    // Clean up styles
+                    detailImageEl.style.opacity = '0';
+                    detailImageEl.src = '';
+
+                    // Reset right panel styles
+                    detailRightEl.style.transform = 'translateX(0)';
+                    detailRightEl.style.transition = '';
+
+                    document.body.style.overflow = '';
+                    isAnimating = false;
+                }, 1000); // 1000ms is enough to cover both image flight (1s) and overlay fade (0.5s)
+            }
+
+            // --- Event Listeners ---
+            prevBtn.addEventListener('click', prevProfile);
+            nextBtn.addEventListener('click', nextProfile);
+            closeDetailBtn.addEventListener('click', closeProfileDetail);
+
+            // Add keyboard navigation for slider
+            document.addEventListener('keydown', (e) => {
+                if (detailOverlayEl.classList.contains('visible')) {
+                    if (e.key === 'Escape') {
+                        closeProfileDetail();
+                    }
+                } else {
+                    if (e.key === 'ArrowRight') {
+                        nextProfile();
+                    } else if (e.key === 'ArrowLeft') {
+                        prevProfile();
+                    }
+                }
+            });
+
+            // Key Features Animation
+            function animateKeyFeatures() {
+                const features = document.querySelectorAll('.feature-item');
+                let currentFeature = 0;
+
+                // Reset all features to inactive state
+                features.forEach(feature => {
+                    feature.classList.remove('active');
+                    feature.classList.add('inactive');
+                });
+
+                // Function to activate next feature
+                function activateNextFeature() {
+                    // Deactivate current feature
+                    if (currentFeature >= 0) {
+                        features[currentFeature].classList.remove('active');
+                        features[currentFeature].classList.add('inactive');
+                    }
+
+                    // Move to next feature
+                    currentFeature = (currentFeature + 1) % features.length;
+
+                    // Activate new feature
+                    features[currentFeature].classList.remove('inactive');
+                    features[currentFeature].classList.add('active');
+                }
+
+                // Start the animation
+                setInterval(activateNextFeature, 1500);
+
+                // Activate first feature immediately
+                setTimeout(() => {
+                    features[0].classList.remove('inactive');
+                    features[0].classList.add('active');
+                }, 100);
+            }
+
+            // Testimonial Slider
+            let currentTestimonial = 0;
+            const testimonials = document.querySelectorAll('.testimonial');
+
+            function showTestimonial(index) {
+                testimonials.forEach((testimonial, i) => {
+                    testimonial.style.display = i === index ? 'block' : 'none';
+                });
+            }
+
+            // Initialize first testimonial
+            showTestimonial(currentTestimonial);
+
+            // Auto-rotate testimonials
+            setInterval(() => {
+                currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+                showTestimonial(currentTestimonial);
+            }, 5000);
+
+            // Scroll Animation Functionality
+            function isElementInViewport(el) {
+                const rect = el.getBoundingClientRect();
+                return (
+                    rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8 &&
+                    rect.bottom >= 0
+                );
+            }
+
+            function handleScrollAnimation() {
+                const elements = document.querySelectorAll('.scroll-fade-in, .scroll-fade-in-left, .scroll-fade-in-right, .footer-section, .stagger-animation');
+
+                elements.forEach(element => {
+                    if (isElementInViewport(element)) {
+                        // Get delay from data attribute if exists
+                        const delay = element.getAttribute('data-delay') || 0;
+
+                        // Apply animation with delay
+                        setTimeout(() => {
+                            element.classList.add('animated');
+                        }, delay * 1000);
+                    }
+                });
+            }
+
+            // Footer animation observer
+            const footerObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            // Scroll animation observer
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            // Initial setup on window load
+            window.onload = function () {
+                createCardElements(); // Create all cards initially
+                animateText(); // Initial text animation
+                animateKeyFeatures(); // Start key features animation
+
+                // Initialize scroll animations
+                handleScrollAnimation();
+                window.addEventListener('scroll', handleScrollAnimation);
+
+                // Observe footer for animation
+                const footer = document.querySelector('footer');
+                if (footer) {
+                    footerObserver.observe(footer);
+                }
+
+                // Observe scroll animation elements
+                document.querySelectorAll('.scroll-fade-in, .scroll-fade-in-left, .scroll-fade-in-right').forEach(el => {
+                    observer.observe(el);
+                });
+            };
+
+            
+
+        </script>
+        <script defer src="/assets/i18n/translator.js"></script>
+    </body>
+
+</html>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Expert Doctors - Gods Life Health Care</title>
+    <link rel="stylesheet" href="/assets/i18n/translator.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="styles.css">
+
+
+</head>
+
+<body>
+    <!-- Header (Same as index.html) -->
+    <header class="glass-header">
+        <div class="container"
+            style="display: flex; align-items: center; justify-content: space-between; padding: 10px 20px;">
+            <a href="#home" class="logo">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN1iie8n5MkShNgEeBfpmQfPl2lCBqpYOnQg&s"
+                    alt="Gods Life Health Care" style="border-radius: 30px;" />
+                <div class="logo-text">Gods <span>Life</span></div>
+            </a>
+
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link" data-translate="home">Home</a>
+                <a href="hospitals.html" class="nav-link" data-translate="hospital">Hospital</a>
+                <a href="department.html" class="nav-link" data-translate="treatments">Treatments</a>
+                <a href="blog/Blog.html" class="nav-link" data-translate="blog">Blog</a>
+                <a href="doctor.html" class="nav-link" data-translate="doctors">Doctors</a>
+                <!-- <a href="#testimonials" class="nav-link" data-translate="testimonials">Testimonials</a> -->
+                <a href="about.html" class="nav-link" data-translate="about">About Us</a>
+                <li><a href="/consultation.html" class="nav-consultation-btn" onclick="trackConsultationClick()">
+                        <i class="fas fa-calendar-check"></i> Consultation
+                    </a></li>
+
+                <!-- IMPROVED COMPACT LANGUAGE SELECTOR -->
+                <!-- FIXED LANGUAGE SELECTOR - COPY THIS INTO YOUR HEADER -->
+                <div class="language-selector-simple">
+                    <select id="languageSelect" onchange="changeLanguage(this.value)">
+                        <!-- Africa -->
+                        <optgroup label="Africa">
+                            <option value="en-ke">🇰🇪 Kenya</option>
+                            <option value="fr-cm">🇨🇲 Cameroon</option>
+                            <option value="am">🇪🇹 Ethiopia</option>
+                            <option value="en-ug">🇺🇬 Uganda</option>
+                            <option value="en-gh">🇬🇭 Ghana</option>
+                            <option value="en-zm">🇿🇲 Zambia</option>
+                            <option value="sw">🇹🇿 Tanzania</option>
+                            <option value="en-mu">🇲🇺 Mauritius</option>
+                            <option value="mg">🇲🇬 Madagascar</option>
+                            <option value="en-sl">🇸🇱 S. Leone</option>
+                            <option value="ar-ly">🇱🇾 Libya</option>
+                            <option value="ar-sd">🇸🇩 Sudan</option>
+                            <option value="en-ng">🇳🇬 Nigeria</option>
+                        </optgroup>
+
+                        <!-- Middle East -->
+                        <optgroup label="Middle East">
+                            <option value="ar-kw">🇰🇼 Kuwait</option>
+                            <option value="ar-sa">🇸🇦 Saudi</option>
+                            <option value="ar-sy">🇸🇾 Syria</option>
+                            <option value="ar-iq">🇮🇶 Iraq</option>
+                            <option value="ar-om">🇴🇲 Oman</option>
+                            <option value="ar-jo">🇯🇴 Jordan</option>
+                            <option value="ar-ye">🇾🇪 Yemen</option>
+                        </optgroup>
+
+                        <!-- CIS Countries -->
+                        <optgroup label="CIS">
+                            <option value="uz">🇺🇿 Uzbek</option>
+                            <option value="kk">🇰🇿 Kazakh</option>
+                            <option value="tk">🇹🇲 Turkmen</option>
+                            <option value="tg">🇹🇯 Tajik</option>
+                        </optgroup>
+
+                        <!-- Asia -->
+                        <optgroup label="Asia">
+                            <option value="my">🇲🇲 Myanmar</option>
+                            <option value="km">🇰🇭 Cambodia</option>
+                            <option value="bn">🇧🇩 Bangladesh</option>
+                            <option value="ne">🇳🇵 Nepal</option>
+                            <option value="dz">🇧🇹 Bhutan</option>
+                            <option value="si">🇱🇰 Sri Lanka</option>
+                        </optgroup>
+
+                        <!-- Americas -->
+                        <optgroup label="Americas">
+                            <option value="es-mx">🇲🇽 Mexico</option>
+                            <option value="es-co">🇨🇴 Colombia</option>
+                            <option value="pt-br">🇧🇷 Brazil</option>
+                            <option value="es-pe">🇵🇪 Peru</option>
+                            <option value="es-do">🇩🇴 Dom. Rep</option>
+                        </optgroup>
+
+                        <!-- Western -->
+                        <optgroup label="Western">
+                            <option value="en" selected>🇺🇸 US</option>
+                            <option value="en-gb">🇬🇧 UK</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+
+            </nav>
+
+            <div class="ham-icon" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Doctors Section (Main Content) -->
+    <section class="experts-section" style="padding: 80px 0; background: #f8f9fa;">
+        <div class="container">
+            <div class="section-title animate-on-scroll">
+                <h1 style="font-size: 2.5rem; margin-bottom: 10px;">Our Expert Doctors</h1>
+                <p style="font-size: 1.1rem;">Meet our team of highly qualified medical specialists</p>
+            </div>
+
+            <!-- Doctors Grid Container -->
+            <div id="doctors-container">
+                <div class="loading">Loading doctors</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Same as index.html) -->
+    <footer>
+        <div class="container">
+            <div class="footer-content stagger-animation" id="footer-content">
+                <!-- Footer content will be dynamically generated here -->
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 Gods Life Health Care. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+    <script src="booking-modal-standalone.js"></script>
+
+    <script>
+        function toggleMenu() {
+            const navMenu = document.querySelector('.nav-menu');
+            const hamIcon = document.querySelector('.ham-icon');
+            const navOverlay = document.querySelector('.nav-overlay');
+
+            if (!navMenu || !hamIcon) return;
+
+            // Toggle active classes
+            navMenu.classList.toggle('active');
+            hamIcon.classList.toggle('active');
+
+            if (navOverlay) {
+                navOverlay.classList.toggle('active');
+            }
+
+            // Manage body scroll
+            if (navMenu.classList.contains('active')) {
+                document.body.classList.add('menu-open');
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.classList.remove('menu-open');
+                document.body.style.overflow = '';
+            }
+        }
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function () {
+                const navMenu = document.querySelector('.nav-menu');
+                const hamIcon = document.querySelector('.ham-icon');
+                const navOverlay = document.querySelector('.nav-overlay');
+
+                if (navMenu && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    hamIcon?.classList.remove('active');
+                    if (navOverlay) navOverlay.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
+        document.addEventListener('click', function (event) {
+            const navMenu = document.querySelector('.nav-menu');
+            const hamIcon = document.querySelector('.ham-icon');
+            const logo = document.querySelector('.logo');
+            const navOverlay = document.querySelector('.nav-overlay');
+
+            if (!navMenu || !hamIcon) return;
+
+            // Don't close if clicking inside menu, hamburger, or logo
+            if (!navMenu.contains(event.target) &&
+                !hamIcon.contains(event.target) &&
+                !logo.contains(event.target)) {
+
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    hamIcon.classList.remove('active');
+                    if (navOverlay) navOverlay.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                    document.body.style.overflow = '';
+                }
+            }
+        });
+        // Wait for both DOM and app to be ready
+        function initDoctorsPage() {
+            console.log('Initializing doctors page...');
+
+            // Wait for the global app to be initialized
+            if (typeof app !== 'undefined' && app.data && app.data.doctors) {
+                console.log('App already loaded, rendering doctors...');
+                renderDoctorsPage(app.data.doctors);
+            } else {
+                console.log('Waiting for app to load...');
+                // Wait a bit and try again
+                setTimeout(() => {
+                    if (typeof app !== 'undefined' && app.data && app.data.doctors) {
+                        console.log('App loaded, rendering doctors...');
+                        renderDoctorsPage(app.data.doctors);
+                    } else {
+                        // If still not loaded, create new instance
+                        console.log('Creating new app instance...');
+                        const doctorApp = new MedicalDepartmentsApp(API_CONFIG, STATIC_DATA);
+                        doctorApp.init().then(() => {
+                            renderDoctorsPage(doctorApp.data.doctors);
+                        }).catch(error => {
+                            console.error('Error loading doctors:', error);
+                            showErrorState();
+                        });
+                    }
+                }, 1000);
+            }
+        }
+
+        // Function to render doctors on this page
+        function renderDoctorsPage(doctors) {
+            const container = document.getElementById('doctors-container');
+
+            if (!container) {
+                console.error('Doctors container not found');
+                return;
+            }
+
+            if (!doctors || doctors.length === 0) {
+                container.innerHTML = '<div class="empty-state"><p>No doctors available at the moment.</p></div>';
+                return;
+            }
+
+            console.log('Rendering', doctors.length, 'doctors');
+
+            const doctorsHtml = `
+                <div class="doctors-grid stagger-animation">
+                    ${doctors.map(doctor => {
+                const doctorImageUrl = (doctor.image && doctor.image.trim())
+                    ? doctor.image
+                    : 'https://via.placeholder.com/300x250?text=Doctor';
+
+                return `
+                            <div class="doctor-card" data-doctor-id="${doctor.id}">
+                                <div class="doctor-image-container">
+                                    <img src="${doctorImageUrl}" alt="${doctor.name}" class="doctor-image" onerror="this.src='https://via.placeholder.com/300x250?text=Doctor';">
+                                </div>
+                                
+                                <div class="doctor-info-container">
+                                    <h3 class="doctor-name">${doctor.name}</h3>
+                                    <p class="doctor-specialty">${doctor.specialty}</p>
+                                    <p class="doctor-sub_specialties">${doctor.specialties || ''}</p>
+                                    <p class="doctor-hospital">${doctor.hospital || ''}, ${doctor.hospitalCity || ''}</p>
+                                    
+                                    <div class="doctor-stats-row">
+                                        <div class="stat-badge">
+                                            <i class="fas fa-award"></i>
+                                            <span>${doctor.yearsOfExperience || 0}+ Years</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="availability-indicator ${doctor.isAvailable ? 'available' : 'unavailable'}">
+                                        <i class="fas fa-circle"></i>
+                                        <span>${doctor.isAvailable ? 'Available' : 'Unavailable'}</span>
+                                    </div>
+                                    
+                                    <div class="doctor-actions">
+                                        <button class="btn-primary" onclick="bookDoctor('${doctor.name}', '${doctor.specialty || 'General Medicine'}')">
+                                            <i class="fas fa-calendar-check"></i>
+                                            <span>Book Consultation</span>
+                                        </button>
+                                        <button class="btn-profile" onclick="window.location.href='${doctor.profileLink}'">
+                            
+                                            <i class="fas fa-user"></i>
+                                            <span>View Profile</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+            }).join('')}
+                </div>
+            `;
+
+            container.innerHTML = doctorsHtml;
+
+            // Initialize animations
+            setTimeout(() => {
+                const elements = document.querySelectorAll('.animate-on-scroll, .stagger-animation');
+                elements.forEach(el => el.classList.add('animated'));
+            }, 100);
+
+            console.log('Doctors rendered successfully');
+        }
+
+        function showErrorState() {
+            const container = document.getElementById('doctors-container');
+            if (container) {
+                container.innerHTML = `
+                    <div class="error-state" style="text-align: center; padding: 80px 20px; background: #fff3cd; border: 1px solid #ffc107; border-radius: 12px;">
+                        <h3 style="color: #856404; margin-bottom: 10px;">Unable to load doctors</h3>
+                        <p style="color: #856404;">Please try again later or <a href="index.html" style="color: #007bff;">return to home</a></p>
+                    </div>
+                `;
+            }
+        }
+
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initDoctorsPage);
+        } else {
+            initDoctorsPage();
+        }
+
+        // Also render footer if app is available
+        setTimeout(() => {
+            if (typeof app !== 'undefined' && app.renderFooter) {
+                app.renderFooter();
+            }
+        }, 1500);
+    </script>
+    <script defer src="/assets/i18n/translator.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hospitals — Gods Life Health Care</title>
+
+    <link rel="icon" type="image/x-icon" href="./assets/logo.png">
+    <link rel="stylesheet" href="/assets/i18n/translator.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+    
+    <!-- Add search-specific styles -->
+    <style>
+        .search-section {
+            margin: 30px auto 40px;
+            max-width: 900px;
+        }
+        
+        .search-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .search-title {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #2c3e50;
+        }
+        
+        .search-title h3 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            color: #3498db;
+        }
+        
+        .search-title p {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+        }
+        
+        .single-search {
+            margin-bottom: 20px;
+        }
+        
+        .filter-group {
+            position: relative;
+        }
+        
+        .filter-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #34495e;
+            font-size: 0.9rem;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 14px 20px 14px 45px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+        
+        .search-input::placeholder {
+            color: #95a5a6;
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 42px;
+            color: #7f8c8d;
+            font-size: 1rem;
+            z-index: 1;
+        }
+        
+        .search-hint {
+            margin-top: 8px;
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .search-hint i {
+            color: #3498db;
+            font-size: 0.9rem;
+        }
+        
+        .search-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 25px;
+        }
+        
+        .search-btn {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .search-btn:hover {
+            background: linear-gradient(135deg, #2980b9, #1c6ea4);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .search-btn:active {
+            transform: translateY(0);
+        }
+        
+        .reset-btn {
+            padding: 12px 30px;
+            background: #ecf0f1;
+            color: #7f8c8d;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .reset-btn:hover {
+            background: #d5dbdb;
+            transform: translateY(-2px);
+        }
+        
+        .search-results-info {
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            color: #2c3e50;
+            font-size: 0.95rem;
+            display: none;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            background: #fff8e1;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .no-results i {
+            font-size: 3rem;
+            color: #f39c12;
+            margin-bottom: 15px;
+        }
+        
+        .no-results h4 {
+            color: #e67e22;
+            margin-bottom: 10px;
+        }
+        
+        .no-results p {
+            color: #7f8c8d;
+        }
+        
+        .results-count {
+            font-weight: bold;
+            color: #3498db;
+        }
+        
+        /* Add to existing hospitals grid styles if needed */
+        .hospitals-grid {
+            transition: opacity 0.3s ease;
+        }
+        
+        .hospital-card {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        
+        .hospital-card.hidden {
+            display: none;
+        }
+        
+        .hospital-card.visible {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="glass-header">
+        <div class="container"
+            style="display: flex; align-items: center; justify-content: space-between; padding: 10px 20px;">
+            <a href="#home" class="logo">
+                <img src="assets/logo.png"
+                    alt="Gods Life Health Care" style="border-radius: 30px;" />
+                <div class="logo-text">God's Life<span> Health Care</span></div>
+            </a>
+
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link" data-translate="home">Home</a>
+                <a href="about.html" class="nav-link" data-translate="about">About Us</a>
+                <a href="hospitals.html" class="nav-link" data-translate="hospital">Hospital</a>
+                <a href="department.html" class="nav-link" data-translate="treatments">Treatments</a>
+                <a href="doctor.html" class="nav-link" data-translate="doctors">Doctors</a>
+                <a href="services1.html" class="nav-link" data-translate="services">Services</a>
+                <a href="blog/Blog.html" class="nav-link" data-translate="blog">knowledge</a>
+                <!-- <a href="#testimonials" class="nav-link" data-translate="testimonials">Testimonials</a> -->
+              
+                <a href="/consultation.html" class="nav-consultation-btn" onclick="trackConsultationClick()">
+                    <i class="fas fa-calendar-check"></i> Consultation
+                </a>
+
+
+                <div class="language-selector-simple">
+                    <select id="languageSelect" onchange="changeLanguage(this.value)">
+                        <!-- Africa -->
+                        <optgroup label="Africa">
+                            <option value="en-ke">🇰🇪 Kenya</option>
+                            <option value="fr-cm">🇨🇲 Cameroon</option>
+                            <option value="am">🇪🇹 Ethiopia</option>
+                            <option value="en-ug">🇺🇬 Uganda</option>
+                            <option value="en-gh">🇬🇭 Ghana</option>
+                            <option value="en-zm">🇿🇲 Zambia</option>
+                            <option value="sw">🇹🇿 Tanzania</option>
+                            <option value="en-mu">🇲🇺 Mauritius</option>
+                            <option value="mg">🇲🇬 Madagascar</option>
+                            <option value="en-sl">🇸🇱 S. Leone</option>
+                            <option value="ar-ly">🇱🇾 Libya</option>
+                            <option value="ar-sd">🇸🇩 Sudan</option>
+                            <option value="en-ng">🇳🇬 Nigeria</option>
+                        </optgroup>
+
+                        <!-- Middle East -->
+                        <optgroup label="Middle East">
+                            <option value="ar-kw">🇰🇼 Kuwait</option>
+                            <option value="ar-sa">🇸🇦 Saudi</option>
+                            <option value="ar-sy">🇸🇾 Syria</option>
+                            <option value="ar-iq">🇮🇶 Iraq</option>
+                            <option value="ar-om">🇴🇲 Oman</option>
+                            <option value="ar-jo">🇯🇴 Jordan</option>
+                            <option value="ar-ye">🇾🇪 Yemen</option>
+                        </optgroup>
+
+                        <!-- CIS Countries -->
+                        <optgroup label="CIS">
+                            <option value="uz">🇺🇿 Uzbek</option>
+                            <option value="kk">🇰🇿 Kazakh</option>
+                            <option value="tk">🇹🇲 Turkmen</option>
+                            <option value="tg">🇹🇯 Tajik</option>
+                        </optgroup>
+
+                        <!-- Asia -->
+                        <optgroup label="Asia">
+                            <option value="my">🇲🇲 Myanmar</option>
+                            <option value="km">🇰🇭 Cambodia</option>
+                            <option value="bn">🇧🇩 Bangladesh</option>
+                            <option value="ne">🇳🇵 Nepal</option>
+                            <option value="dz">🇧🇩 Bhutan</option>
+                            <option value="si">🇱🇰 Sri Lanka</option>
+                            <option value="hi">Hi Hindi</option>
+                        </optgroup>
+
+                        <!-- Americas -->
+                        <optgroup label="Americas">
+                            <option value="es-mx">🇲🇽 Mexico</option>
+                            <option value="es-co">🇨🇴 Colombia</option>
+                            <option value="pt-br">🇧🇷 Brazil</option>
+                            <option value="es-pe">🇵🇪 Peru</option>
+                            <option value="es-do">🇩🇴 Dom. Rep</option>
+                        </optgroup>
+
+                        <!-- Western -->
+                        <optgroup label="Western">
+                            <option value="en" selected>🇺🇸 US</option>
+                            <option value="en-gb">🇬🇧 UK</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+
+            </nav>
+
+            
+
+            <div class="ham-icon" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Title (centered) -->
+    <section class="partners">
+        <div class="container">
+            
+
+            <!-- Search Bar Section - UPDATED: Single search bar -->
+            <div class="search-section">
+                <div class="search-container">
+                    <div class="search-title">
+                        <h3>Find Hospitals</h3>
+                        <p>Search by hospital name, city/region, or medical specialty</p>
+                    </div> 
+                    
+                    <div class="single-search">
+                        <div class="filter-group">
+                            <label for="globalSearch"><i class="fas fa-search"></i> Search Hospitals</label>
+                            <input 
+                                type="text" 
+                                id="globalSearch" 
+                                class="search-input" 
+                                placeholder="e.g., 'Apollo', 'Mumbai', 'Cardiology'"
+                                onkeyup="filterHospitals()"
+                            >
+                            <i class="fas fa-search search-icon"></i>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="search-actions">
+                        <button class="search-btn" onclick="filterHospitals()">
+                            <i class="fas fa-search"></i> Search Hospitals
+                        </button>
+                        <button class="reset-btn" onclick="resetSearch()">
+                            <i class="fas fa-redo"></i> Reset Filters
+                        </button>
+                    </div>
+                    
+                    <div id="searchResultsInfo" class="search-results-info">
+                        Showing <span class="results-count">0</span> of <span class="total-count">0</span> hospitals
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading / Error / Grid -->
+            <div id="hospitalsLoading" class="loading" style="text-align:center; padding: 20px;">
+                Loading hospitals...
+            </div>
+            <div id="hospitalsError" class="error" style="display:none; text-align:center; padding: 20px;">
+                Unable to load hospitals. Please try again later.
+            </div>
+
+            <div id="hospitalsGrid" class="hospitals-grid" style="display:none;"></div>
+
+            <div id="hospitalsEmpty" class="empty-state" style="display:none;">
+                <h3>No hospitals available</h3>
+                <p>Hospital information will be shown here when available.</p>
+            </div>
+            
+            <!-- No Results Message -->
+            <div id="noResultsMessage" class="no-results" style="display:none;">
+                <i class="fas fa-search"></i>
+                <h4>No hospitals found matching your search</h4>
+                <p>Try adjusting your search terms</p>
+                <button class="reset-btn" onclick="resetSearch()" style="margin-top: 15px;">
+                    <i class="fas fa-redo"></i> Show All Hospitals
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content" id="footer-content">
+                <div class="footer-column">
+                    <h3>Gods Life Health Care</h3>
+                    <p>Your trusted partner for world-class medical tourism and healthcare services.</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/godslife.healthcare/"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.tiktok.com/@godslifehealthcare"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.instagram.com/hgodslife/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/gods-life-undefined-956b4a391/"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="hospitals.html">Hospitals</a></li>
+                        <li><a href="doctor.html">Doctors</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Medical Tourism</a></li>
+                        <li><a href="#">Treatment Packages</a></li>
+                        <li><a href="#">Travel Assistance</a></li>
+                        <li><a href="#">Visa Support</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-phone"></i> +91 70655 14010</p>
+                    <p><i class="fas fa-envelope"></i> support@godslifehealthcare.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 18 East Azad Nagar near Krishna Nagar Delhi 110051</p>
+                </div>
+            </div>
+
+            <div class="copyright">
+    <p>&copy; 2025 Gods Life Health Care. All rights reserved. Developed by 
+    <a href="https://singhatechne.com" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       style="color: #3498db; text-decoration: none; transition: color 0.3s ease;">
+       Singha Techne
+    </a>
+    </p>
+</div>
+        </div>
+    </footer>
+
+    <!-- Inline Page Script -->
+    <script>
+        // ---------- Config ----------
+        // Auto-detect environment and set base URL
+        const API_CONFIG = {
+        // Automatically use production URL when deployed, localhost when developing
+             baseURL: window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+            ? 'http://127.0.0.1:8000'
+            : 'https://godslifehealthcare.com/backend',
+            endpoints: { hospitals: '/api/hospitals/hospitals/' },
+            timeout: 15000,
+            retry: { enabled: true, maxRetries: 3, delayMs: 2000 },
+        };
+
+        // ---------- Global Variables ----------
+        let allHospitals = [];
+        let filteredHospitals = [];
+
+        // ---------- Helpers ----------
+        function getFullImagePath(relativePath) {
+            if (relativePath && relativePath.startsWith('/')) {
+                return API_CONFIG.baseURL + relativePath;
+            }
+            return relativePath;
+        }
+        
+        
+        function toggleMenu() {
+            const navMenu = document.querySelector('.nav-menu');
+            const hamIcon = document.querySelector('.ham-icon');
+
+            navMenu.classList.toggle('active');
+            hamIcon.classList.toggle('active');
+
+            if (navMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function () {
+                const navMenu = document.querySelector('.nav-menu');
+                const hamIcon = document.querySelector('.ham-icon');
+
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    hamIcon.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
+        document.addEventListener('click', function (event) {
+            const navMenu = document.querySelector('.nav-menu');
+            const hamIcon = document.querySelector('.ham-icon');
+            const logo = document.querySelector('.logo');
+
+            if (!navMenu.contains(event.target) && !hamIcon.contains(event.target) && !logo.contains(event.target)) {
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    hamIcon.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+        });
+
+        window.addEventListener('scroll', function () {
+            const header = document.querySelector('.glass-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        function transformHospitalData(h) {
+            return {
+                id: h.id,
+                slug: h.slug,
+                name: h.name || '',
+                image: getFullImagePath(h.image || ''),
+                city: h.city || '',
+                country: h.country || '',
+                total_beds: Number(h.total_beds) || 0,
+                specialties_list: h.specialties_list || '',
+                is_featured: h.is_featured || false,
+            };
+        }
+
+        // ---------- Search Functions - UPDATED: Single search bar ----------
+        function filterHospitals() {
+            const searchInput = document.getElementById('globalSearch');
+            const resultsInfo = document.getElementById('searchResultsInfo');
+            const noResultsMsg = document.getElementById('noResultsMessage');
+            const grid = document.getElementById('hospitalsGrid');
+            
+            const searchTerm = searchInput.value.trim().toLowerCase();
+            
+            // If search input is empty, show all hospitals
+            if (!searchTerm) {
+                showAllHospitals();
+                hide(resultsInfo);
+                hide(noResultsMsg);
+                show(grid);
+                return;
+            }
+            
+            // Split search term into individual keywords for better matching
+            const keywords = searchTerm.split(/\s+/).filter(keyword => keyword.length > 0);
+            
+            // Filter hospitals
+            filteredHospitals = allHospitals.filter(hospital => {
+                // Create searchable text from hospital data
+                const searchableText = [
+                    hospital.name || '',
+                    hospital.city || '',
+                    hospital.country || '',
+                    hospital.specialties_list || ''
+                ].join(' ').toLowerCase();
+                
+                // Check if all keywords match (AND logic) - more precise
+                // Alternative: Use OR logic by checking if any keyword matches
+                // return keywords.some(keyword => searchableText.includes(keyword));
+                
+                // Using AND logic (all keywords must match)
+                return keywords.every(keyword => searchableText.includes(keyword));
+            });
+            
+            // Update UI
+            updateHospitalGrid(filteredHospitals);
+            
+            // Show results info
+            if (filteredHospitals.length > 0) {
+                show(grid);
+                hide(noResultsMsg);
+                
+                // Update results count
+                const totalCount = document.querySelector('.total-count');
+                const resultsCount = document.querySelector('.results-count');
+                totalCount.textContent = allHospitals.length;
+                resultsCount.textContent = filteredHospitals.length;
+                
+                resultsInfo.innerHTML = `Showing <span class="results-count">${filteredHospitals.length}</span> of <span class="total-count">${allHospitals.length}</span> hospitals matching "${searchTerm}"`;
+                show(resultsInfo);
+            } else {
+                hide(grid);
+                show(noResultsMsg);
+                hide(resultsInfo);
+            }
+        }
+        
+        function resetSearch() {
+            document.getElementById('globalSearch').value = '';
+            showAllHospitals();
+            hide(document.getElementById('searchResultsInfo'));
+            hide(document.getElementById('noResultsMessage'));
+            show(document.getElementById('hospitalsGrid'));
+        }
+        
+        function showAllHospitals() {
+            updateHospitalGrid(allHospitals);
+            filteredHospitals = [...allHospitals];
+        }
+        
+        function updateHospitalGrid(hospitals) {
+            const grid = document.getElementById('hospitalsGrid');
+            if (!grid) return;
+            
+            // Clear and re-populate grid
+            grid.innerHTML = hospitals.map((h, index) => hospitalCardHTML(h, index)).join('');
+            
+            // Add animation classes
+            const cards = grid.querySelectorAll('.hospital-card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.05}s`;
+                card.classList.add('visible');
+            });
+        }
+        
+        function show(el) { if (el) el.style.display = ''; }
+        function hide(el) { if (el) el.style.display = 'none'; }
+
+        // ---------- Simple fetch with retry/cache ----------
+        class APIService {
+            constructor(config) {
+                this.config = config;
+                this.cache = new Map();
+                this.cacheTimeout = 5 * 60 * 1000;
+            }
+
+            delay(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+            getFromCache(url) {
+                const cached = this.cache.get(url);
+                if (cached && Date.now() - cached.timestamp < this.cacheTimeout) return cached.data;
+                return null;
+            }
+
+            setCache(url, data) { this.cache.set(url, { data, timestamp: Date.now() }); }
+
+            async fetchWithRetry(url, options = {}, retryCount = 0) {
+                if (!options.method || options.method === 'GET') {
+                    const cached = this.getFromCache(url);
+                    if (cached) return cached;
+                }
+
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), this.config.timeout);
+
+                try {
+                    const res = await fetch(url, {
+                        ...options,
+                        signal: controller.signal,
+                        headers: { 'Content-Type': 'application/json', ...(options.headers || {}) },
+                    });
+                    clearTimeout(timeoutId);
+
+                    if (res.status === 429) {
+                        const waitTime = this.config.retry.delayMs * Math.pow(2, retryCount);
+                        if (retryCount < this.config.retry.maxRetries) {
+                            await this.delay(waitTime);
+                            return this.fetchWithRetry(url, options, retryCount + 1);
+                        }
+                        throw new Error('HTTP 429');
+                    }
+
+                    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+                    const data = await res.json();
+                    this.setCache(url, data);
+                    return data;
+                } catch (e) {
+                    clearTimeout(timeoutId);
+                    if (
+                        this.config.retry.enabled &&
+                        retryCount < this.config.retry.maxRetries &&
+                        e.name !== 'AbortError' &&
+                        !String(e.message).includes('429')
+                    ) {
+                        const waitTime = this.config.retry.delayMs * Math.pow(2, retryCount);
+                        await this.delay(waitTime);
+                        return this.fetchWithRetry(url, options, retryCount + 1);
+                    }
+                    throw e;
+                }
+            }
+
+            async fetchHospitalsAllPages() {
+                const firstUrl = `${this.config.baseURL}${this.config.endpoints.hospitals}`;
+                let url = firstUrl;
+                const all = [];
+
+                while (url) {
+                    const data = await this.fetchWithRetry(url);
+                    if (Array.isArray(data)) {
+                        all.push(...data);
+                        break;
+                    } else if (data && Array.isArray(data.results)) {
+                        all.push(...data.results);
+                        url = data.next || null;
+                    } else if (data) {
+                        all.push(data);
+                        break;
+                    } else {
+                        break;
+                    }
+                }
+                return all.map(transformHospitalData);
+            }
+        }
+
+        // ---------- UI - HOSPITAL CARD HTML ----------
+        const api = new APIService(API_CONFIG);
+
+        const els = {
+            grid: document.getElementById('hospitalsGrid'),
+            loading: document.getElementById('hospitalsLoading'),
+            error: document.getElementById('hospitalsError'),
+            empty: document.getElementById('hospitalsEmpty'),
+        };
+
+        function hospitalCardHTML(h, index) {
+            // Image handling with fallback
+            const img = h.image && String(h.image).trim()
+                ? h.image
+                : 'https://via.placeholder.com/640x400/667eea/ffffff?text=Hospital+Image';
+
+            // Location formatting
+            const locationParts = [];
+            if (h.city && String(h.city).trim()) locationParts.push(String(h.city).trim());
+            if (h.country && String(h.country).trim()) locationParts.push(String(h.country).trim());
+            const location = locationParts.join(', ');
+
+            const locationHtml = location
+                ? `<div class="hospital-location" title="${location}">
+                     <i class="fas fa-location-dot"></i>
+                     <span>${location}</span>
+                   </div>`
+                : `<div class="hospital-location no-data">
+                     <i class="fas fa-location-dot"></i>
+                     <span>Location not specified</span>
+                   </div>`;
+
+            // Specialties formatting
+            let displaySpecialties = [];
+            if (h.specialties_list && typeof h.specialties_list === 'string' && h.specialties_list.trim()) {
+                const specialtiesArray = h.specialties_list
+                    .split(',')
+                    .map(s => s.trim())
+                    .filter(s => s.length > 0);
+                displaySpecialties = specialtiesArray.slice(0, 3);
+            }
+
+            const hasMoreSpecialties = h.specialties_list &&
+                h.specialties_list.split(',').length > displaySpecialties.length;
+
+            const specialtiesHtml = displaySpecialties.length > 0
+                ? `<div class="hospital-specialties">
+                     <i class="fas fa-stethoscope"></i>
+                     <div class="specialties-text">
+                       <span class="specialties-label">Specialties</span>
+                       <span class="specialties-list">${displaySpecialties.join(', ')}${hasMoreSpecialties ? ', +more' : ''}</span>
+                     </div>
+                   </div>`
+                : `<div class="hospital-specialties">
+                     <i class="fas fa-stethoscope"></i>
+                     <div class="specialties-text">
+                       <span class="specialties-label">Specialties</span>
+                       <span class="specialties-list">Multi-specialty Hospital</span>
+                     </div>
+                   </div>`;
+
+            // Beds count with validation
+            const beds = h.total_beds && parseInt(h.total_beds) > 0
+                ? parseInt(h.total_beds)
+                : 0;
+
+            return `
+                <div class="hospital-card${h.is_featured ? ' featured' : ''}" data-hospital-id="${h.id || index}">
+                    <div class="hospital-img-wrap">
+                        <img src="${img}" 
+                             alt="${h.name}" 
+                             loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/640x400/667eea/ffffff?text=Hospital';">
+                        ${h.is_featured ? '<div class="featured-badge"><i class="fas fa-star"></i> Featured</div>' : ''}
+                    </div>
+                    <div class="hospital-content">
+                        <h3 class="hospital-name" title="${h.name}">${h.name}</h3>
+                        ${locationHtml}
+                        ${specialtiesHtml}
+                        <div class="hospital-meta">
+                            <span class="beds">
+                                <i class="fas fa-bed"></i> 
+                                ${beds > 0 ? beds + ' Beds' : 'Contact for info'}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="hospital-actions">
+                        <a class="btn btn-view" 
+                           href="hospital-detail.html?slug=${encodeURIComponent(h.slug || h.id)}" 
+                           title="View ${h.name} details">
+                            <i class="fas fa-eye"></i> View Details
+                        </a>
+                    </div>
+                </div>`;
+        }
+
+        async function initHospitalsPage() {
+            // Mobile nav
+            const ham = document.getElementById('ham-icon');
+            if (ham) {
+                ham.addEventListener('click', () => {
+                    const nav = document.querySelector('.nav-menu');
+                    if (nav) nav.classList.toggle('active');
+                });
+                document.addEventListener('click', (e) => {
+                    const nav = document.querySelector('.nav-menu');
+                    if (nav && nav.classList.contains('active') && !nav.contains(e.target) && !ham.contains(e.target)) {
+                        nav.classList.remove('active');
+                    }
+                });
+            }
+
+            hide(els.error);
+            hide(els.empty);
+            hide(els.grid);
+            show(els.loading);
+
+            try {
+                allHospitals = await api.fetchHospitalsAllPages();
+                hide(els.loading);
+
+                if (!allHospitals.length) {
+                    show(els.empty);
+                    return;
+                }
+
+                // Initialize filtered hospitals
+                filteredHospitals = [...allHospitals];
+                
+                // Generate HTML for all hospitals with index
+                updateHospitalGrid(allHospitals);
+                show(els.grid);
+
+                // Add event listeners for real-time search on single search bar
+                document.getElementById('globalSearch').addEventListener('input', filterHospitals);
+                
+                // Add Enter key support for search
+                document.getElementById('globalSearch').addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') filterHospitals();
+                });
+
+                console.log(`✓ Loaded ${allHospitals.length} hospitals`);
+            } catch (e) {
+                console.error('Hospitals load failed:', e);
+                hide(els.loading);
+                show(els.error);
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initHospitalsPage);
+        } else {
+            initHospitalsPage();
+        }
+    </script>
+
+    <script defer src="/assets/i18n/translator.js"></script>
+</body>
+
+</html>
